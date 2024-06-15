@@ -1,0 +1,24 @@
+services:
+  #database:
+    #container_name: XXXXXXX
+    #image: mysql:5.7
+    #restart: always
+    #environment:
+      #MYSQL_ROOT_PASSWORD: XXXXXXX
+      #MYSQL_DATABASE: XXXXXXX
+      #MYSQL_USER: XXXXXXX
+      #MYSQL_PASSWORD: XXXXXXX
+    #volumes:
+      #- ./mysql:/var/lib/mysql
+    #ports:
+      #- "3306:3306"
+    #networks:
+      #- COMMON_NETWORK
+  
+  frontend:
+    build: ./
+    container_name: Petclinic-frontend
+    ports:
+      - '8080:3000'
+    #networks:
+    #  - COMMON_NETWORK
