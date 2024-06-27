@@ -19,6 +19,6 @@ services:
     build: ./
     container_name: Petclinic-frontend
     ports:
-      - '8080:3000'
+      - '8082:3000'
     #networks:
     #  - COMMON_NETWORK
