@@ -9,17 +9,20 @@ function App() {
         <p>To continue, please do yor registration down below. Thank you for choosing us!</p>
 
             <label for="email">Email:</label>
+            <br></br>
             <input type="email" id="email" name="email"></input>
             <br></br>
 
             <label for="username">Username:</label>
+            <br></br>
             <input type="text" id="username" name="username"></input>
             <br></br>
 
             <label for="password">Password:</label>
-            <input type="text" id="password" name="password"></input>
             <br></br>
-                <button type="submit">Submit</button>
+            <input type="password" id="password" name="password"></input>
+            <br></br>
+                <button type="submit">Registrte</button>
 
         </form>
       </header>
