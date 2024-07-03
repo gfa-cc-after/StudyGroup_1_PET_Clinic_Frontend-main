@@ -1,33 +1,15 @@
+import React from 'react';
 import './App.css';
+import RegistrationForm from './RegistrationForm';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <form method="post">
-        <p>Welcome to the Pet Clinic!</p>
-        <p>To continue, please do yor registration down below. Thank you for choosing us!</p>
-
-            <label for="email">Email:</label>
-            <br></br>
-            <input type="email" id="email" name="email"></input>
-            <br></br>
-
-            <label for="username">Username:</label>
-            <br></br>
-            <input type="text" id="username" name="username"></input>
-            <br></br>
-
-            <label for="password">Password:</label>
-            <br></br>
-            <input type="password" id="password" name="password"></input>
-            <br></br>
-                <button type="submit">Registrte</button>
-
-        </form>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <h1>Registration Form</h1>
+            <RegistrationForm />
+        </div>
+    );
 }
 
 export default App;
+
