@@ -9,7 +9,7 @@ services:
       - '8082:3000'
     tty: true
     networks:
-      pet_clinic_drama_network
+      - pet_clinic_drama_network
 
 
 networks:
