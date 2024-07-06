@@ -6,7 +6,12 @@ services:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - '8080:3000'
+      - '8082:3000'
     tty: true
-    #networks:
-    #  - COMMON_NETWORK
+    networks:
+      pet_clinic_drama_network
+
+
+networks:
+  pet_clinic_drama_network:
+    external: true
