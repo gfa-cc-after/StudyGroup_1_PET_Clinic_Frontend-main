@@ -1,8 +1,15 @@
 import React from 'react'
 import RegistrationForm from '../src/components/RegistrationForm'
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { it, expect, describe } from 'vitest'
+import { setupServer } from 'msw/node'
+import { handlers } from './mockhandlers'
 
+export const server = setupServer(...handlers)
+
+//beforeAll(() => server.listen())
+//afterEach(() => server.resetHandlers())
+//afterAll(() => server.close())
 
 describe('RegistrationForm', () => {
     it('should render the form', async () => {
@@ -29,14 +36,25 @@ describe('RegistrationForm', () => {
     })
 
     it('should send post request to backend on registration click', async () => {
+        server.listen()
         render(<RegistrationForm />)
 
-        //userEvent.type(screen.getByLabelText('Username:'), 'testUser')
-        //userEvent.type(screen.getByLabelText('Password:'), 'password123')
-        
-        //userEvent.click(screen.getByRole('button', { name: /register/i }))
+        const emailInput = screen.getByLabelText('Email:')
+        fireEvent.change(emailInput, { target: { value: 'test@email.com'}})
 
-        //TO BE DONE
+        const usernameInput = screen.getByLabelText('Username:')
+        fireEvent.change(usernameInput, { target: { value: 'testuser'}})
 
+        const passwordInput = screen.getByLabelText('Password:')
+        fireEvent.change(passwordInput, { target: { value: 'password'}})
+
+        const registerButton = screen.getAllByRole('button', { name: 'Register' , type: 'submit'})
+        fireEvent.click(registerButton[0])
+
+        await waitFor(() => {
+            const successMessage = screen.getByText('User registered successfully')
+            console.log(successMessage)
+        })
+        server.close()
     })
 })

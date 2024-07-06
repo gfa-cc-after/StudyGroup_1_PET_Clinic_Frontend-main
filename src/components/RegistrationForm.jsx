@@ -2,6 +2,8 @@ import '../styles/App.css'
 import React, { useState } from 'react'
 import axios from 'axios'
 
+const URL = import.meta.env.VITE_API_BACKEND_URL
+
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
         email: '',
@@ -15,16 +17,14 @@ const RegistrationForm = () => {
             ...formData,
             [name]: value
         });
-    };
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const response = axios.post(import.meta.env.REACT_BACKENTD_URL, formData);
-            //console.log('Registration successful', response.data);            security risk
-        } catch (error) {
-            console.log('There was an error registarting!', error);
-        }
+        
+        await axios.post(URL, formData)
+        .then((response) => {console.log('Registration successful')})
+        .catch((error) => {console.log('There was an error registarting!', error)})
     }
 
     
