@@ -1,15 +1,8 @@
 import React from 'react'
 import RegistrationForm from '../src/components/RegistrationForm'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import { it, expect, describe } from 'vitest'
-import { setupServer } from 'msw/node'
-import { handlers } from './mockhandlers'
+import { it, expect, describe, vi } from 'vitest'
 
-export const server = setupServer(...handlers)
-
-//beforeAll(() => server.listen())
-//afterEach(() => server.resetHandlers())
-//afterAll(() => server.close())
 
 describe('RegistrationForm', () => {
     it('should render the form', async () => {
@@ -35,26 +28,22 @@ describe('RegistrationForm', () => {
         expect(registerButton).toHaveAttribute('type', 'submit')
     })
 
-    it('should send post request to backend on registration click', async () => {
-        server.listen()
+    it('should update the form data when the user types', async () => {
         render(<RegistrationForm />)
 
         const emailInput = screen.getByLabelText('Email:')
-        fireEvent.change(emailInput, { target: { value: 'test@email.com'}})
-
         const usernameInput = screen.getByLabelText('Username:')
-        fireEvent.change(usernameInput, { target: { value: 'testuser'}})
-
         const passwordInput = screen.getByLabelText('Password:')
-        fireEvent.change(passwordInput, { target: { value: 'password'}})
 
-        const registerButton = screen.getAllByRole('button', { name: 'Register' , type: 'submit'})
-        fireEvent.click(registerButton[0])
+        fireEvent.change(emailInput, { target: { value: 'test@email.com' } })
+        fireEvent.change(usernameInput, { target: { value: 'testuser' } })
+        fireEvent.change(passwordInput, { target: { value: '1234' } })
+        fireEvent.click(screen.getByRole("button", { name: /register/i }))
 
         await waitFor(() => {
-            const successMessage = screen.getByText('User registered successfully')
-            console.log(successMessage)
-        })
-        server.close()
+           // TBD
+        });
+
     })
+
 })

@@ -2,7 +2,7 @@ import '../styles/App.css'
 import React, { useState } from 'react'
 import axios from 'axios'
 
-const URL = import.meta.env.VITE_API_BACKEND_URL
+const REGISTER = import.meta.env.VITE_API_BACKEND_URL_REGISTER
 
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
@@ -22,7 +22,7 @@ const RegistrationForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        await axios.post(URL, formData)
+        await axios.post(REGISTER, formData, { headers: { "Content-Type": "text/plain" } })
         .then((response) => {console.log('Registration successful')})
         .catch((error) => {console.log('There was an error registarting!', error)})
     }
