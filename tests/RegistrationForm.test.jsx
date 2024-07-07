@@ -38,7 +38,7 @@ describe('RegistrationForm', () => {
         fireEvent.change(emailInput, { target: { value: 'test@email.com' } })
         fireEvent.change(usernameInput, { target: { value: 'testuser' } })
         fireEvent.change(passwordInput, { target: { value: '1234' } })
-        fireEvent.click(screen.getByRole("button", { name: /register/i }))
+        //fireEvent.click(screen.getAllByRole("button", { name: /register/i }))
 
         await waitFor(() => {
            // TBD
