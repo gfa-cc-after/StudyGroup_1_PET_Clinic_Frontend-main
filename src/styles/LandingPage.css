@@ -173,3 +173,18 @@ section p{
 span{
     color: #188265;
 }
+
+.services{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.sercive-container{
+    width: 20rem;
+    height: 10rem;
+    border: #188265 1px solid;
+    border-radius: 15px;
+    box-shadow: 5px 6px 10px -5px rgba(39,39,39,0.68);
+    margin-bottom:1rem;
+}
