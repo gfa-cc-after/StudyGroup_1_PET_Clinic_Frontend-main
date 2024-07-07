@@ -205,15 +205,29 @@ section.services{
     color: #272727;
 }
 
-.sercive-container#vet h4{
-    color: #188265;
+.sercive-container h4{
+    color:#188265;
+    text-shadow: 1px 1px #dddddd;
     font-size: 1.3rem;
     margin-bottom: 1.5rem;
     margin-top: 1rem;
 }
 
-.sercive-container#vet p{
-    float: right;
+.sercive-container p{
     margin:0px;
     width: 80%;
+}
+
+.sercive-container#owner{
+    background-image:linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238,238,238,0.8099614845938375) 20%, rgba(238,238,238,0.15730042016806722) 76%, rgba(238,238,238,0) 100%),
+     url('../assets/owner.png');
+    background-size: cover;
+    color:#272727;
+}
+
+.sercive-container#exotic{
+    background-image:linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238,238,238,0.8099614845938375) 20%, rgba(238,238,238,0.15730042016806722) 76%, rgba(238,238,238,0) 100%),
+     url('../assets/exotic.jpg');
+    background-size: cover;
+    color:#272727;
 }
