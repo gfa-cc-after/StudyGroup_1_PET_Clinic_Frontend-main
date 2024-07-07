@@ -29,29 +29,32 @@ const RegistrationForm = () => {
 
     
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="email">Email:</label>
+        <body>
+            <h1>Registration Form</h1>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor="email">Email:</label>
+                    <br></br>
+                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
                 <br></br>
-                <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
-            <br></br>
-            </div>
+                </div>
 
-            <div>
-                <label htmlFor="username">Username:</label>
-                <br></br>
-                <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} required />
-                <br></br>
-            </div>
+                <div>
+                    <label htmlFor="username">Username:</label>
+                    <br></br>
+                    <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} required />
+                    <br></br>
+                </div>
 
-            <div>
-                <label htmlFor="password">Password:</label>
-                <br></br>
-                <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required />
-                <br></br>
-            </div>
-            <button type="submit">Register</button>
-        </form>
+                <div>
+                    <label htmlFor="password">Password:</label>
+                    <br></br>
+                    <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required />
+                    <br></br>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+        </body>
     );
 
 };

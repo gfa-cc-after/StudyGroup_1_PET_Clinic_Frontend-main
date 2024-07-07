@@ -1,12 +1,11 @@
 import '../styles/LandingPage.css'
-import React, { useState } from 'react'
+import React from 'react'
 import logo from '../assets/pet-logo.png';
 
 
 function LandingPage() {
     return (
-        <body>
-            
+        <div id="body">
             <header className="navbar">
                 <div id="logo">
                 <img src={logo} alt="logo" />
@@ -18,7 +17,7 @@ function LandingPage() {
                         <li><a href="vets.html">Contact</a></li>
                     </ul>
                     <button className="transparent-button">Log in</button>
-                    <button className="colored-button">Sign Up</button>
+                    <button className="colored-button"><a >Sign Up</a></button>
                 </nav>
             </header>
             
@@ -45,7 +44,7 @@ function LandingPage() {
                                                             <p>Easy cooperation with other clinics.</p>
                                                             <p>Maintainable, modern patient database.</p></div>
             </section>
-        </body>
+        </div>
     )
 }
 export default LandingPage
