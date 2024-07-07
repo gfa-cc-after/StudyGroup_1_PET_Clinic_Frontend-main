@@ -1,6 +1,7 @@
 import '../styles/LandingPage.css'
 import React from 'react'
 import logo from '../assets/pet-logo.png';
+import { Link } from 'react-router-dom';
 
 
 function LandingPage() {
@@ -17,7 +18,7 @@ function LandingPage() {
                         <li><a href="vets.html">Contact</a></li>
                     </ul>
                     <button className="transparent-button">Log in</button>
-                    <button className="colored-button"><a >Sign Up</a></button>
+                    <button className="colored-button"><Link to="/register" >Sign Up</Link></button>
                 </nav>
             </header>
             

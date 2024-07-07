@@ -1,4 +1,4 @@
-import '../styles/App.css'
+import '../styles/RegistrationForm.css'
 import React, { useState } from 'react'
 import axios from 'axios'
 
@@ -29,7 +29,7 @@ const RegistrationForm = () => {
 
     
     return (
-        <body>
+        <div className="RegistrationForm">
             <h1>Registration Form</h1>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -54,7 +54,7 @@ const RegistrationForm = () => {
                 </div>
                 <button type="submit">Register</button>
             </form>
-        </body>
+        </div>
     );
 
 };
