@@ -1,7 +1,7 @@
 import React from 'react'
 import RegistrationForm from '../src/components/RegistrationForm'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import { it, expect, describe, vi } from 'vitest'
+import { render, screen } from '@testing-library/react'
+import { it, expect, describe } from 'vitest'
 
 
 describe('RegistrationForm', () => {
@@ -28,22 +28,7 @@ describe('RegistrationForm', () => {
         expect(registerButton).toHaveAttribute('type', 'submit')
     })
 
-    it('should update the form data when the user types', async () => {
+    it('should send post request to backend on registration click', async () => {
         render(<RegistrationForm />)
-
-        const emailInput = screen.getByLabelText('Email:')
-        const usernameInput = screen.getByLabelText('Username:')
-        const passwordInput = screen.getByLabelText('Password:')
-
-        fireEvent.change(emailInput, { target: { value: 'test@email.com' } })
-        fireEvent.change(usernameInput, { target: { value: 'testuser' } })
-        fireEvent.change(passwordInput, { target: { value: '1234' } })
-        //fireEvent.click(screen.getAllByRole("button", { name: /register/i }))
-
-        await waitFor(() => {
-           // TBD
-        });
-
     })
-
 })

@@ -195,7 +195,7 @@ section.services{
     flex-wrap: wrap;
     justify-content: space-around;
 }
-.sercive-container{
+.service-container{
     display: flex;
     padding: 1rem;
     flex-direction: column;
@@ -207,7 +207,7 @@ section.services{
     margin-bottom:1rem;
 }
 
-.sercive-container#vet{
+.service-container#vet{
     background-image:linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238,238,238,0.8099614845938375) 42%, rgba(238,238,238,0.15730042016806722) 76%, rgba(238,238,238,0) 100%),
      url('../assets/vet.jpg');
     background-size: cover;
@@ -216,7 +216,7 @@ section.services{
     color: #272727;
 }
 
-.sercive-container h4{
+.service-container h4{
     color:#188265;
     text-shadow: 1px 1px #dddddd;
     font-size: 1.3rem;
@@ -224,26 +224,26 @@ section.services{
     margin-top: 1.5rem;
 }
 
-.sercive-container p{
+.service-container p{
     margin:0px;
     width: 80%;
 }
 
-.sercive-container#owner{
+.service-container#owner{
     background-image:linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238,238,238,0.8099614845938375) 20%, rgba(238,238,238,0.15730042016806722) 76%, rgba(238,238,238,0) 100%),
      url('../assets/owner.png');
     background-size: cover;
     color:#272727;
 }
 
-.sercive-container#exotic{
+.service-container#exotic{
     background-image:linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238,238,238,0.8099614845938375) 20%, rgba(238,238,238,0.15730042016806722) 76%, rgba(238,238,238,0) 100%),
      url('../assets/exotic.jpg');
     background-size: cover;
     color:#272727;
 }
 
-.sercive-container#wannabeowner{
+.service-container#wannabeowner{
     background-image:linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238,238,238,0.8099614845938375) 20%, rgba(238,238,238,0.15730042016806722) 76%, rgba(238,238,238,0) 100%),
      url('../assets/Puppy-Kitten.png');
     background-size: cover;
