@@ -4,8 +4,8 @@ html, body {
   height: 100%;
 }
 
-.App {
-   text-align: center;
+.RegistrationForm {
+  text-align: center;
   background-color: #282c34;
   min-height: 100vh;
   display: flex;

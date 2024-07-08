@@ -30,13 +30,5 @@ describe('RegistrationForm', () => {
 
     it('should send post request to backend on registration click', async () => {
         render(<RegistrationForm />)
-
-        //userEvent.type(screen.getByLabelText('Username:'), 'testUser')
-        //userEvent.type(screen.getByLabelText('Password:'), 'password123')
-        
-        //userEvent.click(screen.getByRole('button', { name: /register/i }))
-
-        //TO BE DONE
-
     })
 })
