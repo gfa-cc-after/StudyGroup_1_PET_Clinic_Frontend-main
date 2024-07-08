@@ -22,7 +22,11 @@ const RegistrationForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        await axios.post(REGISTER, formData, { headers: { "Content-Type": "text/plain" } })
+        await axios.post(REGISTER, formData, {
+             headers: { 
+                "Content-Type": "application/json"
+             } 
+            })
         .then((response) => {console.log('Registration successful')})
         .catch((error) => {console.log('There was an error registarting!', error)})
     }
