@@ -11,6 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
         <Route exact path="/register" element={<RegistrationForm />} />
+        <Route exact path="/login" element={<LoginForm />} />
       </Routes>
     </Router>
   </React.StrictMode>,

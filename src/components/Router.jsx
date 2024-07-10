@@ -9,6 +9,7 @@ function PageRouter() {
             <Switch>
                 <Route exact path="/"> <LandingPage /> </Route>
                 <Route exact path="/register"> <RegistrationForm /> </Route>
+                <Route exact path="/login"> <LoginForm /> </Route>
             </Switch>
         </Router>
         <LandingPage />
