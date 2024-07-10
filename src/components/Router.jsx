@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LandingPage from './LandingPage';
+import LoginForm from './LoginForm';
 import RegistrationForm from './RegistrationForm';
 
 function PageRouter() {
