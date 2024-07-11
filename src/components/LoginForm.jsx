@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../styles/Forms.css';
+import '../styles/forms.css';
+
+const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/login";
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -10,8 +12,6 @@ const LoginForm = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-
-    const apiUrl = import.meta.env.VITE_API_BACKEND_URL_LOGIN;
 
     try {
       const response = await axios.post(apiUrl, { email, password }, {
@@ -34,7 +34,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="LoginForm">
+    <div className="loginForm">
       <form onSubmit={handleLogin}>
         <h1>Login</h1>
         <div>
