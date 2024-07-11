@@ -17,7 +17,7 @@ function LandingPage() {
                         <li><a href="index.html">About Us</a></li>
                         <li><a href="vets.html">Contact</a></li>
                     </ul>
-                    <button className="transparent-button">Log in</button>
+                    <button className="transparent-button"><Link to="/login" >Log in</Link></button>
                     <button className="colored-button"><Link to="/register" >Sign Up</Link></button>
                 </nav>
             </header>
