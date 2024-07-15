@@ -12,8 +12,8 @@ const LoginForm = () => {
     event.preventDefault();
 
     await axios.post(apiUrl, { email, password },  {headers: { "Content-Type": "application/json"}})
-    .then((response) => {console.log('Login successful')})
-    .catch((error) => {console.log('There was an error in login!', error)})
+    .then((response) => {console.log('Login successful, token: ' + response.data)})
+    .catch((error) => {console.log('There was an error in login.' , error)})
   }
 
   return (
