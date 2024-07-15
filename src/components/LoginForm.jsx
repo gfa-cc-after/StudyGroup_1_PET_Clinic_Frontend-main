@@ -7,8 +7,6 @@ const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/login";
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [error, setError] = useState('');
-  // const [success, setSuccess] = useState('');
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -38,7 +36,7 @@ const LoginForm = () => {
           <input
             type="password"
             id="password"
-            naem="password"
+            name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -46,8 +44,6 @@ const LoginForm = () => {
         </div>
         <button type="submit">Login</button>
       </form>
-      {/* {error && <p style={{ color: 'red' }}>{error}</p>}
-      {success && <p style={{ color: 'green' }}>{success}</p>} */}
     </div>
   );
 };
