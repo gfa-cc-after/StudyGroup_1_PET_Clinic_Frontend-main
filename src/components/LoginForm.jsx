@@ -7,40 +7,25 @@ const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/login";
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
 
   const handleLogin = async (event) => {
     event.preventDefault();
 
-    try {
-      const response = await axios.post(apiUrl, { email, password }, {
-        headers: { 
-          "Content-Type": "application/json"
-        }
-      });
-
-      if (response.status === 200) {
-        setSuccess('Login successful!');
-        setError('');
-      } else {
-        setError('Login failed. Please try again.');
-        setSuccess('');
-      }
-    } catch (err) {
-      setError('An error occurred. Please try again.');
-      setSuccess('');
-    }
-  };
+    axios.post(apiUrl, { email, password },  {headers: { "Content-Type": "application/json"}})
+    .then((response) => {console.log('Login successful, token: ' + response.data)})
+    .catch((error) => {console.log('There was an error in login.' , error)})
+  }
 
   return (
     <div className="loginForm">
+      <h1>Login</h1>
       <form onSubmit={handleLogin}>
-        <h1>Login</h1>
         <div>
           <label>Email:</label>
           <input
             type="email"
+            id="email"
+            name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -50,6 +35,8 @@ const LoginForm = () => {
           <label>Password:</label>
           <input
             type="password"
+            id="password"
+            name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -57,8 +44,6 @@ const LoginForm = () => {
         </div>
         <button type="submit">Login</button>
       </form>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {success && <p style={{ color: 'green' }}>{success}</p>}
     </div>
   );
 };
