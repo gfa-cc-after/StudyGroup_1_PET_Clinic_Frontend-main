@@ -1,14 +1,14 @@
 import '../styles/forms.css'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 
 const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/register";
 
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-        username: ''
+        email: null,
+        password: null,
+        username: null
     });
 
     const handleChange = (e) => {
@@ -34,23 +34,17 @@ const RegistrationForm = () => {
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="email">Email:</label>
-                    <br></br>
                     <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
-                <br></br>
                 </div>
 
                 <div>
                     <label htmlFor="username">Username:</label>
-                    <br></br>
                     <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} required />
-                    <br></br>
                 </div>
 
                 <div>
                     <label htmlFor="password">Password:</label>
-                    <br></br>
                     <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required />
-                    <br></br>
                 </div>
                 <button type="submit">Register</button>
             </form>
