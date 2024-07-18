@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import '../styles/forms.css';
 
 const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/login";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
 
   const handleLogin = async (event) => {
     event.preventDefault();

@@ -1,12 +1,11 @@
 import '../styles/landingPage.css'
-import React from 'react'
 import logo from '../assets/pet-logo.png';
 import { Link } from 'react-router-dom';
 
 
 function LandingPage() {
     return (
-        <div id="body">
+        <>
             <header className="navbar">
                 <div id="logo">
                 <img src={logo} alt="logo" />
@@ -17,8 +16,8 @@ function LandingPage() {
                         <li><a href="index.html">About Us</a></li>
                         <li><a href="vets.html">Contact</a></li>
                     </ul>
-                    <button className="transparent-button"><Link to="/login" >Log in</Link></button>
-                    <button className="colored-button"><Link to="/register" >Sign Up</Link></button>
+                    <Link className="transparent-button" to="/login" >Log in</Link>
+                    <Link className="colored-button" to="/register" >Sign Up</Link>
                 </nav>
             </header>
             
@@ -45,7 +44,7 @@ function LandingPage() {
                                                             <p>Easy cooperation with other clinics.</p>
                                                             <p>Maintainable, modern patient database.</p></div>
             </section>
-        </div>
+        </>
     )
 }
 export default LandingPage
