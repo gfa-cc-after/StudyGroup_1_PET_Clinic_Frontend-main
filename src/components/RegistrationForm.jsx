@@ -6,9 +6,9 @@ const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/register";
 
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
-        email: null,
-        password: null,
-        username: null
+        email: '',
+        password: '',
+        username: ''
     });
 
     const handleChange = (e) => {
