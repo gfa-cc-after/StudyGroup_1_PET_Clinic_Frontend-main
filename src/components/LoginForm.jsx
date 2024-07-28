@@ -7,7 +7,6 @@ const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/login";
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
 
   const handleLogin = async (event) => {
     event.preventDefault();
