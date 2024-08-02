@@ -131,7 +131,7 @@ button a {
     box-shadow: -5px -6px 10px -5px rgba(39, 39, 39, 0.70);
 }
 
-#logo {
+#logo-section {
     margin: 1.5vh;
     display: flex;
     align-items: center;
@@ -139,7 +139,7 @@ button a {
     min-height: 3rem;
 }
 
-#logo img {
+#logo-link, #logo-img {
     height: 100%;
 }
 

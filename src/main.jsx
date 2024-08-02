@@ -4,11 +4,13 @@ import LandingPage from './components/LandingPage.jsx'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginForm from './components/LoginForm.jsx';
 import RegistrationForm from './components/RegistrationForm.jsx';
+import NavBar from './components/NavBar.jsx';
 //import reportWebVitals from './reportWebVitals'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Router>
+    <NavBar />
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
         <Route exact path="/register" element={<RegistrationForm />} />
