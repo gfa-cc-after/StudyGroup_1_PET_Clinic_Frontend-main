@@ -1,11 +1,11 @@
 import '../styles/style.css'
-import logo from '../assets/pet-logo.png';
-import { Link } from 'react-router-dom';
+import NavBar from './NavBar'
 
 
 function LandingPage() {
     return (
         <>
+            <NavBar />
             <section className="hero">
                 <h2>Your  <span>pet</span>,<wbr /> our <span>passion</span></h2>
                 <h3><span>Free</span> of charge / pain / drama. </h3>

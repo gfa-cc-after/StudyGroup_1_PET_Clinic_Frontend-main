@@ -1,6 +1,7 @@
 import '../styles/style.css'
 import { useState } from 'react'
 import axios from 'axios'
+import NavBar from './NavBar';
 
 const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/register";
 
@@ -29,6 +30,8 @@ const RegistrationForm = () => {
 
     
     return (
+        <>
+        <NavBar />
         <div className="registrationForm">
             <h1>Registration Form</h1>
             <form onSubmit={handleSubmit}>
@@ -49,6 +52,7 @@ const RegistrationForm = () => {
                 <button type="submit" className="formButton">Register</button>
             </form>
         </div>
+        </>
     );
 
 };
