@@ -6,7 +6,6 @@ import React from 'react'
 function LandingPage() {
     return (
         <div className="landingbody">
-            <NavBar />
             <section className="hero">
                 <h2>Your  <span>pet</span>,<wbr /> our <span>passion</span></h2>
                 <h3><span>Free</span> of charge / pain / drama. </h3>

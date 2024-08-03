@@ -6,7 +6,6 @@ function AdminHome () {
 
 return (
     <>
-    <NavBar />
         <h1>Admin Home</h1>
     </>
     )

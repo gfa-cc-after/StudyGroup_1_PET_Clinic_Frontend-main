@@ -19,7 +19,6 @@ const LoginForm = () => {
 
   return (
     <>
-    <NavBar />
     <div className="loginForm">
       <h1>Login</h1>
       <form onSubmit={handleLogin}>

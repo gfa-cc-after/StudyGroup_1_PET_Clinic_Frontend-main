@@ -6,11 +6,13 @@ import LoginForm from './components/LoginForm'
 import RegistrationForm from './components/RegistrationForm'
 import UserHome from './components/UserHome'
 import AdminHome from './components/AdminHome'
+import NavBar from './components/NavBar'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
      <Router>
+      <NavBar />
             <Routes>
                 <Route exact path="/" element={ <LandingPage />} />
                 <Route exact path="/register" element={ <RegistrationForm />} />
