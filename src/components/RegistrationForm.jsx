@@ -6,9 +6,9 @@ const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/register";
 
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
-        email: null,
-        password: null,
-        username: null
+        email: '',
+        password: '',
+        username: ''
     });
 
     const handleChange = (e) => {
@@ -22,7 +22,7 @@ const RegistrationForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        await axios.post(apiUrl, formData, { headers: { "Content-Type": "application/json" } })
+        axios.post(apiUrl, formData, { headers: { "Content-Type": "application/json" } })
         .then((response) => {console.log('Registration successful')})
         .catch((error) => {console.log('There was an error registarting!', error)})
     }
