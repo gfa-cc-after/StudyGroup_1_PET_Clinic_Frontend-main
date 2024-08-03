@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import '../styles/forms.css';
+import '../styles/style.css';
 
 const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/login";
 
@@ -42,7 +42,7 @@ const LoginForm = () => {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" className="formButton">Login</button>
       </form>
     </div>
   );

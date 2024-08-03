@@ -1,4 +1,4 @@
-import '../styles/forms.css'
+import '../styles/style.css'
 import { useState } from 'react'
 import axios from 'axios'
 
@@ -46,7 +46,7 @@ const RegistrationForm = () => {
                     <label htmlFor="password">Password:</label>
                     <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required />
                 </div>
-                <button type="submit">Register</button>
+                <button type="submit" className="formButton">Register</button>
             </form>
         </div>
     );
