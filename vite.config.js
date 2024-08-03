@@ -9,6 +9,8 @@ export default defineConfig({
     host: true,
    },
    watch: {
-    usePolling: true
+    usePolling: true,
+    interval: 100,         // Set the polling interval
+    ignored: ['node_modules/**', '.git/**']   // Ignore unnecessary directories
   }
 })
