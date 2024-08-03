@@ -1,10 +1,11 @@
 import '../styles/style.css'
 import NavBar from './NavBar'
+import React from 'react'
 
 
 function LandingPage() {
     return (
-        <>
+        <div className="landingbody">
             <NavBar />
             <section className="hero">
                 <h2>Your  <span>pet</span>,<wbr /> our <span>passion</span></h2>
@@ -29,7 +30,7 @@ function LandingPage() {
                     <p>Easy cooperation with other clinics.</p>
                     <p>Maintainable, modern patient database.</p></div>
             </section>
-        </>
+        </div>
     )
 }
 export default LandingPage
