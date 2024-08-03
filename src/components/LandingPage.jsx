@@ -1,7 +1,4 @@
 import '../styles/style.css'
-import logo from '../assets/pet-logo.png';
-import { Link } from 'react-router-dom';
-
 
 function LandingPage() {
     return (
