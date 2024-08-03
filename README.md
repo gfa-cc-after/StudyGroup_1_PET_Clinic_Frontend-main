@@ -16,7 +16,7 @@ Color scheme of landing: https://coolors.co/1d5276-eeeeee-188265-272727-ce2d4f
 
 To get started with the React Vite app, follow these steps:
     
-    (Ensure you have Node.js installed. You can verify this by running node -v in your terminal. You should have a package manager installed. This project uses npm by default)
+*(Ensure you have Node.js installed. You can verify this by running node -v in your terminal. You should have a package manager installed. This project uses npm by default)*
 
 1.  Clone the Repository
 
@@ -24,19 +24,19 @@ To get started with the React Vite app, follow these steps:
 
 3.  Install the required dependencies using npm:
 
-    ```npm install```
+        npm install
 
 4.  Start the development server with:
 
-    ```npm run dev```
+        npm run dev
 
     Or, to run the containerized version:
     
-    ```docker compose up```
+        docker compose up
     
 5.  To run tests, use::
 
-    ```npm test```
+        npm test
 
 
 
@@ -44,7 +44,7 @@ To get started with the React Vite app, follow these steps:
 
 1.  Copy the .env.sample file to a new file named .env like below:
 
-    ```cp .env.sample .env```
+        cp .env.sample .env
 
 2.  Fill in the values for each environment variable in the .env file.
 
