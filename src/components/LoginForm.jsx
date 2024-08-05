@@ -17,15 +17,14 @@ const LoginForm = () => {
     try {
       const response = await axios.post(apiUrl, { email, password },  {headers: { "Content-Type": "application/json"}});
       
-      console.log(response.data);
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('role', response.data.role);
 
-      if(role === 'USER') {
-        navigate('/user/home');
-      } else if(role === 'ADMIN') {
-        navigate('/admin/home');
-      }
+      // if(role === 'USER') {
+      //   navigate('/user/home');
+      // } else if(role === 'ADMIN') {
+      //   navigate('/admin/home');
+      // }
 
       navigate('/');
     } catch (err) {
@@ -42,7 +41,7 @@ const LoginForm = () => {
       <h1>Login</h1>
       <form onSubmit={handleLogin}>
         <div>
-          <label>Email:</label>
+          <label for="email">Email:</label>
           <input
             type="email"
             id="email"
@@ -53,7 +52,7 @@ const LoginForm = () => {
           />
         </div>
         <div>
-          <label>Password:</label>
+          <label for="password">Password:</label>
           <input
             type="password"
             id="password"
