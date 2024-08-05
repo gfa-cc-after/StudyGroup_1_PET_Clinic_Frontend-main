@@ -17,7 +17,16 @@ const LoginForm = () => {
     try {
       const response = await axios.post(apiUrl, { email, password },  {headers: { "Content-Type": "application/json"}});
       
-      localStorage.setItem('token', response.data);
+      console.log(response.data);
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('role', response.data.role);
+
+      if(role === 'USER') {
+        navigate('/user/home');
+      } else if(role === 'ADMIN') {
+        navigate('/admin/home');
+      }
+
       navigate('/');
     } catch (err) {
       if (!err.response) {
