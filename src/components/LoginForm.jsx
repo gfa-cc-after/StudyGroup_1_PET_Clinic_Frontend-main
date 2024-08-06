@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import '../styles/style.css'
-import jwt_decode from 'jwt-decode'
+import { jwtDecode } from "jwt-decode"
 import { useNavigate } from 'react-router-dom'
 
 const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/login";
@@ -20,7 +20,7 @@ const LoginForm = () => {
       localStorage.setItem('token', token)
       localStorage.setItem('refreshToken', refreshToken)
 
-      const decodedToken = jwt_decode(token)
+      const decodedToken = jwtDecode(token)
       const role = decodedToken.role
 
       navigate(`/${role}/home`)  // Redirect to the user's home page - be avare of the ` character! It is not ' or ".

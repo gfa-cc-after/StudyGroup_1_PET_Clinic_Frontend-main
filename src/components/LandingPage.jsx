@@ -1,5 +1,4 @@
 import '../styles/style.css'
-import NavBar from './NavBar'
 import React from 'react'
 
 
