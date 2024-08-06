@@ -1,34 +1,38 @@
 import React from 'react'
 import LoginForm from '../src/components/LoginForm'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, fireEvent, waitFor } from '@testing-library/react'
 import { it, expect, describe, vi } from 'vitest'
 import axios from 'axios'
 import { BrowserRouter } from 'react-router-dom'
 
 vi.mock('axios')
 
+const renderWithRouter = (ui) => {
+    return render(
+      <BrowserRouter>
+        {ui}
+      </BrowserRouter>
+    )
+}
+
 describe('LoginForm', () => {
     it('should render the form', async () => {
-        render(
-            <BrowserRouter>
-                <LoginForm />
-            </BrowserRouter>
-        )
+        const { getByLabelText, findAllByRole, getByRole } = renderWithRouter(<LoginForm />)
 
-        const heading = screen.getByRole('heading', {level: 1, name: 'Login'})
+        const heading = getByRole('heading', {level: 1, name: 'Login'})
         expect(heading).toBeInTheDocument()
 
-        const emailInput = screen.getByLabelText('Email:')
+        const emailInput = getByLabelText('Email:')
         expect(emailInput).toBeInTheDocument()
         expect(emailInput).toHaveAttribute('type', 'email')
         expect(emailInput).toBeRequired()
 
-        const passwordInput = screen.getByLabelText('Password:')
+        const passwordInput = getByLabelText('Password:')
         expect(passwordInput).toBeInTheDocument()
         expect(passwordInput).toHaveAttribute('type', 'password')
         expect(passwordInput).toBeRequired()
 
-        const loginButton = ( await screen.findAllByRole('button')).filter(button => button.textContent === 'Login')[0]
+        const loginButton = ( await findAllByRole('button')).filter(button => button.textContent === 'Login')[0]
         expect(loginButton).toBeInTheDocument()
         expect(loginButton).toHaveAttribute('type', 'submit')
     })
@@ -41,16 +45,11 @@ describe('LoginForm', () => {
         }})
         axios.post = mockPost
 
-        render(
-            <BrowserRouter>
-                <LoginForm />
-            </BrowserRouter>
-        )
+        const { getByLabelText, findAllByRole } = renderWithRouter(<LoginForm />)
 
-        const emailInput = screen.getByLabelText('Email:')
-        const passwordInput = screen.getByLabelText('Password:')
-        const loginButton =  ( await screen.findAllByRole('button')).filter(button => button.textContent === 'Login')[0]
-
+        const emailInput = getByLabelText('Email:')
+        const passwordInput = getByLabelText('Password:')
+        const loginButton =  ( await findAllByRole('button')).filter(button => button.textContent === 'Login')[0]
 
         fireEvent.change(emailInput, { target: { value: 'test@example.com' } })
         fireEvent.change(passwordInput, { target: { value: 'password123' } })
@@ -71,15 +70,11 @@ describe('LoginForm', () => {
         const mockPost = vi.fn().mockRejectedValue(new Error('Network Error'));
         axios.post = mockPost;
     
-        render(
-            <BrowserRouter>
-                <LoginForm />
-            </BrowserRouter>
-        );
+        const { getByLabelText, findAllByRole, getByText } = renderWithRouter(<LoginForm />)
     
-        const emailInput = screen.getByLabelText('Email:');
-        const passwordInput = screen.getByLabelText('Password:');
-        const loginButton = (await screen.findAllByRole('button')).filter(button => button.textContent === 'Login')[0];
+        const emailInput = getByLabelText('Email:');
+        const passwordInput = getByLabelText('Password:');
+        const loginButton = (await findAllByRole('button')).filter(button => button.textContent === 'Login')[0];
     
         fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
         fireEvent.change(passwordInput, { target: { value: 'password123' } });
@@ -87,7 +82,7 @@ describe('LoginForm', () => {
         fireEvent.click(loginButton);
     
         await waitFor(() => {
-            expect(screen.getByText('There was a network error')).toBeInTheDocument();
+            expect(getByText('There was a network error')).toBeInTheDocument();
         });
     });
 
@@ -95,15 +90,11 @@ describe('LoginForm', () => {
         const mockPost = vi.fn().mockRejectedValue({ response: { data: 'Bad credentials' } });
         axios.post = mockPost;
     
-        render(
-            <BrowserRouter>
-                <LoginForm />
-            </BrowserRouter>
-        );
+        const { getByLabelText, findAllByRole, getByText } = renderWithRouter(<LoginForm />)
     
-        const emailInput = screen.getByLabelText('Email:');
-        const passwordInput = screen.getByLabelText('Password:');
-        const loginButton = (await screen.findAllByRole('button')).filter(button => button.textContent === 'Login')[0];
+        const emailInput = getByLabelText('Email:');
+        const passwordInput = getByLabelText('Password:');
+        const loginButton = (await findAllByRole('button')).filter(button => button.textContent === 'Login')[0];
     
         fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
         fireEvent.change(passwordInput, { target: { value: 'wrongPassword' } });
@@ -111,7 +102,7 @@ describe('LoginForm', () => {
         fireEvent.click(loginButton);
     
         await waitFor(() => {
-            expect(screen.getByText('There was an error logging in...Bad credentials')).toBeInTheDocument();
+            expect(getByText('There was an error logging in...Bad credentials')).toBeInTheDocument();
         });
     });
 })
