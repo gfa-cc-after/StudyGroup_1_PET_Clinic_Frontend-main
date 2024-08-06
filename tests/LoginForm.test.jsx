@@ -66,4 +66,52 @@ describe('LoginForm', () => {
             { headers: { "Content-Type": "application/json" } }
         )
     })
+
+    it('should handle network errors gracefully', async () => {
+        const mockPost = vi.fn().mockRejectedValue(new Error('Network Error'));
+        axios.post = mockPost;
+    
+        render(
+            <BrowserRouter>
+                <LoginForm />
+            </BrowserRouter>
+        );
+    
+        const emailInput = screen.getByLabelText('Email:');
+        const passwordInput = screen.getByLabelText('Password:');
+        const loginButton = (await screen.findAllByRole('button')).filter(button => button.textContent === 'Login')[0];
+    
+        fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+        fireEvent.change(passwordInput, { target: { value: 'password123' } });
+    
+        fireEvent.click(loginButton);
+    
+        await waitFor(() => {
+            expect(screen.getByText('There was a network error')).toBeInTheDocument();
+        });
+    });
+
+    it('should handle login failures due to incorrect credentials', async () => {
+        const mockPost = vi.fn().mockRejectedValue({ response: { data: 'Bad credentials' } });
+        axios.post = mockPost;
+    
+        render(
+            <BrowserRouter>
+                <LoginForm />
+            </BrowserRouter>
+        );
+    
+        const emailInput = screen.getByLabelText('Email:');
+        const passwordInput = screen.getByLabelText('Password:');
+        const loginButton = (await screen.findAllByRole('button')).filter(button => button.textContent === 'Login')[0];
+    
+        fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+        fireEvent.change(passwordInput, { target: { value: 'wrongPassword' } });
+    
+        fireEvent.click(loginButton);
+    
+        await waitFor(() => {
+            expect(screen.getByText('There was an error logging in...Bad credentials')).toBeInTheDocument();
+        });
+    });
 })
