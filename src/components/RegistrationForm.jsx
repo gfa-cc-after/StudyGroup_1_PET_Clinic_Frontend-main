@@ -31,7 +31,6 @@ const RegistrationForm = () => {
     
     return (
         <>
-        <NavBar />
         <div className="registrationForm">
             <h1>Registration Form</h1>
             <form onSubmit={handleSubmit}>

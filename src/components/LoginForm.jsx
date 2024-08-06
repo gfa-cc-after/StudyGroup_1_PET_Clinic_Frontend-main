@@ -1,17 +1,19 @@
-import { useState, useNavigate } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import '../styles/style.css'
 import jwt_decode from 'jwt-decode'
+import { useNavigate } from 'react-router-dom'
 
 const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/login";
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate()
 
   const handleLogin = async (event) => {
     event.preventDefault();
-
+    
     axios.post(apiUrl, { email, password },  {headers: { "Content-Type": "application/json"}})
     .then((response) => {
       console.log('Login successful, token: ' + response.data)
@@ -32,7 +34,7 @@ const LoginForm = () => {
       <h1>Login</h1>
       <form onSubmit={handleLogin}>
         <div>
-          <label>Email:</label>
+          <label htmlFor='email'>Email:</label>
           <input
             type="email"
             id="email"
@@ -43,7 +45,7 @@ const LoginForm = () => {
           />
         </div>
         <div>
-          <label>Password:</label>
+          <label htmlFor='password'>Password:</label>
           <input
             type="password"
             id="password"
