@@ -1,12 +1,14 @@
-import { useState } from 'react';
-import axios from 'axios';
-import '../styles/style.css';
+import { useState, useNavigate } from 'react'
+import axios from 'axios'
+import '../styles/style.css'
+import jwt_decode from 'jwt-decode'
 
 const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/login";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState(null);
+  const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null);
+  const navigate = useNavigate()
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -14,8 +16,13 @@ const LoginForm = () => {
     axios.post(apiUrl, { email, password },  {headers: { "Content-Type": "application/json"}})
     .then((response) => {
       console.log('Login successful, token: ' + response.data)
-      localStorage.setItem('token', token);
-      localStorage.setItem('refreshToken', refreshToken);
+      localStorage.setItem('token', token)
+      localStorage.setItem('refreshToken', refreshToken)
+
+      const decodedToken = jwt_decode(token)
+      const role = decodedToken.role
+
+      navigate(`/${role}/home`)  // Redirect to the user's home page - be avare of the ` character! It is not ' or ".
     })
     .catch((error) => {console.log('There was an error in login.' , error)})
   }
