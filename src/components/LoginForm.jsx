@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
 import '../styles/style.css';
-import NavBar from './NavBar';
 
 const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/login";
 
@@ -13,7 +12,11 @@ const LoginForm = () => {
     event.preventDefault();
 
     axios.post(apiUrl, { email, password },  {headers: { "Content-Type": "application/json"}})
-    .then((response) => {console.log('Login successful, token: ' + response.data)})
+    .then((response) => {
+      console.log('Login successful, token: ' + response.data)
+      localStorage.setItem('token', token);
+      localStorage.setItem('refreshToken', refreshToken);
+    })
     .catch((error) => {console.log('There was an error in login.' , error)})
   }
 
