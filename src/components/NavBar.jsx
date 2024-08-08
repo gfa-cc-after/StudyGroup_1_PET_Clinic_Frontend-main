@@ -3,7 +3,7 @@ import logo from '../assets/pet-logo.png';
 import { Link, useLocation } from 'react-router-dom';
 
 const NavBar = () => {
-    const location = useLocation()
+    const role = localStorage.getItem('role')
 
     return (
         <header className="navbar">
@@ -35,9 +35,15 @@ const NavBar = () => {
                     )}
                     {location.pathname === '/user/home' && (
                         <>
-                            <li><Link to="/pets">My pets</Link></li>
-                            <li><Link to="/history">History</Link></li>
-                            <li><Link to="/profile">Manage profile</Link></li>
+                            <li><Link to={`/${role}/pets`}>My pets</Link></li>
+                            <li><Link to={`/${role}/history`}>History</Link></li>
+                            <li><Link to={`/${role}/profile`}>Manage profile</Link></li>    
+                            <Link className="colored-button" to="/logout" >Log Out</Link>
+                        </>
+                    )}
+                    {location.pathname === '/admin/home' && (
+                        <>
+                            <li><Link to={`/${role}/profile`}>Manage profile</Link></li>
                             <Link className="colored-button" to="/logout" >Log Out</Link>
                         </>
                     )}
