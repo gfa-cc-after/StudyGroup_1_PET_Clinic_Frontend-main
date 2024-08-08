@@ -2,7 +2,7 @@ import '../styles/style.css'
 
 function LandingPage() {
     return (
-        <>
+        <div className="landingbody">
             <section className="hero">
                 <h2>Your  <span>pet</span>,<wbr /> our <span>passion</span></h2>
                 <h3><span>Free</span> of charge / pain / drama. </h3>
@@ -26,7 +26,7 @@ function LandingPage() {
                     <p>Easy cooperation with other clinics.</p>
                     <p>Maintainable, modern patient database.</p></div>
             </section>
-        </>
+        </div>
     )
 }
 export default LandingPage

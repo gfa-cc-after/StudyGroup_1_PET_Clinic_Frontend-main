@@ -2,14 +2,16 @@ import '../styles/style.css'
 import { useState } from 'react'
 import axios from 'axios'
 
-const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/register";
+const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/register"
 
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
         email: '',
         password: '',
         username: ''
-    });
+    })
+
+    const [error, setError] = useState(null)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -24,11 +26,18 @@ const RegistrationForm = () => {
         
         axios.post(apiUrl, formData, { headers: { "Content-Type": "application/json" } })
         .then((response) => {console.log('Registration successful')})
-        .catch((error) => {console.log('There was an error registarting!', error)})
+        .catch((err) =>{
+            if (!err.response) {
+              setError('There was a network error');
+            } else {
+              setError('There was an error while registering...'+ err.response.data);
+            }
+          })
     }
 
     
     return (
+        <>
         <div className="registrationForm">
             <h1>Registration Form</h1>
             <form onSubmit={handleSubmit}>
@@ -47,8 +56,10 @@ const RegistrationForm = () => {
                     <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required />
                 </div>
                 <button type="submit" className="formButton">Register</button>
+                <p style={{color: 'red'}}>{error ? error : ""}</p>
             </form>
         </div>
+        </>
     );
 
 };

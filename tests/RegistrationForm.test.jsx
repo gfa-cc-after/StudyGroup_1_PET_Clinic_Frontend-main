@@ -1,9 +1,8 @@
 import React from 'react'
 import RegistrationForm from '../src/components/RegistrationForm'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen, fireEvent} from '@testing-library/react'
 import { it, expect, describe, vi } from 'vitest'
 import axios from 'axios'
-import MockAdapter from 'axios-mock-adapter'
 
 vi.mock('axios')
 
