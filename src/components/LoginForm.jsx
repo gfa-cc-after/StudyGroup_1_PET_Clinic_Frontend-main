@@ -9,6 +9,7 @@ const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/login";
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
   const navigate = useNavigate()
 
   const handleLogin = async (event) => {
@@ -16,16 +17,24 @@ const LoginForm = () => {
     
     axios.post(apiUrl, { email, password },  {headers: { "Content-Type": "application/json"}})
     .then((response) => {
-      console.log('Login successful, token: ' + response.data)
-      localStorage.setItem('token', token)
-      localStorage.setItem('refreshToken', refreshToken)
+      console.log('Login successful, token: ' + response.data.token)
+      localStorage.setItem('token', response.data.token)
+     // localStorage.setItem('refreshToken', response.refreshToken)
 
-      const decodedToken = jwtDecode(token)
+      const decodedToken = jwtDecode(localStorage.getItem('token'))
       const role = decodedToken.role
 
       navigate(`/${role}/home`)  // Redirect to the user's home page - be avare of the ` character! It is not ' or ".
     })
-    .catch((error) => {console.log('There was an error in login.' , error)})
+    .catch ((err) =>{
+      if (!err.response) {
+        setError('There was a network error');
+      } else {
+        setError('There was an error logging in...'+ err.response.data);
+      }
+    })
+
+
   }
 
   return (
@@ -56,6 +65,7 @@ const LoginForm = () => {
           />
         </div>
         <button type="submit" className="formButton">Login</button>
+        <p style={{color: 'red'}}>{error ? error : ""}</p>
       </form>
     </div>
     </>

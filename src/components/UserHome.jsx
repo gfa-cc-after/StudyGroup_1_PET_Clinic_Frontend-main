@@ -11,7 +11,7 @@ function UserHome () {
     const role = decodedToken.role
 
 return (
-   <>
+    <>
         <div>
             <h1>Welcome {name}!</h1>
             <h2>{role}</h2>
