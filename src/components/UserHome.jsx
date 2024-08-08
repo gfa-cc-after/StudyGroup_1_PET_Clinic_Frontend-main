@@ -4,11 +4,12 @@ import { jwtDecode } from "jwt-decode"
 
 
 function UserHome () {
-    
+
     const token = localStorage.getItem('token')
-    const decodedToken = jwtDecode(token)
-    const name = decodedToken.name
-    const role = decodedToken.role
+    const role = token.role
+    const name = token.name
+
+
 
 return (
     <>
@@ -19,4 +20,4 @@ return (
     </>
     )
 }
-export default UserHome;
+export default UserHome

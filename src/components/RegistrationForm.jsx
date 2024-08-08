@@ -1,16 +1,17 @@
 import '../styles/style.css'
 import { useState } from 'react'
 import axios from 'axios'
-import NavBar from './NavBar';
 
-const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/register";
+const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/register"
 
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
         email: '',
         password: '',
         username: ''
-    });
+    })
+
+    const [error, setError] = useState(null)
 
     const handleChange = (e) => {
         const { name, value } = e.target;

@@ -3,10 +3,10 @@ import React from 'react'
 import NavBar from './NavBar'
 
 function AdminHome () {
+
     const token = localStorage.getItem('token')
-    const decodedToken = jwtDecode(token)
-    const name = decodedToken.name
-    const role = decodedToken.role
+    const role = token.role
+    const name = token.name
 
 return (
     <div>
