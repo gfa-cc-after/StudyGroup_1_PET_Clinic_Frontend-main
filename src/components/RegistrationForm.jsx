@@ -37,7 +37,6 @@ const RegistrationForm = () => {
 
     
     return (
-        <>
         <div className="registrationForm">
             <h1>Registration Form</h1>
             <form onSubmit={handleSubmit}>
@@ -53,13 +52,12 @@ const RegistrationForm = () => {
 
                 <div>
                     <label htmlFor="password">Password:</label>
-                    <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required />
+                    <input type="password" minLength="3" id="password" name="password" value={formData.password} onChange={handleChange} required />
                 </div>
                 <button type="submit" className="formButton">Register</button>
                 <p style={{color: 'red'}}>{error ? error : ""}</p>
             </form>
         </div>
-        </>
     );
 
 };

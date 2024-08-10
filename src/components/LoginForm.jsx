@@ -34,12 +34,9 @@ const LoginForm = () => {
         setError('There was an error logging in...'+ err.response.data);
       }
     })
-
-
   }
-
+  
   return (
-    <>
     <div className="loginForm">
       <h1>Login</h1>
       <form onSubmit={handleLogin}>
@@ -67,10 +64,8 @@ const LoginForm = () => {
         </div>
         <button type="submit" className="formButton">Login</button>
         <p style={{color: 'red'}}>{error ? error : ""}</p>
-        <p style={{color: 'red'}}>{error ? error : ""}</p>
       </form>
     </div>
-    </>
   );
 };
 
