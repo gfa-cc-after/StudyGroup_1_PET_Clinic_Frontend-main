@@ -22,8 +22,7 @@ const LoginForm = () => {
      // localStorage.setItem('refreshToken', response.refreshToken)
      
       const decodedToken = jwtDecode(localStorage.getItem('token'))
-      localStorage.setItem('role', decodedToken.role)
-      const role = localStorage.getItem('role')
+      const role = decodedToken.role
 
       navigate(`/${role}/home`)  // Redirect to the user's home page - be avare of the ` character! It is not ' or ".
     })

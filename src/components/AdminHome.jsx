@@ -5,8 +5,9 @@ import NavBar from './NavBar'
 function AdminHome () {
 
     const token = localStorage.getItem('token')
-    const role = token.role
-    const name = token.name
+    const decodedToken = jwtDecode(token)
+    const role = decodedToken.role
+    const name = decodedToken.name
 
 return (
     <div>
@@ -15,4 +16,4 @@ return (
     </div>
     )
 }
-export default AdminHome;
+export default AdminHome

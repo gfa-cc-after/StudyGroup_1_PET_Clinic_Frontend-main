@@ -1,9 +1,12 @@
 import '../styles/style.css'
 import logo from '../assets/pet-logo.png';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { jwtDecode } from "jwt-decode"
+
 
 const NavBar = () => {
-    const role = localStorage.getItem('role')
+const decodedToken = jwtDecode(localStorage.getItem('token'))
+const role = decodedToken.role
 
     return (
         <header className="navbar">
