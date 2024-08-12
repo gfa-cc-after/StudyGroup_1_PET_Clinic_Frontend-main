@@ -9,8 +9,6 @@ function UserHome () {
     const role = token.role
     const name = token.name
 
-
-
 return (
     <>
         <div>
