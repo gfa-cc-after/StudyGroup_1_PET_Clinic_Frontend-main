@@ -232,23 +232,34 @@ section.hero p {
 
 /*page specific: userHome*/
 .userhome {
+    background-color: #fdfdfda8;
     position: relative;
     height:fit-content;
     width:80%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 5vw;
+    margin-top: 3vw;
     display: flex;
-    border: 1px solid red;
+    flex-direction: column;
+    padding: 2rem;
+    border-top-left-radius: 80px 80px;
+    border-bottom-right-radius: 80px 80px;
 }
 
 section.welcome{
+    display: block;
     color: #272727;
+    margin-bottom: 1vw;
+
 }
 
+section .colored-button {
+    float: right;
+    margin-top:-1.5rem;
+}
 section.welcome h1 {
     font-family: 'Bebas Neue', cursive;
-    font-size: 3rem;
+    font-size: 4rem;
     margin: 0;
 }
 
@@ -256,6 +267,46 @@ section.welcome h2 {
     font-family: 'Bebas Neue', cursive;
     font-size: 2rem;
     margin-top: -0.5rem;
+}
+
+h3.home-h3{
+    color: #272727;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2rem;
+    margin: 0;
+    margin-top: 1vw;
+    margin: auto;
+}
+
+section.userhome-content{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 2vw;
+
+}
+
+.home-table {
+    width: 90%;
+    margin: auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #188265;
+    border-radius: 5px;
+    box-shadow: 5px 6px 10px -5px rgba(39, 39, 39, 0.68);
+}
+.home-table td {
+    padding: 0.5rem;
+    border: 1px solid #1D5276;
+    text-align: center;
+}
+.home-table th {
+    padding: 0.5rem;
+    border: 1px solid #1D5276;
+    text-align: center;
+    background-color: #188265;
+    color: #EEEEEE;
 }
 
 

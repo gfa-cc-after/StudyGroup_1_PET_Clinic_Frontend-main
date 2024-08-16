@@ -1,16 +1,22 @@
 import '../styles/style.css'
 import { jwtDecode } from "jwt-decode"
 import React, { useState, useEffect } from 'react'
-
-const dataUrl = import.meta.env.VITE_API_BACKEND_URL + "/data"
-const token = localStorage.getItem('token')
-const decodedToken = jwtDecode(token)
-const name = decodedToken.name
-const role = decodedToken.role
-
+import { Link } from 'react-router-dom'
 
 const UserHome = () => {
-    const [userData, setUserData] = useState([])
+    const [userData, setUserData] = useState({
+        email: '',
+        pets: []
+    })
+
+
+    const dataUrl = import.meta.env.VITE_API_BACKEND_URL + "/user/home"
+    const token = localStorage.getItem('token')
+    const decodedToken = jwtDecode(token)
+    const name = decodedToken.displayName
+    const role = decodedToken.role
+
+
 
     useEffect(() => {
         // Fetch data from backend based on the token
@@ -21,40 +27,52 @@ const UserHome = () => {
                 }
             })
             .then(response => response.json())
-            .then(data => setUserData(data))
+            .then(data => {
+                console.log(data.pets)
+                setUserData({
+                    email: data.email,
+                    pets: data.pets
+                })
+            })
             .catch(error => console.error('Error fetching data:', error));
     }, [])
-
 
 return (
     <>
     <div className='prettybackground-box'>
         <div className='userhome-bg'></div>
         <div className='userhome'>
-            <section className='welcome'><h1>Welcome <span>Original User {name}</span>!</h1>
-            <h2>Nice to see you again!</h2></section>            
-            
+            <section className='welcome'><h1>Welcome <span>{name}</span>!</h1>
+            <h2>Nice to see you again!</h2>
+            <Link className="colored-button" to="/addPet" >Add Pet</Link>	</section>            
+            <h3 className="home-h3">Your beloved pets</h3>
             <section className='userhome-content'>
-                <table>
+                <table className="home-table">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Name</th>
-                            <th>Species</th>
+                            <th>Breed</th>
+                            <th>Sex</th>
+                            <th>Birth date</th>
                             <th>Last medical check up</th>
                             <th>Next medical check up</th>
                             <th>Special condition</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {userData.map((user, index) => (
-                            <tr key={index}>
-                            <td>{user.name}</td>
-                            <td>{user.species}</td>
-                            <td>{user.lastMedicalCheckUp}</td>
-                            <td>{user.nextMedicalCheckUp}</td>
-                            <td>{user.specialCondition}</td>
-                            </tr>
-                         ))}
+                        {userData.pets.map((pet, index) => (
+                                    <tr key={index}>
+                                        <td>{index + 1}</td>
+                                        <td>{pet.petName}</td>
+                                        <td>{pet.petBreed}</td>
+                                        <td>{pet.petSex}</td>
+                                        <td>{pet.petBirthDate}</td>
+                                        <td>{pet.lastCheckUp}</td>
+                                        <td>{pet.nextCheckUp}</td>
+                                        <td>{pet.specialCondition}</td>
+                                    </tr>
+                                ))}
                     </tbody>
                 </table>
             </section>

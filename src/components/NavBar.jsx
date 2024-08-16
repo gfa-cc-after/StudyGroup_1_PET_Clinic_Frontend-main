@@ -29,7 +29,7 @@ const NavBar = () => {
                     )}
                     {location.pathname === '/user/home' && (
                         <>
-                            <li className='nav'><Link to={`/${role}/pets`}>My pets</Link></li>
+                            <li className='nav'><Link to={`/${role}/home`}>My pets</Link></li>
                             <li className='nav'><Link to={`/${role}/history`}>History</Link></li>
                             <li className='nav'><Link to={`/${role}/profile`}>Manage profile</Link></li>    
                             <Link className="colored-button" to="/logout" >Log Out</Link>
