@@ -7,12 +7,15 @@ import RegistrationForm from './components/RegistrationForm'
 import UserHome from './components/UserHome'
 import AdminHome from './components/AdminHome'
 import NavBar from './components/NavBar'
+import DecideNavBar from './components/DecideNavBar'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
      <Router>
-      <NavBar />
+      <DecideNavBar>
+        <NavBar />
+      </DecideNavBar>
             <Routes>
                 <Route exact path="/" element={ <LandingPage />} />
                 <Route exact path="/register" element={ <RegistrationForm />} />

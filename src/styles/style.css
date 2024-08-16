@@ -149,6 +149,13 @@ button a {
 #logo-link, #logo-img {
     height: 100%;
 }
+#logo-link:link, #logo-link:visited, #logo-img:active, #logo-img:hover {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: white !important;
+    text-decoration: none !important;
+}
 
 header h1 {
     padding-left: 2rem;

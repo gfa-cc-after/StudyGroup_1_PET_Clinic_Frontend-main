@@ -1,26 +1,20 @@
 import '../styles/style.css'
 import logo from '../assets/pet-logo.png';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
+
+
     const role = localStorage.getItem('role')
 
     return (
         <header className="navbar">
             <div id="logo-section">
                 <Link id="logo-link" to="/"><img id="logo-img" src={logo} alt="logo" /></Link>
-                <h1>Pet Clinic Alliance</h1>
+                <Link id="logo-link" to="/"><h1>Pet Clinic Alliance</h1></Link>
             </div>
             <nav>
                 <ul>
-                    {location.pathname === '/' && (
-                        <>
-                            <li><Link to="/about">About Us</Link></li>
-                            <li><Link to="/contact">Contact</Link></li>
-                            <Link className="transparent-button" to="/login" >Log In</Link>
-                            <Link className="colored-button" to="/register" >Sign Up</Link>
-                        </>
-                    )}
                     {location.pathname === '/login' && (
                         <>
                             <li><Link to="/help">Get help</Link></li>

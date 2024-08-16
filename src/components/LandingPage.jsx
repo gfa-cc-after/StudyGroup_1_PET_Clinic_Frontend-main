@@ -1,8 +1,23 @@
 import '../styles/style.css'
+import logo from '../assets/pet-logo.png'
+import { Link } from 'react-router-dom'
+
 
 function LandingPage() {
     return (
         <div className="landingbody">
+            <header className="navbar">
+                <div id="logo-section">
+                    <Link id="logo-link" to="/"><img id="logo-img" src={logo} alt="logo" /></Link>
+                    <h1>Pet Clinic Alliance</h1>
+                </div>
+                <nav>
+                    <li><Link to="/about">About Us</Link></li>
+                    <li><Link to="/contact">Contact</Link></li>
+                    <Link className="transparent-button" to="/login" >Log In</Link>
+                    <Link className="colored-button" to="/register" >Sign Up</Link>	
+                </nav>
+            </header>
             <section className="hero">
                 <h2>Your  <span>pet</span>,<wbr /> our <span>passion</span></h2>
                 <h3><span>Free</span> of charge / pain / drama. </h3>
