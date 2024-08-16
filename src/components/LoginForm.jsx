@@ -37,7 +37,8 @@ const LoginForm = () => {
   }
   
   return (
-    <div className='prettybackground'>
+    <div className='prettybackground-box'>
+      <div className='prettybackground-to-fade'></div>
       <div className="loginForm">
         <h1>Login</h1>
         <form onSubmit={handleLogin}>
@@ -66,8 +67,8 @@ const LoginForm = () => {
           <button type="submit" className="formButton">Login</button>
           <p style={{color: 'red'}}>{error ? error : ""}</p>
         </form>
+        </div>
       </div>
-    </div>
   );
 };
 

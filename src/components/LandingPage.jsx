@@ -12,8 +12,8 @@ function LandingPage() {
                     <h1>Pet Clinic Alliance</h1>
                 </div>
                 <nav>
-                    <li><Link to="/about">About Us</Link></li>
-                    <li><Link to="/contact">Contact</Link></li>
+                    <li className='nav'><Link to="/about">About Us</Link></li>
+                    <li className='nav'><Link to="/contact">Contact</Link></li>
                     <Link className="transparent-button" to="/login" >Log In</Link>
                     <Link className="colored-button" to="/register" >Sign Up</Link>	
                 </nav>
