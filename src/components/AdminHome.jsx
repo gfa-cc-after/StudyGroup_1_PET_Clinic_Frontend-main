@@ -4,9 +4,12 @@ import NavBar from './NavBar'
 
 function AdminHome () {
 
+    const dataUrl = import.meta.env.VITE_API_BACKEND_URL + "/user/home"
     const token = localStorage.getItem('token')
-    const role = token.role
-    const name = token.name
+    const decodedToken = jwtDecode(token)
+    const name = decodedToken.displayName
+    const role = decodedToken.role
+
 
 return (
     <div>

@@ -8,7 +8,7 @@ const RegistrationForm = () => {
     const [formData, setFormData] = useState({
         email: '',
         password: '',
-        username: ''
+        displayName: ''
     })
 
     const [error, setError] = useState(null)
@@ -48,8 +48,8 @@ const RegistrationForm = () => {
                     </div>
 
                     <div>
-                        <label htmlFor="username">Username:</label>
-                        <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} required />
+                        <label htmlFor="displayName">Username:</label>
+                        <input type="text" id="displayName" name="displayName" value={formData.displayNamee} onChange={handleChange} required />
                     </div>
 
                     <div>
