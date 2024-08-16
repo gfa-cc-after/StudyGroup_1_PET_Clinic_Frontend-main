@@ -4,6 +4,32 @@ body{
     font-family: 'IBM Plex Sans', sans-serif;
     margin: 0;
     padding: 0;
+
+}
+
+.prettybackground{
+    background-color: #EEEEEE;
+    font-family: 'IBM Plex Sans', sans-serif;
+    display: flex;
+    width: 100%;
+    height: 89.4vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(238, 238, 238, 1) 41%, rgba(238, 238, 238, 0) 60%, rgba(238, 238, 238, 0) 100%),
+        url('../assets/petclinic-hero.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+@media only screen and (max-width: 780px) {
+    .prettybackground {
+        background-image: url('../assets/petclinic-hero-small.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
 }
 
 .landingbody
@@ -273,13 +299,18 @@ section.services {
 .loginForm {
     text-align: center;
     background-color: #282c34;
-    min-height: 100vh;
+    height:35vw;
+    width:30vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+
 }
 
 

@@ -37,34 +37,36 @@ const LoginForm = () => {
   }
   
   return (
-    <div className="loginForm">
-      <h1>Login</h1>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label htmlFor='email'>Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor='password'>Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" className="formButton">Login</button>
-        <p style={{color: 'red'}}>{error ? error : ""}</p>
-      </form>
+    <div className='prettybackground'>
+      <div className="loginForm">
+        <h1>Login</h1>
+        <form onSubmit={handleLogin}>
+          <div>
+            <label htmlFor='email'>Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor='password'>Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit" className="formButton">Login</button>
+          <p style={{color: 'red'}}>{error ? error : ""}</p>
+        </form>
+      </div>
     </div>
   );
 };

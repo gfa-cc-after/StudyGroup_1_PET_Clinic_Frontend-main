@@ -37,26 +37,28 @@ const RegistrationForm = () => {
 
     
     return (
-        <div className="registrationForm">
-            <h1>Registration Form</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
-                </div>
+        <div className='prettybackground'>
+            <div className="registrationForm">
+                <h1>Registration Form</h1>
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label htmlFor="email">Email:</label>
+                        <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
+                    </div>
 
-                <div>
-                    <label htmlFor="username">Username:</label>
-                    <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} required />
-                </div>
+                    <div>
+                        <label htmlFor="username">Username:</label>
+                        <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} required />
+                    </div>
 
-                <div>
-                    <label htmlFor="password">Password:</label>
-                    <input type="password" minLength="3" id="password" name="password" value={formData.password} onChange={handleChange} required />
-                </div>
-                <button type="submit" className="formButton">Register</button>
-                <p style={{color: 'red'}}>{error ? error : ""}</p>
-            </form>
+                    <div>
+                        <label htmlFor="password">Password:</label>
+                        <input type="password" minLength="3" id="password" name="password" value={formData.password} onChange={handleChange} required />
+                    </div>
+                    <button type="submit" className="formButton">Register</button>
+                    <p style={{color: 'red'}}>{error ? error : ""}</p>
+                </form>
+            </div>
         </div>
     );
 
