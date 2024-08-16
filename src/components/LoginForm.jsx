@@ -38,7 +38,7 @@ const LoginForm = () => {
   
   return (
     <div className='prettybackground-box'>
-      <div className='prettybackground-to-fade'></div>
+      <div className='form-bg'></div>
       <div className="loginForm">
         <h1>Login</h1>
         <form onSubmit={handleLogin}>

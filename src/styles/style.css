@@ -24,16 +24,7 @@ body{
     background-size: cover;
 }
 
-@media only screen and (max-width: 780px) {
-    .prettybackground {
-        background-image: url('../assets/petclinic-hero-small.jpg');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-    }
-}
-
-.prettybackground-to-fade {
+.form-bg {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -53,7 +44,7 @@ body{
 }
 
 @media only screen and (max-width: 780px) {
-    .prettybackground-to-fade {
+    .form-bg {
         background-image: url('../assets/petclinic-hero-small.jpg');
         background-repeat: no-repeat;
         background-attachment: fixed;
@@ -61,6 +52,14 @@ body{
         background-position: left -0.6vw top -5.7vw;
         animation: fadeOut 3s forwards;
     }
+}
+
+.userhome-bg {
+    position: absolute;;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/userbg.jpg');
+    opacity: 0.2;
 }
 
 .landingbody
@@ -220,7 +219,7 @@ section.hero p {
     font-size: calc(10px + 2vmin);
     color: white;
     box-shadow: 7px 10px 10px -5px rgba(39, 39, 39, 0.68);
-    opacity: 0.2; /* Start hidden */
+    opacity: 0.2;
     animation: fadeIn 1s forwards; /* Fade in animation */
 
 }
@@ -229,6 +228,34 @@ section.hero p {
     to {
         opacity: 1;
     }
+}
+
+/*page specific: userHome*/
+.userhome {
+    position: relative;
+    height:fit-content;
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vw;
+    display: flex;
+    border: 1px solid red;
+}
+
+section.welcome{
+    color: #272727;
+}
+
+section.welcome h1 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 3rem;
+    margin: 0;
+}
+
+section.welcome h2 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2rem;
+    margin-top: -0.5rem;
 }
 
 
