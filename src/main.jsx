@@ -13,7 +13,7 @@ import DecideNavBar from './components/DecideNavBar'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
      <Router>
-      <DecideNavBar>
+      <DecideNavBar>  {/* this component decides based on the location whether the navBar (child) should be loaded or not */}
         <NavBar />
       </DecideNavBar>
             <Routes>
