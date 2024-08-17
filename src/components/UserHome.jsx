@@ -4,8 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const UserHome = () => {
-    const [petList, setpetList] = useState({
-        token: '',
+    const [petList, setPetList] = useState({
         pets: []
     })
 
@@ -26,16 +25,11 @@ const UserHome = () => {
                         'Authorization': `Bearer ${token}`
                 }
             })
-            .then(response => { response.json()
-                console.log(response.data)
-            })
+            .then(response => response.json())
             .then(data => {
-                console.log(data.data)
-                setpetList({
-                    pets: data.data.pets,
-                    token: data.data.token
+                setPetList({
+                    pets: data.pets
                 })
-              //  localStorage.setItem('token', data.data.token)
             })
             .catch(error => console.error('Error fetching data:', error));
     }, [])
