@@ -4,8 +4,8 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const UserHome = () => {
-    const [userData, setUserData] = useState({
-        email: '',
+    const [petList, setpetList] = useState({
+        token: '',
         pets: []
     })
 
@@ -26,13 +26,16 @@ const UserHome = () => {
                         'Authorization': `Bearer ${token}`
                 }
             })
-            .then(response => response.json())
+            .then(response => { response.json()
+                console.log(response.data)
+            })
             .then(data => {
-                console.log(data.pets)
-                setUserData({
-                    email: data.email,
-                    pets: data.pets
+                console.log(data.data)
+                setpetList({
+                    pets: data.data.pets,
+                    token: data.data.token
                 })
+              //  localStorage.setItem('token', data.data.token)
             })
             .catch(error => console.error('Error fetching data:', error));
     }, [])
@@ -61,7 +64,7 @@ return (
                         </tr>
                     </thead>
                     <tbody>
-                        {userData.pets.map((pet, index) => (
+                        {petList.pets.map((pet, index) => (
                                     <tr key={index}>
                                         <td>{index + 1}</td>
                                         <td>{pet.petName}</td>

@@ -36,6 +36,7 @@ const LoginForm = () => {
   }
   
   return (
+    <>
     <div className='prettybackground-box'>
       <div className='form-bg'></div>
       <div className="loginForm">
@@ -64,10 +65,11 @@ const LoginForm = () => {
             />
           </div>
           <button type="submit" className="formButton">Login</button>
-          <p style={{color: 'red'}}>{error ? error : ""}</p>
         </form>
         </div>
+        <p style={{color: 'red'}}>{error ? error : ""}</p>
       </div>
+      </>
   );
 };
 
