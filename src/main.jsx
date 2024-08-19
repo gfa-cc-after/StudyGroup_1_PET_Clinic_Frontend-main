@@ -8,6 +8,7 @@ import UserHome from './components/UserHome'
 import AdminHome from './components/AdminHome'
 import NavBar from './components/NavBar'
 import DecideNavBar from './components/DecideNavBar'
+import ProfilePage from './components/ProfilePage'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -22,6 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route exact path="/login" element={<LoginForm />} />
         <Route exact path="/user/home" element={<UserHome />} />
         <Route exact path="/admin/home" element={<AdminHome />} />
+        <Route exact path="/profile" element={ <ProfilePage />} />
       </Routes>
     </Router>
   </React.StrictMode>,
