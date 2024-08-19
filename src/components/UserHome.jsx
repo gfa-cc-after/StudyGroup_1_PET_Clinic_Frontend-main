@@ -2,6 +2,8 @@ import '../styles/style.css'
 import { jwtDecode } from "jwt-decode"
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+
 
 const UserHome = () => {
     const [petList, setPetList] = useState({
@@ -16,23 +18,22 @@ const UserHome = () => {
     const role = decodedToken.role
 
 
-
     useEffect(() => {
         // Fetch data from backend based on the token
-        fetch(dataUrl, {
-            method: 'GET',
-            headers: {  'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                setPetList({
-                    pets: data.pets
-                })
-            })
-            .catch(error => console.error('Error fetching data:', error));
-    }, [])
+        axios.get(dataUrl, {
+            headers: {  
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            setPetList({
+                pets: response.data.pets
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    }, []);
+
 
 return (
     <>

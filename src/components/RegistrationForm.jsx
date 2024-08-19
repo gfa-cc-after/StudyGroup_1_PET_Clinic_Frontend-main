@@ -21,7 +21,7 @@ const RegistrationForm = () => {
         });
     }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         
         axios.post(apiUrl, formData, { headers: { "Content-Type": "application/json" } })

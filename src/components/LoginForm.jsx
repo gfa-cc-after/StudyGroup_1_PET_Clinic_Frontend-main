@@ -12,7 +12,7 @@ const LoginForm = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate()
 
-  const handleLogin = async (event) => {
+  const handleLogin = (event) => {
     event.preventDefault();
     
     axios.post(apiUrl, { email, password },  {headers: { "Content-Type": "application/json"}})
