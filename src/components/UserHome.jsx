@@ -1,42 +1,20 @@
 import '../styles/style.css'
-import { jwtDecode } from "jwt-decode"
-import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
-
+import { jwtDecode } from 'jwt-decode'
+import usePets from '../hooks/usePets'
 
 const UserHome = () => {
-    const [petList, setPetList] = useState({
-        pets: []
-    })
-
 
     const dataUrl = import.meta.env.VITE_API_BACKEND_URL + "/user/home"
     const token = localStorage.getItem('token')
     const decodedToken = jwtDecode(token)
     const name = decodedToken.displayName
-    const role = decodedToken.role
+    //const role = decodedToken.role
 
-
-    useEffect(() => {
-        // Fetch data from backend based on the token
-        axios.get(dataUrl, {
-            headers: {  
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        })
-        .then(response => {
-            setPetList({
-                pets: response.data.pets
-            });
-        })
-        .catch(error => console.error('Error fetching data:', error));
-    }, []);
-
+    const pets = usePets(dataUrl);
+    console.log(pets);
 
 return (
-    <>
     <div className='prettybackground-box'>
         <div className='userhome-bg'></div>
         <div className='userhome'>
@@ -59,7 +37,7 @@ return (
                         </tr>
                     </thead>
                     <tbody>
-                        {petList.pets.map((pet, index) => (
+                        {pets.map((pet, index) => (
                                     <tr key={index}>
                                         <td>{index + 1}</td>
                                         <td>{pet.petName}</td>
@@ -76,7 +54,6 @@ return (
             </section>
         </div>
     </div>
-    </>
     )
 }
 export default UserHome
