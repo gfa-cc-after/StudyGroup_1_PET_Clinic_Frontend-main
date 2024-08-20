@@ -57,7 +57,7 @@ describe('RegistrationForm', () => {
             expect.stringContaining('/register'),
             {
                 email: 'test@example.com',
-                username: 'testuser',
+                displayName: 'testuser',
                 password: 'password123'
             },
             { headers: { "Content-Type": "application/json" } }
