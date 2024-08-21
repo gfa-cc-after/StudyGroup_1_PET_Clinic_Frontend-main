@@ -1,7 +1,7 @@
 import '../styles/style.css';
 import { jwtDecode } from "jwt-decode";
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // Ensure axios is imported
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const ProfilePage = () => {
@@ -10,7 +10,8 @@ const ProfilePage = () => {
 
     // Check if token exists
     if (!token) {
-        navigate('/login'); // Redirect to login if no token
+        // Redirect to login if no token
+        navigate('/login');
         return null; // Prevent rendering the rest of the component
     }
 
@@ -54,6 +55,11 @@ const ProfilePage = () => {
             setLoading(false);
         }
     };
+
+    // Conditional rendering for the profile page content
+    if (!token) {
+        return null; // Prevent rendering the rest of the component
+    }
 
     return (
         <div className="profilePage">
