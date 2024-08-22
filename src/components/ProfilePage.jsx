@@ -18,12 +18,13 @@ const ProfilePage = () => {
     const role = decodedToken.role;
     const originalName = decodedToken.displayName;
     const originalEmail = decodedToken.email;
+    const originalPassword = decodedToken.password;
 
     const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/profile";
 
     const [email, setEmail] = useState(originalEmail);
     const [username, setUsername] = useState(originalName);
-    const [password, setPassword] = useState('');
+    const [password, setPassword] = useState(originalPassword);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
@@ -60,39 +61,64 @@ const ProfilePage = () => {
             <div className="form-pb"></div>
             <div className="profilePage">
               <section className="welcome">
-                <h1>
-                  Accout Details
+                <h1 id='settingsHead'>
+                  Account Settings
                 </h1>
               </section>
               <form onSubmit={handleProfileChange}>
+                <p>Current email: <span>{email}</span></p>
                 <div>
-                  <label htmlFor="email">Email:</label>
+                  <label htmlFor="email">Change Email:</label>
                   <input
                     type="email"
                     id="email"
                     name="email"
-                    value={email}
+                    value=''
                     onChange={(e) => setEmail(e.target.value)}
                   />
+                <p>Current username: <span>{username}</span></p>
                 </div>
                 <div>
-                  <label htmlFor="username">Username:</label>
+                  <label htmlFor="username">Change Username:</label>
                   <input
                     type="text"
                     id="username"
                     name="username"
-                    value={username}
+                    value=''
                     onChange={(e) => setUsername(e.target.value)}
                   />
                 </div>
                 <div>
-                  <label htmlFor="password">Password:</label>
+                  <label htmlFor="password">Current Password:</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value=''
+                    
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="password">New Password:</label>
                   <input
                     type="password"
                     id="password"
                     name="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="password">New Password Again:</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
                   />
                 </div>
                 <button type="submit" className="changeButton" disabled={loading}>
