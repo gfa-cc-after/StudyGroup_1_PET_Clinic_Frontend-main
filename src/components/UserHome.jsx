@@ -11,7 +11,7 @@ const UserHome = () => {
     })
 
 
-    const dataUrl = import.meta.env.VITE_API_BACKEND_URL + "/user/home"
+    const dataUrl = import.meta.env.VITE_API_BACKEND_URL + "/user/pets"
     const token = localStorage.getItem('token')
     const decodedToken = jwtDecode(token)
     const name = decodedToken.displayName
