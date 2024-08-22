@@ -5,13 +5,13 @@ import usePets from '../hooks/usePets'
 
 const UserHome = () => {
 
-    const dataUrl = import.meta.env.VITE_API_BACKEND_URL + "/user/home"
+    const dataUrl = import.meta.env.VITE_API_BACKEND_URL + "/user/pets"
     const token = localStorage.getItem('token')
     const decodedToken = jwtDecode(token)
     const name = decodedToken.displayName
     //const role = decodedToken.role
 
-    const pets  = usePets(dataUrl);
+    const pets = usePets(dataUrl);
     console.log(pets);
 
     return (
@@ -37,7 +37,7 @@ const UserHome = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {pets.map((pet, index) => (
+                            {(pets.length > 0) && pets.map((pet, index) => (
                                 <tr key={index}>
                                     <td>{index + 1}</td>
                                     <td>{pet.petName}</td>
