@@ -1,6 +1,6 @@
 import axios from "axios";
 import { describe, expect, it, vi } from "vitest";
-import { renderHook } from '@testing-library/react';
+import { renderHook, waitFor } from '@testing-library/react';
 import usePets from "../../src/hooks/usePets";
 
 vi.mock('axios');
@@ -28,14 +28,18 @@ describe('usePets hook test', () => {
         }];
         // Mock the response data
         const mockGet = vi.fn().mockResolvedValue(
-            { data:{pets: mockPets} }
+            { data: { pets: mockPets } }
         );
-        axios.get = mockGet
+        const axiosMock = vi.spyOn(axios, 'get');
+        axiosMock.mockResolvedValue({ data: { pets: mockPets } });
+
         // Call the usePets hook
-        const { result, waitForNextUpdated } = renderHook(() => usePets('http://somewherefromtheweb.com/api/pets'));
-        await waitForNextUpdated;
+        const { result } = renderHook(() => usePets());
+
         // Assert that the pets state has been set correctly
-        expect(result).toEqual(mockPets);
-        expect(mockGet).toBeCalledTimes(1);
+        await waitFor(() => {
+            expect(result.current).toEqual(mockPets);
+            expect(axiosMock).toBeCalledTimes(1);
+        });
     })
 });
