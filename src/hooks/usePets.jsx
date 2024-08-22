@@ -1,24 +1,30 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import axios from 'axios'
 
 const usePets = (dataUrl) => {
 
     const token = localStorage.getItem('token')
-    
+
     const [pets, setPets] = useState([]);
-
     useEffect(() => {
-        axios.get(dataUrl, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        }).then(response => {
-            setPets(response.data.pets);
-            console.log(response);
 
-        }).catch(error => console.error('Error fetching data:', error));
-    }, []);
+        const getPets = async () => {
+            const response = await axios.get(
+                dataUrl,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+            return response;
+        }
+
+        getPets()
+            .then(response => setPets(response.data.pets))
+            .catch(error => console.error('Error fetching data:', error));
+    },[0]);
 
     return (pets);
 }
