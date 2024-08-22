@@ -12,7 +12,7 @@ const LoginForm = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate()
 
-  const handleLogin = async (event) => {
+  const handleLogin = (event) => {
     event.preventDefault();
     
     axios.post(apiUrl, { email, password },  {headers: { "Content-Type": "application/json"}})
@@ -22,8 +22,7 @@ const LoginForm = () => {
      // localStorage.setItem('refreshToken', response.refreshToken)
      
       const decodedToken = jwtDecode(localStorage.getItem('token'))
-      localStorage.setItem('role', decodedToken.role)
-      const role = localStorage.getItem('role')
+      const role = decodedToken.role
 
       navigate(`/${role}/home`)  // Redirect to the user's home page - be avare of the ` character! It is not ' or ".
     })
@@ -37,35 +36,40 @@ const LoginForm = () => {
   }
   
   return (
-    <div className="loginForm">
-      <h1>Login</h1>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label htmlFor='email'>Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+    <>
+    <div className='prettybackground-box'>
+      <div className='form-bg'></div>
+      <div className="loginForm">
+        <h1>Login</h1>
+        <form onSubmit={handleLogin}>
+          <div>
+            <label htmlFor='email'>Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor='password'>Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit" className="formButton">Login</button>
+        </form>
         </div>
-        <div>
-          <label htmlFor='password'>Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" className="formButton">Login</button>
         <p style={{color: 'red'}}>{error ? error : ""}</p>
-      </form>
-    </div>
+      </div>
+      </>
   );
 };
 

@@ -1,9 +1,65 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700');
 
+/*Body and background divs*/
+
 body{
     font-family: 'IBM Plex Sans', sans-serif;
     margin: 0;
     padding: 0;
+
+}
+
+.prettybackground-box{
+    background-color: #EEEEEE;
+    font-family: 'IBM Plex Sans', sans-serif;
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 89.4vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.form-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(238, 238, 238, 1) 41%, rgba(238, 238, 238, 0) 60%, rgba(238, 238, 238, 0) 100%),
+    url('../assets/petclinic-hero.jpg');
+    background-position: left -0.6vw top -5.7vw;
+    animation: fadeOut 1.5s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.3;
+    }
+}
+
+@media only screen and (max-width: 780px) {
+    .form-bg {
+        background-image: url('../assets/petclinic-hero-small.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: left -0.6vw top -5.7vw;
+        animation: fadeOut 3s forwards;
+    }
+}
+
+.userhome-bg {
+    position: absolute;;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/userbg.jpg');
+    opacity: 0.2;
 }
 
 .landingbody
@@ -12,6 +68,8 @@ body{
     font-family: 'IBM Plex Sans', sans-serif;
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100vh;
     background-image: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(238, 238, 238, 1) 41%, rgba(238, 238, 238, 0) 60%, rgba(238, 238, 238, 0) 100%),
         url('../assets/petclinic-hero.jpg');
     background-repeat: no-repeat;
@@ -27,6 +85,8 @@ body{
         background-size: cover;
     }
 }
+
+/*Header strip and navigation bar*/
 
 header {
     background-color: #003363d7;
@@ -46,7 +106,7 @@ nav {
     margin-right: 1.5vh;
 }
 
-ul {
+ul.nav {
     text-wrap: none;
     display: flex;
     list-style-type: none;
@@ -56,7 +116,7 @@ ul {
     overflow: hidden;
 }
 
-li {
+li.nav {
     margin-top: 5px;
     list-style-type: none;
     float: left;
@@ -64,16 +124,207 @@ li {
     white-space: nowrap;
 }
 
-li a {
+li.nav a {
     color: #EEEEEE;
     text-decoration: none;
     font-size: 16px;
 }
 
-li a:hover {
+li.nav a:hover {
     color: #ce2d4f;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
+}
+
+#logo-section {
+    margin: 1.5vh;
+    display: flex;
+    align-items: center;
+    height: 4.2vw;
+    min-height: 3rem;
+}
+
+#logo-link, #logo-img {
+    height: 100%;
+}
+#logo-link:link, #logo-link:visited, #logo-img:active, #logo-img:hover {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+/*LandingPage specific*/
+header h1 {
+    padding-left: 2rem;
+    font-size: 2.6rem;
+}
+
+section.hero {
+    margin: auto;
+    margin-top: 8vw;
+    width: 80%;
+    flex-direction: column;
+    display: flex;
+}
+
+section.hero h2 {
+    color: #272727;
+    font-family: 'Bebas Neue', cursive;
+    white-space: nowrap;
+    font-size: 5rem;
+    margin: 0;
+}
+
+section.hero h3 {
+    color: #272727;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2rem;
+    margin: 0;
+    margin-top: -1vw;
+    margin-bottom: 0.5vw;
+}
+
+section.hero p {
+    color: #272727;
+    width: 35vw;
+    font-size: 1rem;
+    margin: 0;
+}
+
+@media only screen and (max-width: 780px) {
+    section p {
+        min-width: 70vw;
+    }
+}
+
+
+/*Page specific: registration, login*/
+.registrationForm,
+.loginForm {
+    border-top-left-radius: 80px 80px;
+    border-bottom-right-radius: 80px 80px;
+    text-align: center;
+    background-color: #282c34;
+    height:22em;
+    width:20em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    box-shadow: 7px 10px 10px -5px rgba(39, 39, 39, 0.68);
+    opacity: 0.2;
+    animation: fadeIn 1s forwards; /* Fade in animation */
+
+}
+/* Keyframes for loginForm fade in */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/*page specific: userHome*/
+.userhome {
+    background-color: #fdfdfda8;
+    position: relative;
+    height:fit-content;
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3vw;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border-top-left-radius: 80px 80px;
+    border-bottom-right-radius: 80px 80px;
+}
+
+section.welcome{
+    display: block;
+    color: #272727;
+    margin-bottom: 1vw;
+
+}
+
+section .colored-button {
+    float: right;
+    margin-top:-1.5rem;
+}
+section.welcome h1 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 4rem;
+    margin: 0;
+}
+
+section.welcome h2 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2rem;
+    margin-top: -0.5rem;
+}
+
+h3.home-h3{
+    color: #272727;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2rem;
+    margin: 0;
+    margin-top: 1vw;
+    margin: auto;
+}
+
+section.userhome-content{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 2vw;
+
+}
+
+.home-table {
+    width: 90%;
+    margin: auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #188265;
+    border-radius: 5px;
+    box-shadow: 5px 6px 10px -5px rgba(39, 39, 39, 0.68);
+}
+.home-table td {
+    padding: 0.5rem;
+    border: 1px solid #1D5276;
+    text-align: center;
+}
+.home-table th {
+    padding: 0.5rem;
+    border: 1px solid #1D5276;
+    text-align: center;
+    background-color: #188265;
+    color: #EEEEEE;
+}
+
+
+/*universal buttons */
+.formButton {
+    background-color: #188265;
+    color: white;
+    padding: 1em 1em;
+    margin: 2vw 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 150px;
+    box-shadow: 5px 6px 10px -5px rgba(39, 39, 39, 0.68);
 }
 
 button a {
@@ -92,7 +343,7 @@ button a {
     background-color: #188265;
     color: #EEEEEE;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 10px;
     text-align: center;
     text-decoration: none;
     font-weight: bold;
@@ -138,65 +389,28 @@ button a {
     box-shadow: -5px -6px 10px -5px rgba(39, 39, 39, 0.70);
 }
 
-#logo-section {
-    margin: 1.5vh;
-    display: flex;
-    align-items: center;
-    height: 4.2vw;
-    min-height: 3rem;
-}
+/*other universal*/
 
-#logo-link, #logo-img {
-    height: 100%;
-}
-
-header h1 {
-    padding-left: 2rem;
-    font-size: 2.6rem;
-}
-
-section.hero {
-    margin: auto;
-    margin-top: 8vw;
-    width: 80%;
-    flex-direction: column;
-    display: flex;
-}
-
-section.hero h2 {
-    color: #272727;
-    font-family: 'Bebas Neue', cursive;
-    white-space: nowrap;
-    font-size: 5rem;
-    margin: 0;
-}
-
-section.hero h3 {
-    color: #272727;
-    font-family: 'Bebas Neue', cursive;
-    font-size: 2rem;
-    margin: 0;
-    margin-top: -1vw;
-    margin-bottom: 0.5vw;
-}
-
-section.hero p {
-    color: #272727;
-    width: 35vw;
+input[type=text],
+input[type=password],
+input[type=email] {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 1rem;
-    margin: 0;
-}
-
-@media only screen and (max-width: 780px) {
-    section p {
-        min-width: 70vw;
-    }
+    border-radius: 4px;
 }
 
 span {
     color: #188265;
 }
 
+/*services boxes*/
 section.services {
     width: 80%;
     margin: auto;
@@ -260,43 +474,4 @@ section.services {
         url('../assets/Puppy-Kitten.png');
     background-size: cover;
     color: #272727;
-}
-
-.registrationForm,
-.loginForm {
-    text-align: center;
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-
-input[type=text],
-input[type=password],
-input[type=email] {
-    width: 100%;
-    max-width: 400px;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 1rem;
-    border-radius: 4px;
-}
-
-.formButton {
-    background-color: #04AA6D;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 50%;
 }
