@@ -56,48 +56,53 @@ const ProfilePage = () => {
     };
 
     return (
-        <div className="profilePage">
-            <section className='welcome'>
-                <h1>Welcome <span>{originalName}</span>!</h1>
-            </section>
-            <form onSubmit={handleProfileChange}>
+        <>
+            <div className="form-pb"></div>
+            <div className="profilePage">
+              <section className="welcome">
+                <h1>
+                  Accout Details
+                </h1>
+              </section>
+              <form onSubmit={handleProfileChange}>
                 <div>
-                    <label htmlFor='email'>Email:</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
+                  <label htmlFor="email">Email:</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                 </div>
                 <div>
-                    <label htmlFor='username'>Username:</label>
-                    <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
+                  <label htmlFor="username">Username:</label>
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
                 </div>
                 <div>
-                    <label htmlFor='password'>Password:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
+                  <label htmlFor="password">Password:</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
                 </div>
                 <button type="submit" className="changeButton" disabled={loading}>
-                    {loading ? 'Changing...' : 'Change'}
+                  {loading ? 'Changing...' : 'Change'}
                 </button>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
-            </form>
-        </div>
-    );
-};
+              </form>
+            </div>
+        </>
+      );
+    };      
 
 export default ProfilePage;
