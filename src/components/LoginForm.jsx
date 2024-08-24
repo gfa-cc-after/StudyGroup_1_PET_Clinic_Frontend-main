@@ -3,13 +3,14 @@ import axios from 'axios'
 import '../styles/style.css'
 import { jwtDecode } from "jwt-decode"
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/login";
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
   const navigate = useNavigate()
 
   const handleLogin = (event) => {
@@ -23,13 +24,14 @@ const LoginForm = () => {
       const decodedToken = jwtDecode(localStorage.getItem('token'))
       const role = decodedToken.role
 
-      navigate(`/${role}/home`)
+      toast.success('Login successful ');
+      setTimeout(() => navigate(`/${role}/home`), 3000); // Delay navigation for 3 second
     })
     .catch ((err) =>{
       if (!err.response) {
-        setError('There was a network error');
+        toast.error('There was a network error');
       } else {
-        setError('There was an error logging in...'+ err.response.data);
+        toast.error('There was an error logging in...'+ err.response.data);
       }
     })
   }
@@ -66,7 +68,7 @@ const LoginForm = () => {
           <button type="submit" className="formButton">Login</button>
         </form>
         </div>
-        <p style={{color: 'red'}}>{error ? error : ""}</p>
+        <ToastContainer />
       </div>
       </>
   );

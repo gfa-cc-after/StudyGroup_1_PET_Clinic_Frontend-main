@@ -29,7 +29,7 @@ const RegistrationForm = () => {
         axios.post(apiUrl, formData, { headers: { "Content-Type": "application/json" } })
         .then((response) => {
             toast.success('Registration successful...it\'s time to login :)');
-            setTimeout(() => navigate('/login'), 4000); // Delay navigation for 4 second
+            setTimeout(() => navigate('/login'), 3000); // Delay navigation for 3 second
         })
         .catch((err) =>{
             if (!err.response) {
