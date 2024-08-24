@@ -255,50 +255,6 @@ section.hero p {
 
 }
 
-/* Add Pet Form Container */
-.addPetForm {
-    border-radius: 20px; /* Smoother edges */
-    text-align: left;
-    background-color: rgba(40, 44, 52, 0.8); /* Slightly transparent background */
-    padding: 2em;
-    box-shadow: 7px 10px 10px -5px rgba(39, 39, 39, 0.68);
-    width: 100%; /* Let the form take the full width */
-    max-width: 400px; /* But limit its maximum width */
-}
-
-.addPetForm h1 {
-    text-align: center;
-    color: white;
-    margin-bottom: 1rem;
-}
-
-
-/* Form Labels */
-.addPetForm label {
-    display: block;
-    color: #EEEEEE;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-}
-
-/* Form Inputs */
-.addPetForm input[type="text"],
-.addPetForm input[type="date"],
-.addPetForm select,
-.addPetForm textarea {
-    width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1.5rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-}
-
-/* Form Textarea */
-.addPetForm textarea {
-    resize: vertical;
-}
-
 /* Keyframes for loginForm fade in */
 @keyframes fadeIn {
     to {
@@ -578,4 +534,49 @@ section.services {
         url('../assets/Puppy-Kitten.png');
     background-size: cover;
     color: #272727;
+}
+
+/* Add Pet Form Container */
+.addPetForm {
+    z-index: 10;
+    border-radius: 20px; /* Smoother edges */
+    text-align: left;
+    background-color: rgba(40, 44, 52, 0.8); /* Slightly transparent background */
+    padding: 2em;
+    box-shadow: 7px 10px 10px -5px rgba(39, 39, 39, 0.68);
+    width: 100%; /* Let the form take the full width */
+    max-width: 400px; /* But limit its maximum width */
+}
+
+.addPetForm h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+
+/* Form Labels */
+.addPetForm label {
+    display: block;
+    color: #EEEEEE;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+/* Form Inputs */
+.addPetForm input[type="text"],
+.addPetForm input[type="date"],
+.addPetForm select,
+.addPetForm textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+/* Form Textarea */
+.addPetForm textarea {
+    resize: vertical;
 }

@@ -39,7 +39,7 @@ const AddPetForm = () => {
                 }
             })
             .then(() => {
-                navigate(`/${role}/home`)
+                navigate(`/user/home`)
             })
             .catch((err) => {
                 if (!err.response) {
@@ -54,9 +54,7 @@ const AddPetForm = () => {
         <>
             <div className='prettybackground-box-add-pet'>
                 <div className='form-bg'></div>
-                {/* this is to be updated */}
                 <div className="addPetForm">
-                    {/* this is to be updated */}
                     <h1>Add Pet</h1>
                     <form onSubmit={handleSubmit}>
                         <div>
@@ -77,15 +75,15 @@ const AddPetForm = () => {
                         </div>
                         <div>
                             <label htmlFor="petBirthDate">Birth Date:</label>
-                            <input type="date" id="petBirthDate" name="petBirthDate" value={formData.petBirthDate} onChange={handleChange} required />
+                            <input type="date" id="petBirthDate" name="petBirthDate" value={formData.petBirthDate} onChange={handleChange}/>
                         </div>
                         <div>
                             <label htmlFor="lastCheckUp">Last Check-Up Date:</label>
-                            <input type="date" id="lastCheckUp" name="lastCheckUp" value={formData.lastCheckUp} onChange={handleChange} required />
+                            <input type="date" id="lastCheckUp" name="lastCheckUp" value={formData.lastCheckUp} onChange={handleChange}/>
                         </div>
                         <div>
                             <label htmlFor="nextCheckUp">Next Check-Up Date:</label>
-                            <input type="date" id="nextCheckUp" name="nextCheckUp" value={formData.nextCheckUp} onChange={handleChange} required />
+                            <input type="date" id="nextCheckUp" name="nextCheckUp" value={formData.nextCheckUp} onChange={handleChange}/>
                         </div>
                         <div>
                             <label htmlFor="specialCondition">Special Condition:</label>
