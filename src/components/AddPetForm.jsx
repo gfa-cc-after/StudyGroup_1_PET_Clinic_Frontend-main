@@ -58,15 +58,15 @@ const AddPetForm = () => {
                     <h1>Add Pet</h1>
                     <form onSubmit={handleSubmit}>
                         <div>
-                            <label htmlFor="petName">Name:</label>
+                            <label htmlFor="petName">Name:*</label>
                             <input type="text" id="petName" name="petName" value={formData.petName} onChange={handleChange} required />
                         </div>
                         <div>
-                            <label htmlFor="petBreed">Breed:</label>
+                            <label htmlFor="petBreed">Breed:*</label>
                             <input type="text" id="petBreed" name="petBreed" value={formData.petBreed} onChange={handleChange} required />
                         </div>
                         <div>
-                            <label htmlFor="petSex">Sex:</label>
+                            <label htmlFor="petSex">Sex:*</label>
                             <select id="petSex" name="petSex" value={formData.petSex} onChange={handleChange} required>
                                 <option value="">Select Sex</option>
                                 <option value="Male">Male</option>
@@ -74,8 +74,8 @@ const AddPetForm = () => {
                             </select>
                         </div>
                         <div>
-                            <label htmlFor="petBirthDate">Birth Date:</label>
-                            <input type="date" id="petBirthDate" name="petBirthDate" value={formData.petBirthDate} onChange={handleChange}/>
+                            <label htmlFor="petBirthDate">Birth Date:*</label>
+                            <input type="date" id="petBirthDate" name="petBirthDate" value={formData.petBirthDate} onChange={handleChange} required/>
                         </div>
                         <div>
                             <label htmlFor="lastCheckUp">Last Check-Up Date:</label>
