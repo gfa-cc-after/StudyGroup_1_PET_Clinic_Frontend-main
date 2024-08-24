@@ -19,12 +19,11 @@ const LoginForm = () => {
     .then((response) => {
       console.log('Login successful, token: ' + response.data.token)
       localStorage.setItem('token', response.data.token)
-     // localStorage.setItem('refreshToken', response.refreshToken)
      
       const decodedToken = jwtDecode(localStorage.getItem('token'))
       const role = decodedToken.role
 
-      navigate(`/${role}/home`)  // Redirect to the user's home page - be avare of the ` character! It is not ' or ".
+      navigate(`/${role}/home`)
     })
     .catch ((err) =>{
       if (!err.response) {
