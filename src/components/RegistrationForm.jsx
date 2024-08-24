@@ -1,6 +1,9 @@
 import '../styles/style.css'
 import { useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/register"
 
@@ -10,8 +13,7 @@ const RegistrationForm = () => {
         password: '',
         displayName: ''
     })
-
-    const [error, setError] = useState(null)
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -25,16 +27,18 @@ const RegistrationForm = () => {
         e.preventDefault();
         
         axios.post(apiUrl, formData, { headers: { "Content-Type": "application/json" } })
-        .then((response) => {console.log('Registration successful')})
+        .then((response) => {
+            toast.success('Registration successful...it\'s time to login :)');
+            setTimeout(() => navigate('/login'), 3000); // Delay navigation for 3 second
+        })
         .catch((err) =>{
             if (!err.response) {
-              setError('There was a network error');
+                toast.error('There was a network error');
             } else {
-              setError('There was an error while registering...'+ err.response.data);
+                toast.error('There was an error while registering...'+ err.response.data);
             }
           })
     }
-
     
     return (
         <div className='prettybackground-box'>
@@ -57,9 +61,9 @@ const RegistrationForm = () => {
                         <input type="password" minLength="3" id="password" name="password" value={formData.password} onChange={handleChange} required />
                     </div>
                     <button type="submit" className="formButton">Register</button>
-                    <p style={{color: 'red'}}>{error ? error : ""}</p>
                 </form>
             </div>
+            <ToastContainer />
         </div>
     );
 
