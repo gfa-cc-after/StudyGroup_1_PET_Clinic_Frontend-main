@@ -15,23 +15,24 @@ const ProfilePage = () => {
     }
 
     const decodedToken = jwtDecode(token);
-    const role = decodedToken.role;
     const originalName = decodedToken.displayName;
     const originalEmail = decodedToken.email;
-    const originalPassword = decodedToken.password;
+    const originalPassword = decodedToken.password; // Assuming password is stored in token
 
     const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/profile";
 
     const [email, setEmail] = useState(originalEmail);
     const [username, setUsername] = useState(originalName);
-    const [password, setPassword] = useState(originalPassword);
+    const [password, setPassword] = useState('');
+    const [currentPasswordInput, setCurrentPasswordInput] = useState('');
+    const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
     const handleProfileChange = async (event) => {
         event.preventDefault();
         setLoading(true);
-        setError(null); // Reset error state
+        setError(null);
 
         try {
             const response = await axios.post(apiUrl, { username, email, password }, {
@@ -56,79 +57,82 @@ const ProfilePage = () => {
         }
     };
 
+    const handleCurrentPasswordChange = (e) => {
+        const value = e.target.value;
+        setCurrentPasswordInput(value);
+        setIsPasswordCorrect(value === originalPassword);
+    };
+
     return (
         <>
             <div className="form-pb"></div>
             <div className="profilePage">
-              <section className="welcome">
-                <h1 id='settingsHead'>
-                  Account Settings
-                </h1>
-              </section>
-              <form onSubmit={handleProfileChange}>
-                <p>Current email: <span>{email}</span></p>
-                <div>
-                  <label htmlFor="email">Change Email:</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value=''
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                <p>Current username: <span>{username}</span></p>
-                </div>
-                <div>
-                  <label htmlFor="username">Change Username:</label>
-                  <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    value=''
-                    onChange={(e) => setUsername(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="password">Current Password:</label>
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    value=''
-                    
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="password">New Password:</label>
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="password">New Password Again:</label>
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
-                </div>
-                <button type="submit" className="changeButton" disabled={loading}>
-                  {loading ? 'Changing...' : 'Change'}
-                </button>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-              </form>
+                <section className="welcome">
+                    <h1 id='settingsHead'>Account Settings</h1>
+                </section>
+                <form onSubmit={handleProfileChange}>
+                    <p>Current email: <span>{originalEmail}</span></p>
+                    <div>
+                        <label htmlFor="email">Change Email:</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <p>Current username: <span>{originalName}</span></p>
+                    </div>
+                    <div>
+                        <label htmlFor="username">Change Username:</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="password">Current Password:</label>
+                        <input
+                            type="password"
+                            id="currentPassword"
+                            name="currentPassword"
+                            required
+                            onChange={handleCurrentPasswordChange}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="password">New Password:</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="password">New Password Again:</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <button
+                        type="submit"
+                        className="changeButton"
+                        disabled={loading || !isPasswordCorrect}
+                    >
+                        {loading ? 'Changing...' : 'Change'}
+                    </button>
+                    {error && <p style={{ color: 'red' }}>{error}</p>}
+                </form>
             </div>
         </>
-      );
-    };      
+    );
+};
 
 export default ProfilePage;
