@@ -19,7 +19,7 @@ const UserHome = () => {
             <div className='userhome'>
                 <section className='welcome'><h1>Welcome <span>{name}</span>!</h1>
                     <h2>Nice to see you again!</h2>
-                    <Link className="colored-button" to="/addPet" >Add Pet</Link>	</section>
+                    <Link className="colored-button" to="/user/pet/add" >Add Pet</Link>	</section>
                 <h3 className="home-h3">Your beloved pets</h3>
                 <section className='userhome-content'>
                     <table className="home-table">
