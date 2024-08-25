@@ -486,7 +486,7 @@ section.services {
   
   .profilePage {
     text-align: center;
-    background-color: #255548;
+    background-color: #fdfdfd;
     height:29.1em;
     width:50em;
     margin-left: auto;
@@ -497,7 +497,7 @@ section.services {
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: white;
+    color: rgb(0, 0, 0);
     box-shadow: 7px 10px 10px -5px rgba(39, 39, 39, 0.68);
     opacity: 0.2;
     animation: fadeIn 1s forwards; /* Fade in animation */

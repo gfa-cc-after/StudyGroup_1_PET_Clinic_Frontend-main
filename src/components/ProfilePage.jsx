@@ -1,7 +1,7 @@
 import '../styles/style.css';
 import { jwtDecode } from "jwt-decode";
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // Ensure axios is imported
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const ProfilePage = () => {
@@ -10,22 +10,22 @@ const ProfilePage = () => {
 
     // Check if token exists
     if (!token) {
-        navigate('/login'); // Redirect to login if no token
-        return null; // Prevent rendering the rest of the component
+        navigate('/login');
+        return null; 
     }
 
     const decodedToken = jwtDecode(token);
     const originalName = decodedToken.displayName;
     const originalEmail = decodedToken.email;
-    const originalPassword = decodedToken.password; // Assuming password is stored in token
 
     const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/profile";
 
     const [email, setEmail] = useState(originalEmail);
     const [username, setUsername] = useState(originalName);
     const [password, setPassword] = useState('');
-    const [currentPasswordInput, setCurrentPasswordInput] = useState('');
+    const [originalPassword, setOriginalPassword] = useState('');
     const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
+    const [doubleCheckPassword, setDoubleCheckPassword] = useState('');
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
@@ -50,17 +50,19 @@ const ProfilePage = () => {
             if (!err.response) {
                 setError('There was a network error.');
             } else {
-                setError('Error changing your profile: ' + err.response.data.message || err.response.data);
+                setError('Error changing your profile: ' + (err.response.data.message || err.response.data));
             }
         } finally {
             setLoading(false);
         }
     };
 
-    const handleCurrentPasswordChange = (e) => {
+   
+
+    const handleDoubleCheckPasswordChange = (e) => {
         const value = e.target.value;
-        setCurrentPasswordInput(value);
-        setIsPasswordCorrect(value === originalPassword);
+        setDoubleCheckPassword(value);
+        setIsPasswordCorrect(value === password);
     };
 
     return (
@@ -78,46 +80,51 @@ const ProfilePage = () => {
                             type="email"
                             id="email"
                             name="email"
+                            value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
-                        <p>Current username: <span>{originalName}</span></p>
-                    </div>
+                    </div>                   
+                     <p>Current username: <span>{originalName}</span></p>
                     <div>
                         <label htmlFor="username">Change Username:</label>
                         <input
                             type="text"
                             id="username"
                             name="username"
+                            value={username}
                             onChange={(e) => setUsername(e.target.value)}
                         />
                     </div>
                     <div>
-                        <label htmlFor="password">Current Password:</label>
+                        <label htmlFor="currentPassword">Current Password:</label>
                         <input
                             type="password"
                             id="currentPassword"
                             name="currentPassword"
+                            onChange={(e) => setOriginalPassword(e.target.value)}
                             required
-                            onChange={handleCurrentPasswordChange}
                         />
                     </div>
                     <div>
                         <label htmlFor="password">New Password:</label>
                         <input
                             type="password"
-                            id="password"
-                            name="password"
-                            onChange={(e) => setPassword(e.target.value)}
+                            id="newPassword"
+                            name="newPassword"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)
+                            }
                             required
                         />
                     </div>
                     <div>
-                        <label htmlFor="password">New Password Again:</label>
+                        <label htmlFor="confirmPassword">New Password Again:</label>
                         <input
                             type="password"
-                            id="password"
-                            name="password"
-                            onChange={(e) => setPassword(e.target.value)}
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            value={doubleCheckPassword}
+                            onChange={handleDoubleCheckPasswordChange}
                             required
                         />
                     </div>
