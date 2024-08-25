@@ -13,7 +13,7 @@ vi.mock("jwt-decode", async (importOriginal) => {
     }
   })
 
-/*
+
 describe('UserHome', () => {
     it('renders user home page with username', () => {
 
@@ -22,7 +22,7 @@ describe('UserHome', () => {
             if (key === 'token') return mockToken
             return null
         })
-
+/*
         render(<UserHome />)
 
 
@@ -33,7 +33,6 @@ describe('UserHome', () => {
         const roleElement = screen.getByTitle('role')
         expect(roleElement).toBeInTheDocument()
         expect(roleElement).toHaveTextContent('user')
-        })
-
-})
         */
+        })
+});
