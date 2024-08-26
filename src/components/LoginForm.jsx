@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/login";
+const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/api/v1/auth/login";
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');

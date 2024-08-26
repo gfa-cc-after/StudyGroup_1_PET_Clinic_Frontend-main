@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/register"
+const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/api/v1/auth/register"
 
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
