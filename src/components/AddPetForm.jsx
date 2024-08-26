@@ -3,8 +3,7 @@ import axios from 'axios'
 import '../styles/style.css'
 import { useNavigate } from 'react-router-dom'
 
-const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/user/pet/add";
-const token = localStorage.getItem('token');
+const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/api/v1/user/pet/add";
 
 const AddPetForm = () => {
     const [formData, setFormData] = useState({
@@ -30,6 +29,7 @@ const AddPetForm = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        const token = localStorage.getItem('token');
 
         axios.post(apiUrl, formData,
             {
