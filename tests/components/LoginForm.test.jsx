@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginForm from '../src/components/LoginForm'
+import LoginForm from '../../src/components/LoginForm'
 import { render, fireEvent, waitFor } from '@testing-library/react'
 import { it, expect, describe, vi } from 'vitest'
 import axios from 'axios'
