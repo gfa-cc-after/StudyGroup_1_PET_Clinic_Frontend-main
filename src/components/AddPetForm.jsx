@@ -3,7 +3,7 @@ import axios from 'axios'
 import '../styles/style.css'
 import { useNavigate } from 'react-router-dom'
 
-const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/api/v1/user/pet/add";
+const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/api/v1/user/pet";
 
 const AddPetForm = () => {
     const [formData, setFormData] = useState({
@@ -92,7 +92,7 @@ const AddPetForm = () => {
                         <button type="submit" className="formButton">Add</button>
                     </form>
                 </div>
-                <p style={{ color: 'red' }}>{error ? error : ""}</p>
+                {error && <p style={{ color: 'red' }}>{error}</p>}
             </div>
         </>
     );

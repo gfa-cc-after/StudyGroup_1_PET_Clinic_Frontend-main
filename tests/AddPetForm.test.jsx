@@ -88,7 +88,7 @@ describe('AddPetForm', () => {
     fireEvent.click(formButton);
 
     expect(mockPost).toHaveBeenCalledWith(
-      expect.stringContaining('/user/pet/add'),
+      expect.stringContaining('/user/pet'),
       {
         "petName": "Max",
         "petBreed": "dog",
