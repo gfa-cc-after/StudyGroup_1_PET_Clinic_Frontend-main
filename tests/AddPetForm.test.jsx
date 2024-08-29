@@ -65,11 +65,7 @@ describe('AddPetForm', () => {
       }
     })
     axios.post = mockPost
-    // Since the jsdom (test environemnt to run react tests) has a window object defined
-    // which is not a browser page, you can use the localstorage as is
-    //
-    // this localstorages lifetime is the tests lifetime, so you do not need to worry about
-    // overwriting the browser localstorage
+   
     localStorage.setItem("token", "some.valid.jwttoken");
 
 
