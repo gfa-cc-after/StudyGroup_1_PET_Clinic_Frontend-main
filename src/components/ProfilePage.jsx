@@ -18,7 +18,7 @@ const ProfilePage = () => {
     const originalName = decodedToken.displayName;
     const originalEmail = decodedToken.email;
 
-    const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/profile";
+    const apiUrl = `${import.meta.env.VITE_API_BACKEND_URL}/profile`;
 
     const [email, setEmail] = useState(originalEmail);
     const [username, setUsername] = useState(originalName);
@@ -57,8 +57,6 @@ const ProfilePage = () => {
         }
     };
 
-   
-
     const handleDoubleCheckPasswordChange = (e) => {
         const value = e.target.value;
         setDoubleCheckPassword(value);
@@ -67,35 +65,46 @@ const ProfilePage = () => {
 
     return (
         <>
-            <div className="form-pb"></div>
-            <div className="profilePage">
-                <section className="welcome">
-                    <h1 id='settingsHead'>Account Settings</h1>
-                </section>
-                <form onSubmit={handleProfileChange}>
-                    <p>Current email: <span>{originalEmail}</span></p>
-                    <div>
-                        <label htmlFor="email">Change Email:</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </div>                   
-                     <p>Current username: <span>{originalName}</span></p>
-                    <div>
-                        <label htmlFor="username">Change Username:</label>
-                        <input
-                            type="text"
-                            id="username"
-                            name="username"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                        />
+        <div className='form-pb'></div>
+        <div className="profilePage">
+            <section className="welcome">
+                <h1 id="settingsHead">Account Settings</h1>
+            </section>
+            <form onSubmit={handleProfileChange}>
+                <div className="left-column">
+                    <div className="form-group">
+                        <div>
+                            <p>Current email: <span>{originalEmail}</span></p>
+                            <div>
+                                <label htmlFor="email">Change Email:</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                            </div>
+                        </div>
                     </div>
-                    <div>
+                    <div className="form-group">
+                        <div>
+                            <p>Current username: <span>{originalName}</span></p>
+                            <div>
+                                <label htmlFor="username">Change Username:</label>
+                                <input
+                                    type="text"
+                                    id="username"
+                                    name="username"
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="right-column">
+                    <div className="form-group">
                         <label htmlFor="currentPassword">Current Password:</label>
                         <input
                             type="password"
@@ -105,19 +114,18 @@ const ProfilePage = () => {
                             required
                         />
                     </div>
-                    <div>
+                    <div className="form-group">
                         <label htmlFor="password">New Password:</label>
                         <input
                             type="password"
                             id="newPassword"
                             name="newPassword"
                             value={password}
-                            onChange={(e) => setPassword(e.target.value)
-                            }
+                            onChange={(e) => setPassword(e.target.value)}
                             required
                         />
                     </div>
-                    <div>
+                    <div className="form-group">
                         <label htmlFor="confirmPassword">New Password Again:</label>
                         <input
                             type="password"
@@ -128,18 +136,19 @@ const ProfilePage = () => {
                             required
                         />
                     </div>
-                    <button
-                        type="submit"
-                        className="changeButton"
-                        disabled={loading || !isPasswordCorrect}
-                    >
-                        {loading ? 'Changing...' : 'Change'}
-                    </button>
-                    {error && <p style={{ color: 'red' }}>{error}</p>}
-                </form>
-            </div>
+                </div>
+                <button
+                    type="submit"
+                    className="changeButton"
+                    disabled={loading || !isPasswordCorrect}
+                >
+                    {loading ? 'Changing...' : 'Change'}
+                </button>
+                {error && <p style={{ color: 'red' }}>{error}</p>}
+            </form>
+        </div>
         </>
     );
-};
+};    
 
 export default ProfilePage;
