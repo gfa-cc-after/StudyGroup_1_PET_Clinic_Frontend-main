@@ -1,5 +1,5 @@
 import React from 'react'
-import AddPetForm from '../src/components/AddPetForm'
+import AddPetForm from '../../src/components/AddPetForm'
 import { render, fireEvent, waitFor } from '@testing-library/react'
 import { it, expect, describe, vi } from 'vitest'
 import axios from 'axios'
