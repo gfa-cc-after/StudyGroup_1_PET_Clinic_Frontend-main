@@ -24,6 +24,22 @@ body{
     background-size: cover;
 }
 
+.prettybackground-box-add-pet {
+    background-color: #EEEEEE;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 .form-bg {
     position: absolute;
     width: 100%;
@@ -197,6 +213,21 @@ section.hero p {
     section p {
         min-width: 70vw;
     }
+    .form-bg {
+        background-image: url('../assets/petclinic-hero-small.jpg');
+        background-size: cover;
+        background-position: left -0.6vw top -5.7vw;
+        animation: fadeOut 3s forwards;
+    }
+
+    .addPetForm {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    .formButton {
+        width: 100%;
+    }
 }
 
 
@@ -223,6 +254,7 @@ section.hero p {
     animation: fadeIn 1s forwards; /* Fade in animation */
 
 }
+
 /* Keyframes for loginForm fade in */
 @keyframes fadeIn {
     to {
@@ -327,6 +359,24 @@ section.userhome-content{
     box-shadow: 5px 6px 10px -5px rgba(39, 39, 39, 0.68);
 }
 
+.formButton {
+    background-color: #188265;
+    color: white;
+    padding: 1em 1.5em;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 100%;
+    transition: background-color 0.4s ease;
+}
+
+.formButton:hover {
+    background-color: #0e543f;
+}
+
+
 button a {
     text-decoration: none;
 }
@@ -406,6 +456,16 @@ input[type=email] {
     border-radius: 4px;
 }
 
+.formInput {
+    width: 100%;
+    padding: 0.5em;
+    margin: 1vw 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
 span {
     color: #188265;
 }
@@ -474,4 +534,49 @@ section.services {
         url('../assets/Puppy-Kitten.png');
     background-size: cover;
     color: #272727;
+}
+
+/* Add Pet Form Container */
+.addPetForm {
+    z-index: 10;
+    border-radius: 20px; /* Smoother edges */
+    text-align: left;
+    background-color: rgba(40, 44, 52, 0.8); /* Slightly transparent background */
+    padding: 2em;
+    box-shadow: 7px 10px 10px -5px rgba(39, 39, 39, 0.68);
+    width: 100%; /* Let the form take the full width */
+    max-width: 400px; /* But limit its maximum width */
+}
+
+.addPetForm h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+
+/* Form Labels */
+.addPetForm label {
+    display: block;
+    color: #EEEEEE;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+/* Form Inputs */
+.addPetForm input[type="text"],
+.addPetForm input[type="date"],
+.addPetForm select,
+.addPetForm textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+/* Form Textarea */
+.addPetForm textarea {
+    resize: vertical;
 }
