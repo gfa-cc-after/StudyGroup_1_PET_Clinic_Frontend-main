@@ -2,6 +2,8 @@ import { useState } from 'react'
 import axios from 'axios'
 import '../styles/style.css'
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/api/v1/user/pet";
 
@@ -39,15 +41,16 @@ const AddPetForm = () => {
                 }
             })
             .then(() => {
-                navigate(`/user/home`)
+                toast.success('Pet added successfully ');
+                setTimeout(() => navigate(`/user/home`), 3000);
             })
-            .catch((err) => {
+            .catch ((err) =>{
                 if (!err.response) {
-                    setError('There was a network error');
+                  toast.error('There was a network error');
                 } else {
-                    setError('There was an error saving new pet...' + err.response.data);
+                  toast.error('There was an error adding a pet...'+ err.response.data);
                 }
-            })
+              })
     }
 
     return (
@@ -92,7 +95,7 @@ const AddPetForm = () => {
                         <button type="submit" className="formButton">Add</button>
                     </form>
                 </div>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
+                <ToastContainer />
             </div>
         </>
     );
