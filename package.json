@@ -20,7 +20,8 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.24.1",
     "react-toastify": "^10.0.5",
-    "whatwg-fetch": "^3.6.20"
+    "whatwg-fetch": "^3.6.20",
+    "zustand": "^4.5.5"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.6",
