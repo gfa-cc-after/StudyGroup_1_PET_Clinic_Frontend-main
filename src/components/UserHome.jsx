@@ -1,7 +1,8 @@
 import '../styles/style.css'
 import { Link } from 'react-router-dom'
-import { jwtDecode } from 'jwt-decode'
+import jwtDecode from 'jwt-decode'
 import usePets from '../hooks/usePets'
+
 
 const UserHome = () => {
 
@@ -17,12 +18,12 @@ const UserHome = () => {
         <div className='prettybackground-box'>
             <div className='userhome-bg'></div>
             <div className='userhome'>
-                <section className='welcome'><h1>Welcome <span>{name}</span>!</h1>
+                <section className='welcome'><h1 data-testid="welcomeId">Welcome <span>{name}</span>!</h1>
                     <h2>Nice to see you again!</h2>
                     <Link className="colored-button" to="/addPet" >Add Pet</Link>	</section>
                 <h3 className="home-h3">Your beloved pets</h3>
                 <section className='userhome-content'>
-                    <table className="home-table">
+                    <table className="home-table" data-testid="pet-table">
                         <thead>
                             <tr>
                                 <th>#</th>
