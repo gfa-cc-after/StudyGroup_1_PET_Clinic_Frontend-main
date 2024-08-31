@@ -52,4 +52,4 @@ To get started with the React Vite app, follow these steps:
 
 ### Instructions for installing toastify (needs to be installed when running frontend locally):
 
-        npm install --save react-toastify
+        npm install react-toastify
