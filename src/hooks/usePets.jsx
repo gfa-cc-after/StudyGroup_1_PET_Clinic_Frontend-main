@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from 'axios'
 
 const usePets = () => {
-    const dataUrl = import.meta.env.VITE_API_BACKEND_URL + "/user/pets"
+    const dataUrl = import.meta.env.VITE_API_BACKEND_URL + "/api/v1/user/pets"
     const token = localStorage.getItem('token')
 
     const [pets, setPets] = useState([]);
