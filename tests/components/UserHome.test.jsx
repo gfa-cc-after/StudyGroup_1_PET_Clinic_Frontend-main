@@ -5,11 +5,11 @@ import { BrowserRouter as MemoryRouter } from 'react-router-dom'
 import UserHome from '../../src/components/UserHome'
 import usePets from '../../src/hooks/usePets'
 
-vi.mock("jwt-decode", async (importOriginal) => {
+vi.mock('jwt-decode', async (importOriginal) => {
   const actual = await importOriginal()
   return {
     ...actual,
-    default: vi.fn().mockReturnValue({ displayName: 'testUser', role: 'user' })
+    jwtDecode: vi.fn().mockReturnValue({ displayName: 'testUser', role: 'user' })
   }
 })
 

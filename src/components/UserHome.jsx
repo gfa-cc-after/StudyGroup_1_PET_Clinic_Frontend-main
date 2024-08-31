@@ -1,6 +1,6 @@
 import '../styles/style.css'
 import { Link } from 'react-router-dom'
-import jwtDecode from 'jwt-decode'
+import { jwtDecode } from 'jwt-decode'
 import usePets from '../hooks/usePets'
 
 
