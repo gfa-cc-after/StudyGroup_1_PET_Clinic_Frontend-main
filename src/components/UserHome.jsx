@@ -2,11 +2,12 @@ import '../styles/style.css'
 import { Link } from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode'
 import usePets from '../hooks/usePets'
+import { useAuth } from '../hooks/store'
 
 const UserHome = () => {
 
-    const token = localStorage.getItem('token')
-    const decodedToken = jwtDecode(token)
+    const state = useAuth()
+    const decodedToken = jwtDecode(state.token)
     const name = decodedToken.displayName
     //const role = decodedToken.role
 

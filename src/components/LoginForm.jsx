@@ -1,17 +1,18 @@
 import { useState } from 'react'
 import axios from 'axios'
 import '../styles/style.css'
-import { jwtDecode } from "jwt-decode"
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from '../hooks/store';
 
 const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/api/v1/auth/login";
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const { login , role } = useAuth();
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -19,13 +20,16 @@ const LoginForm = () => {
     axios.post(apiUrl, { email, password },  {headers: { "Content-Type": "application/json"}})
     .then((response) => {
       console.log('Login successful, token: ' + response.data.token)
-      localStorage.setItem('token', response.data.token)
+      // localStorage.setItem('token', response.data.token)
+      login(response.data.token)
      
-      const decodedToken = jwtDecode(localStorage.getItem('token'))
-      const role = decodedToken.role
+      // const decodedToken = jwtDecode(localStorage.getItem('token'))
+      // const decodedToken = jwtDecode(token)
+      // const role = decodedToken.role
 
       toast.success('Login successful ');
-      setTimeout(() => navigate(`/${role}/home`), 3000); // Delay navigation for 3 second
+      console.log(role)
+      // setTimeout(() => navigate(`/${role}/home`), 3000); // Delay navigation for 3 second
     })
     .catch ((err) =>{
       if (!err.response) {
