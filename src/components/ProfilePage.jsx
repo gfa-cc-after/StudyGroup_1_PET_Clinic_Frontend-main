@@ -3,58 +3,46 @@ import { jwtDecode } from "jwt-decode";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProfilePage = () => {
     const token = localStorage.getItem('token');
     const navigate = useNavigate();
-
-    // Check if token exists
-    if (!token) {
-        navigate('/login');
-        return null; 
-    }
-
     const decodedToken = jwtDecode(token);
     const originalName = decodedToken.displayName;
     const originalEmail = decodedToken.email;
+    
 
-    const apiUrl = `${import.meta.env.VITE_API_BACKEND_URL}/profile`;
+    const apiUrl = `${import.meta.env.VITE_API_BACKEND_URL}/api/v1/user/profile`;
 
     const [email, setEmail] = useState(originalEmail);
-    const [username, setUsername] = useState(originalName);
+    const [displayName, setDisplayName] = useState(originalName);
     const [password, setPassword] = useState('');
     const [originalPassword, setOriginalPassword] = useState('');
     const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
     const [doubleCheckPassword, setDoubleCheckPassword] = useState('');
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(false);
 
-    const handleProfileChange = async (event) => {
+    const handleProfileChange = (event) => {
         event.preventDefault();
-        setLoading(true);
-        setError(null);
 
-        try {
-            const response = await axios.post(apiUrl, { username, email, password }, {
-                headers: { "Content-Type": "application/json" }
-            });
+        axios.post(apiUrl, { displayName, email, password, originalPassword }, {
+            headers: { 'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                }
+        })
+        .then((response) => {
+            toast.success('Change was successful! Please login after.');
 
-            console.log('Change was successful!');
-            localStorage.setItem('token', response.data.token);
-
-            const newDecodedToken = jwtDecode(localStorage.getItem('token'));
-            localStorage.setItem('role', newDecodedToken.role);
-
-            navigate(`/login`);
-        } catch (err) {
+            setTimeout(() => navigate('/login'), 3000);
+        })
+        .catch((err) => {
             if (!err.response) {
-                setError('There was a network error.');
+                toast.error('There was a network error.');
             } else {
-                setError('Error changing your profile: ' + (err.response.data.message || err.response.data));
+                toast.error('Error changing your profile: ' + (err.response.data.message || err.response.data));
             }
-        } finally {
-            setLoading(false);
-        }
+        })
     };
 
     const handleDoubleCheckPasswordChange = (e) => {
@@ -68,7 +56,7 @@ const ProfilePage = () => {
         <div className='form-pb'></div>
         <div className="profilePage">
             <section className="welcome">
-                <h1 id="settingsHead"  style={{ textAlign: 'center' }}>Profile Settings</h1>
+                <h1 style={{ textAlign: 'center' }}>Profile Settings</h1>
             </section>
             <form onSubmit={handleProfileChange}>
                         <div>
@@ -81,23 +69,25 @@ const ProfilePage = () => {
                                     name="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
+                                    required
                                 />
                             </div>
                         <div>
                             <p>Current username: <span>{originalName}</span></p>
                             <div>
-                                <label htmlFor="username">Change Username:</label>
+                                <label htmlFor="displayName">Change Username:</label>
                                 <input
                                     type="text"
-                                    id="username"
-                                    name="username"
-                                    value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
+                                    id="displayName"
+                                    name="displayName"
+                                    value={displayName}
+                                    onChange={(e) => setDisplayName(e.target.value)}
+                                    required
                                 />
                             </div>
                         </div>
                 </div>
-                        <label htmlFor="currentPassword">Current Password:</label>
+                        <label htmlFor="currentPassword">Original Password:</label>
                         <input
                             type="password"
                             id="currentPassword"
@@ -112,7 +102,7 @@ const ProfilePage = () => {
                             name="newPassword"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            required
+                            
                         />
                         <label htmlFor="confirmPassword">New Password Again:</label>
                         <input
@@ -121,17 +111,17 @@ const ProfilePage = () => {
                             name="confirmPassword"
                             value={doubleCheckPassword}
                             onChange={handleDoubleCheckPasswordChange}
-                            required
+                            
                         />
                 <button
                     type="submit"
                     className="changeButton"
-                    disabled={loading || !isPasswordCorrect}
+                    disabled={!isPasswordCorrect}
+                    
                 >
-                    {loading ? 'Changing...' : 'Change'}
-                </button>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
+                Change</button>
             </form>
+            <ToastContainer />
         </div>
         </>
     );

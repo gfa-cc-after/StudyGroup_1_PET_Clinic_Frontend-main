@@ -31,7 +31,7 @@ const NavBar = () => {
                         <>
                             <li className='nav'><Link to={`/${role}/home`}>My pets</Link></li>
                             <li className='nav'><Link to={`/${role}/history`}>History</Link></li>
-                            <li className='nav'><Link to={`/${role}/profile`}>Manage profile</Link></li>    
+                            <li className='nav'><Link to={`/profile`}>Manage profile</Link></li>    
                             <Link className="colored-button" to="/logout" >Log Out</Link>
                         </>
                     )}
