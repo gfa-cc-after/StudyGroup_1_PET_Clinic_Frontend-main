@@ -576,10 +576,8 @@ section.services {
     width: 100%;
     height: 130%;
     background-image: url('../assets/userbg.jpg');
-    animation: fadeIn 1s forwards;
-
   }
-
+  
   .profilePage {
     position: sticky;
     background-color: #dddddd;
@@ -588,9 +586,8 @@ section.services {
     font-size: calc(10px + 2vmin);
     color: rgb(0, 0, 0);
     box-shadow: 7px 10px 10px -5px rgba(39, 39, 39, 0.68);
-    animation: fadeIn 1s forwards;
     display: grid;
-    gap: 20px; /* Adds space between columns */
+    gap: 20px;
     text-align: center;
 }
 
@@ -607,4 +604,3 @@ section.services {
 .changeButton:disabled {
     background-color: grey;
 }
-
