@@ -479,45 +479,26 @@ section.services {
 .form-pb {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 130%;
     background-image: url('../assets/userbg.jpg');
-    animation: fadeOut 1.5s forwards;
+    animation: fadeIn 1s forwards;
+
   }
   
   .profilePage {
-    position:fixed;
-    display: stic;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #fdfdfd;
-    height: 29.1em;
-    width: 50em;
+    position: sticky;
+    background-color: #dddddd;
+    width: 80%;
     margin: 0 auto;
     font-size: calc(10px + 2vmin);
     color: rgb(0, 0, 0);
     box-shadow: 7px 10px 10px -5px rgba(39, 39, 39, 0.68);
-    opacity: 0.2;
     animation: fadeIn 1s forwards;
+    display: grid;
+    gap: 20px; /* Adds space between columns */
+    text-align: center;
 }
 
-form {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.left-column, .right-column {
-    width: 45%; /* Adjusts the width of each column */
-}
-
-.left-column {
-    text-align: left;
-}
-
-.right-column {
-    text-align: right;
-}
 
 .changeButton {
     margin-top: 20px;
@@ -531,13 +512,6 @@ form {
 .changeButton:disabled {
     background-color: grey;
 }
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-
-
 
   #settingsHead{
     text-align: left;

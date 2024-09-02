@@ -68,11 +68,9 @@ const ProfilePage = () => {
         <div className='form-pb'></div>
         <div className="profilePage">
             <section className="welcome">
-                <h1 id="settingsHead">Account Settings</h1>
+                <h1 id="settingsHead"  style={{ textAlign: 'center' }}>Profile Settings</h1>
             </section>
             <form onSubmit={handleProfileChange}>
-                <div className="left-column">
-                    <div className="form-group">
                         <div>
                             <p>Current email: <span>{originalEmail}</span></p>
                             <div>
@@ -85,9 +83,6 @@ const ProfilePage = () => {
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
                             </div>
-                        </div>
-                    </div>
-                    <div className="form-group">
                         <div>
                             <p>Current username: <span>{originalName}</span></p>
                             <div>
@@ -101,10 +96,7 @@ const ProfilePage = () => {
                                 />
                             </div>
                         </div>
-                    </div>
                 </div>
-                <div className="right-column">
-                    <div className="form-group">
                         <label htmlFor="currentPassword">Current Password:</label>
                         <input
                             type="password"
@@ -113,8 +105,6 @@ const ProfilePage = () => {
                             onChange={(e) => setOriginalPassword(e.target.value)}
                             required
                         />
-                    </div>
-                    <div className="form-group">
                         <label htmlFor="password">New Password:</label>
                         <input
                             type="password"
@@ -124,8 +114,6 @@ const ProfilePage = () => {
                             onChange={(e) => setPassword(e.target.value)}
                             required
                         />
-                    </div>
-                    <div className="form-group">
                         <label htmlFor="confirmPassword">New Password Again:</label>
                         <input
                             type="password"
@@ -135,8 +123,6 @@ const ProfilePage = () => {
                             onChange={handleDoubleCheckPasswordChange}
                             required
                         />
-                    </div>
-                </div>
                 <button
                     type="submit"
                     className="changeButton"
