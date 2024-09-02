@@ -581,7 +581,7 @@ section.services {
   .profilePage {
     position: sticky;
     background-color: #dddddd;
-    width: 80%;
+    width:70%;
     margin: 0 auto;
     font-size: calc(10px + 2vmin);
     color: rgb(0, 0, 0);
