@@ -49,3 +49,7 @@ To get started with the React Vite app, follow these steps:
 2.  Fill in the values for each environment variable in the .env file.
 
 ***The .env file should not be committed to the repository as it's listed in the .gitignore.***
+
+### Instructions for installing toastify (needs to be installed when running frontend locally):
+
+        npm install react-toastify

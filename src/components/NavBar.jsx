@@ -41,6 +41,11 @@ const NavBar = () => {
                             <Link className="colored-button" to="/logout" >Log Out</Link>
                         </>
                     )}
+                    {location.pathname === '/user/pet/add' && (
+                        <>
+                            <li className='nav'><Link to="/user/home">Go back</Link></li>
+                        </>
+                    )}
                 </ul>
             </nav>
         </header>
