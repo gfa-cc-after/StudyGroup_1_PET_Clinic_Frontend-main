@@ -8,18 +8,16 @@ const useAuth = create()(devtools((set) => ({
   displayName: null,
 
   login: (jwtToken) => set((state) => {
-    const decoded = jwtDecode(jwtToken);
     try {
+      const { role, displayName } = jwtDecode(jwtToken);
       return {
         ...state,
         token: jwtToken,
-        role: decoded.role,
-        displayName: decoded.displayName
+        role,
+        displayName
       }
     } catch (error) {
-      console.error('Error decoding token: ', error);
       return {
-        ...state,
         token: null,
         role: null,
         displayName: null

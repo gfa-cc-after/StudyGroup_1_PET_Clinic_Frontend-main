@@ -15,7 +15,7 @@ const usePets = () => {
         {
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            Authorization: `Bearer ${token}`
           }
         });
       return response;

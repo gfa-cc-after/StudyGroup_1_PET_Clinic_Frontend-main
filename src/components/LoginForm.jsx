@@ -18,30 +18,26 @@ const LoginForm = () => {
         <div className="loginForm">
           <h1>Login</h1>
           <form onSubmit={handleLogin}>
-            <div>
-              <label htmlFor='email'>Email:</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={email}
-                autoComplete='home email'
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor='password'>Password:</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                autoComplete='current-password'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
+            <label htmlFor='email'>Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              autoComplete="home email"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <label htmlFor='password'>Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              autoComplete='current-password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
             <button type="submit" className="formButton">Login</button>
           </form>
         </div>
