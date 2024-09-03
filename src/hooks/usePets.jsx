@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from 'axios'
+import { useAuth } from "./store";
 
 const usePets = () => {
     const dataUrl = import.meta.env.VITE_API_BACKEND_URL + "/api/v1/user/pets"
-    const token = localStorage.getItem('token')
+    // const token = localStorage.getItem('token')
+    const { token } = useAuth();
 
     const [pets, setPets] = useState([]);
     useEffect(() => {

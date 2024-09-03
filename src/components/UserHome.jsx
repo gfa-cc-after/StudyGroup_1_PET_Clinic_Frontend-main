@@ -5,20 +5,15 @@ import usePets from '../hooks/usePets'
 import { useAuth } from '../hooks/store'
 
 const UserHome = () => {
-
-    const state = useAuth()
-    const decodedToken = jwtDecode(state.token)
-    const name = decodedToken.displayName
-    //const role = decodedToken.role
-
+    const { user } = useAuth()
+    const { displayName } = user;
     const pets = usePets();
-    console.log(pets);
 
     return (
         <div className='prettybackground-box'>
             <div className='userhome-bg'></div>
             <div className='userhome'>
-                <section className='welcome'><h1>Welcome <span>{name}</span>!</h1>
+                <section className='welcome'><h1>Welcome <span>{displayName}</span>!</h1>
                     <h2>Nice to see you again!</h2>
                     <Link className="colored-button" to="/user/pet/add" >Add Pet</Link>	</section>
                 <h3 className="home-h3">Your beloved pets</h3>
