@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../hooks/store";
+import { useAuth } from "../../hooks/store";
 
 const ProtectedPage = ({ children }) => {
   const { token } = useAuth();

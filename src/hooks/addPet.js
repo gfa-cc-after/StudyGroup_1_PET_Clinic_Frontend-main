@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { useAuth } from "./store";
 import { toast } from "react-toastify";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/api/v1/user/pet";
-
+import { getPets } from "../utils/httpClient";
 
 const useAddPet = () => {
     const { token } = useAuth();
@@ -21,13 +18,7 @@ const useAddPet = () => {
     })
 
     const addPet = () => {
-        axios.post(apiUrl, formData,
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`
-                }
-            })
+        getPets(token)
             .then(() => {
                 toast.success('Pet added successfully ');
                 setTimeout(() => navigate(`/user/home`), 3000);

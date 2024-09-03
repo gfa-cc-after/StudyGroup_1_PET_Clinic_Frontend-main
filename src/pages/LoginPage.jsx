@@ -1,9 +1,9 @@
 import '../styles/style.css'
 import 'react-toastify/dist/ReactToastify.css';
-import { useLoginForm } from '../hooks/loginForm.hook';
+import { useLoginForm } from '../hooks/loginForm';
 
 
-const LoginForm = () => {
+const LoginPage = () => {
   const { callLogin, email, setEmail, password, setPassword } = useLoginForm();
 
   const handleLogin = async (event) => {
@@ -46,4 +46,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export { LoginPage }

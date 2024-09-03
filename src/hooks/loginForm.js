@@ -3,23 +3,19 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./store";
 import { toast } from "react-toastify";
+import { login as loginRequest } from '../utils/httpClient'
 
-const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/api/v1/auth/login";
 
 const useLoginForm = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login, role } = useAuth();
+  const { login, role, setUserWithToken } = useAuth();
 
   const callLogin = async () => {
     try {
-      const loginresponse = await axios
-        .post(apiUrl, { email, password }, {
-          headers:
-            { "Content-Type": "application/json" }
-        })
-      login(loginresponse.data.token);
+      const loginresponse = await loginRequest(email, password);
+      setUserWithToken(loginresponse.data.token);
       // why is the role changed only after the second trigger? 🤔
       setTimeout(() => {
         if (role === 'user') navigate('/user/home');

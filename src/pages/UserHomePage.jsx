@@ -4,7 +4,7 @@ import { jwtDecode } from 'jwt-decode'
 import usePets from '../hooks/usePets'
 import { useAuth } from '../hooks/store'
 
-const UserHome = () => {
+const UserHomePage = () => {
     const { displayName } = useAuth()
     const { pets } = usePets();
     return (
@@ -49,4 +49,4 @@ const UserHome = () => {
         </div>
     )
 }
-export default UserHome
+export { UserHomePage }

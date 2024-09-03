@@ -44,4 +44,4 @@ function LandingPage() {
     </div>
   )
 }
-export default LandingPage
+export { LandingPage }

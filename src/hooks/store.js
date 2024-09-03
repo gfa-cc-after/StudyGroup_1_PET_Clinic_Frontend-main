@@ -7,7 +7,7 @@ const useAuth = create()(devtools((set) => ({
   role: null,
   displayName: null,
 
-  login: (jwtToken) => set((state) => {
+  setUserWithToken: (jwtToken) => set((state) => {
     try {
       const { role, displayName } = jwtDecode(jwtToken);
       return {
