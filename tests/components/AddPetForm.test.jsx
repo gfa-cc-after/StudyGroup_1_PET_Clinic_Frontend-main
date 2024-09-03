@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { act } from 'react'
 import AddPetForm from '../../src/components/AddPetForm'
-import { render, fireEvent, waitFor } from '@testing-library/react'
+import { render, fireEvent, waitFor, renderHook } from '@testing-library/react'
 import { it, expect, describe, vi } from 'vitest'
 import axios from 'axios'
 import { BrowserRouter } from 'react-router-dom'
+import { useAuth } from '../../src/hooks/store'
 
 vi.mock('axios')
 
@@ -58,15 +59,19 @@ describe('AddPetForm', () => {
   })
 
   it('should send post request to backend on add click with the proper data', async () => {
+    const token = "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9VU0VSIiwic3ViIjoidGVzdEBleGFtcGxlLmNvbSIsImlhdCI6MTcyMjkwMDcyOCwiZXhwIjoxNzIyOTAyNTI4fQ.9Fzi6MCTRjyIZ2dSRDVYCWxNZtQbF87THAWJFQ5AT8o"
     const mockPost = vi.fn().mockResolvedValue({
       data: {
-        "token": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9VU0VSIiwic3ViIjoidGVzdEBleGFtcGxlLmNvbSIsImlhdCI6MTcyMjkwMDcyOCwiZXhwIjoxNzIyOTAyNTI4fQ.9Fzi6MCTRjyIZ2dSRDVYCWxNZtQbF87THAWJFQ5AT8o",
-        "role": "USER"
+        token,
+        role: "USER"
       }
     })
     axios.post = mockPost
-   
-    localStorage.setItem("token", "some.valid.jwttoken");
+
+    const { result } = renderHook(() => useAuth())
+    act(() => {
+      result.current.login(token)
+    })
 
 
     const { getByLabelText, findAllByRole } = renderWithRouter(<AddPetForm />)
@@ -104,7 +109,7 @@ describe('AddPetForm', () => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer some.valid.jwttoken"
+          "Authorization": `Bearer ${token}`
         }
       }
     )
