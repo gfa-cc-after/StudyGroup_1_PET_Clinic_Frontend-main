@@ -1,17 +1,20 @@
 import { create } from "zustand";
+import { devtools } from 'zustand/middleware'
 import { jwtDecode } from "jwt-decode";
 
-const useAuth = create((set) => ({
-    token: null,
-    role: null,
-  
-    login: (jwtToken) => {
-      const decodedToken = jwtDecode(jwtToken);
+const useAuth = create()(devtools((set) => ({
+  token: null,
+  role: null,
+  displayName: null,
 
-      set({ token: jwtToken, role: decodedToken.role });
-    },
-
-    logout: () => set({ token: null, role: null}),
-}));
+  login: (jwtToken) => set((state) => (
+    {
+      ...state,
+      token: jwtToken,
+      role: jwtDecode(jwtToken).role,
+      displayName: jwtDecode(jwtToken).displayName
+    })),
+  logout: () => set({ token: null, role: null }),
+})));
 
 export { useAuth };
