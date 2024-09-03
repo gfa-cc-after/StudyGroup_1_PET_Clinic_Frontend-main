@@ -8,7 +8,8 @@ const UserHome = () => {
 
     const { displayName } = useAuth()
 
-    const pets = usePets();
+    const { pets } = usePets();
+    console.log(pets)
 
     return (
         <div className='prettybackground-box'>
@@ -33,7 +34,7 @@ const UserHome = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {(pets.length > 0) && pets.map((pet, index) => (
+                            {pets.length > 0 && pets.map((pet, index) => (
                                 <tr key={index}>
                                     <td>{index + 1}</td>
                                     <td>{pet.petName}</td>

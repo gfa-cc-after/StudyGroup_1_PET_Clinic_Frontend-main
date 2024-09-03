@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import axios from 'axios'
 import { useAuth } from "./store";
 
+const dataUrl = import.meta.env.VITE_API_BACKEND_URL + "/api/v1/user/pets"
+
 const usePets = () => {
-  const dataUrl = import.meta.env.VITE_API_BACKEND_URL + "/api/v1/user/pets"
   const { token } = useAuth();
 
   const [pets, setPets] = useState([]);
@@ -21,13 +22,13 @@ const usePets = () => {
     }
     getPets()
       .then(({ data }) => {
-        setPets(data);
+        setPets(data.pets);
       }).catch((error) => {
         console.error('Error fetching data: ', error);
       });
   }, [token]);
 
-  return (pets);
+  return { pets };
 }
 
 export default usePets;

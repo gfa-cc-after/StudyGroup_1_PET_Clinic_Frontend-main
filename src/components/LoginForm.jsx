@@ -1,6 +1,6 @@
 import '../styles/style.css'
 import 'react-toastify/dist/ReactToastify.css';
-import { useLoginForm } from './loginForm.hook';
+import { useLoginForm } from '../hooks/loginForm.hook';
 
 
 const LoginForm = () => {
