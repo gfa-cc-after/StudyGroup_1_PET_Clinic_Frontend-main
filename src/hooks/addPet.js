@@ -2,12 +2,12 @@ import { useState } from "react";
 import { useAuth } from "./store";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { getPets } from "../utils/httpClient";
+import { addPet as addPetHttp } from "../utils/httpClient";
 
 const useAddPet = () => {
     const { token } = useAuth();
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({
+    const [petDetails, setPetDetails] = useState({
         petName: '',
         petBreed: '',
         petSex: '',
@@ -17,8 +17,8 @@ const useAddPet = () => {
         specialCondition: ''
     })
 
-    const addPet = () => {
-        getPets(token)
+    const addPet = (pet) => {
+        addPetHttp(token, pet)
             .then(() => {
                 toast.success('Pet added successfully ');
                 setTimeout(() => navigate(`/user/home`), 3000);
@@ -32,7 +32,7 @@ const useAddPet = () => {
             })
     }
 
-    return { formData, setFormData, addPet };
+    return { petDetails, setPetDetails, addPet };
 }
 
 export { useAddPet };

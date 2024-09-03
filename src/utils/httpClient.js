@@ -25,4 +25,13 @@ const getPets = async (token) => {
   });
 }
 
-export { login, getPets, register };
+const addPet = async (token, pet) => {
+  return await axiosInstane.post('/api/v1/user/pet', pet, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    }
+  });
+}
+
+export { login, getPets, register, addPet };

@@ -7,10 +7,11 @@ const usePets = () => {
 
   const [pets, setPets] = useState([]);
   useEffect(() => {
-    getPets()
+    getPets(token)
       .then(({ data }) => {
         setPets(data.pets);
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.error('Error fetching data: ', error);
       });
   }, [token]);

@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { devtools } from 'zustand/middleware'
 import { jwtDecode } from "jwt-decode";
 
-const useAuth = create()(devtools((set) => ({
+const useAuth = create(devtools((set) => ({
   token: null,
   role: null,
   displayName: null,
