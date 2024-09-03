@@ -10,18 +10,19 @@ const useLoginForm = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login, role, setUserWithToken } = useAuth();
+  const { user, setUser } = useAuth();
+  const { role } = user;
 
   const callLogin = async () => {
     try {
       const loginresponse = await loginRequest(email, password);
-      setUserWithToken(loginresponse.data.token);
-      // why is the role changed only after the second trigger? 🤔
+      setUser(loginresponse.data.token);
       setTimeout(() => {
         if (role === 'user') navigate('/user/home');
         if (role === 'admin') navigate('/admin/home');
       }, 3000)
     } catch (err) {
+      console.error({ err });
       if (err instanceof AxiosError) {
         toast.error('There was an error logging in...' + err.response.data.error);
       } else {

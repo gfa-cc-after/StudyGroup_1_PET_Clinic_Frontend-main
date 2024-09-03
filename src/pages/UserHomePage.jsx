@@ -4,7 +4,8 @@ import usePets from '../hooks/usePets'
 import { useAuth } from '../hooks/store'
 
 const UserHomePage = () => {
-  const { displayName } = useAuth()
+  const { user } = useAuth();
+  const { displayName } = user;
   const { pets } = usePets();
   return (
     <div className='prettybackground-box'>
