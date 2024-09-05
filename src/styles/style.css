@@ -600,7 +600,3 @@ section.services {
     border: none;
     cursor: pointer;
 }
-
-.changeButton:disabled {
-    background-color: grey;
-}
