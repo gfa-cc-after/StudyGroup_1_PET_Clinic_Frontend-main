@@ -46,7 +46,7 @@ const ProfilePage = () => {
                 }
             })
             .then((response) => {
-                toast.success('Change was successful! Please login after.');
+                toast.success('Change was successful. Please login after!');
                 setTimeout(() => navigate('/login'), 3000);
             })
             .catch((err) => {
