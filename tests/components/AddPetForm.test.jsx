@@ -1,7 +1,8 @@
-import React from 'react'
 import AddPetForm from '../../src/components/AddPetForm'
-import { render, fireEvent, waitFor } from '@testing-library/react'
+import { useAuth } from '../../src/hooks/store'
+import { render, fireEvent, waitFor, renderHook } from '@testing-library/react'
 import { it, expect, describe, vi } from 'vitest'
+import { act } from 'react';
 import axios from 'axios'
 import { BrowserRouter } from 'react-router-dom'
 
@@ -65,9 +66,13 @@ describe('AddPetForm', () => {
       }
     })
     axios.post = mockPost
-   
-    localStorage.setItem("token", "some.valid.jwttoken");
 
+    // Mock implementation of useAuth hook
+    const renderedHook = renderHook(() => useAuth())
+
+    act(() => {
+        renderedHook.result.current.setUser('eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9VU0VSIiwic3ViIjoidGVzdEBleGFtcGxlLmNvbSIsImlhdCI6MTcyMjkwMDcyOCwiZXhwIjoxNzIyOTAyNTI4fQ.9Fzi6MCTRjyIZ2dSRDVYCWxNZtQbF87THAWJFQ5AT8o')
+    })
 
     const { getByLabelText, findAllByRole } = renderWithRouter(<AddPetForm />)
 
@@ -104,7 +109,7 @@ describe('AddPetForm', () => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer some.valid.jwttoken"
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9VU0VSIiwic3ViIjoidGVzdEBleGFtcGxlLmNvbSIsImlhdCI6MTcyMjkwMDcyOCwiZXhwIjoxNzIyOTAyNTI4fQ.9Fzi6MCTRjyIZ2dSRDVYCWxNZtQbF87THAWJFQ5AT8o"
         }
       }
     )
