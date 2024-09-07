@@ -16,4 +16,4 @@ return (
     </div>
     )
 }
-export default AdminHome;
+export default AdminHome
