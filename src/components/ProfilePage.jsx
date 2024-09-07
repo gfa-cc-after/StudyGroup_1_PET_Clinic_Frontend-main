@@ -17,9 +17,9 @@ const ProfilePage = () => {
 
     const [email, setEmail] = useState(originalEmail);
     const [displayName, setDisplayName] = useState(originalName);
-    const [password, setPassword] = useState('');
-    const [originalPassword, setOriginalPassword] = useState('');
-    const [doubleCheckPassword, setDoubleCheckPassword] = useState('');
+    const [password, setPassword] = useState(null);
+    const [originalPassword, setOriginalPassword] = useState(null);
+    const [doubleCheckPassword, setDoubleCheckPassword] = useState(null);
     const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
 
     // Function to validate passwords on form submission, not on change
