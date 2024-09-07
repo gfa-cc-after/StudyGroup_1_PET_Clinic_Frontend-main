@@ -4,6 +4,7 @@ import '../styles/style.css'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from '../hooks/store'
 
 const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/api/v1/user/pet";
 
@@ -19,6 +20,7 @@ const AddPetForm = () => {
     })
 
     const navigate = useNavigate()
+    const { token } = useAuth()
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -30,7 +32,6 @@ const AddPetForm = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const token = localStorage.getItem('token');
 
         axios.post(apiUrl, formData,
             {

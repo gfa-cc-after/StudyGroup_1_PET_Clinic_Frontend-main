@@ -4,7 +4,6 @@ import { useAuth } from "./store";
 
 const usePets = () => {
     const dataUrl = import.meta.env.VITE_API_BACKEND_URL + "/api/v1/user/pets"
-    // const token = localStorage.getItem('token')
     const { token } = useAuth();
 
     const [pets, setPets] = useState([]);
@@ -27,7 +26,7 @@ const usePets = () => {
             .then(response => setPets(response.data.pets))
             .catch(error => console.error('Error fetching data:', error));
     }, [0]);
-    console.log(`pets: ${pets}`);
+    
     return (pets);
 }
 

@@ -1,11 +1,12 @@
 import '../styles/style.css'
 import logo from '../assets/pet-logo.png';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../hooks/store';
 
 const NavBar = () => {
 
-
-    const role = localStorage.getItem('role')
+    const { user } = useAuth()
+    const { role } = user;
 
     return (
         <header className="navbar">
