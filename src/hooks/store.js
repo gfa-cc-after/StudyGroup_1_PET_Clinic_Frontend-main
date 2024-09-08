@@ -1,7 +1,8 @@
 import { create } from "zustand";
+import { devtools } from 'zustand/middleware'
 import { jwtDecode } from "jwt-decode";
 
-const useAuth = create((set) => ({
+const useAuth = create(devtools((set) => ({
   token: null,
   user: {
     displayName: null,
@@ -10,10 +11,10 @@ const useAuth = create((set) => ({
 
   setUser: (token) => {
     const { role, displayName } = jwtDecode(token);
-    set({ token, role, displayName });
+    set({ token, user: { role, displayName } });
   },
 
   logout: () => set({ token: null, user: { displayName: null, role: null } }),
-}));
+})));
 
 export { useAuth };
