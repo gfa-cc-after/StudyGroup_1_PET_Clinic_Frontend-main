@@ -1,12 +1,13 @@
 import '../styles/style.css'
 import logo from '../assets/pet-logo.png';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../hooks/store';
 
 const NavBar = () => {
 
     const { user } = useAuth()
     const { role } = user;
+    const { pathname } = useLocation();
 
     return (
         <header className="navbar">
@@ -16,33 +17,33 @@ const NavBar = () => {
             </div>
             <nav>
                 <ul className='nav'>
-                    {location.pathname === '/login' && (
+                    {pathname === '/login' && (
                         <>
                             <li className='nav'><Link to="/help">Get help</Link></li>
                             <li className='nav'><Link to="/">Go back</Link></li>
                         </>
                     )}
-                    {location.pathname === '/register' && (
+                    {pathname === '/register' && (
                         <>
                             <li className='nav'><Link to="/help">Get help</Link></li>
                             <li className='nav'><Link to="/">Go back</Link></li>
                         </>
                     )}
-                    {location.pathname === '/user/home' && (
+                    {pathname === '/user/home' && (
                         <>
                             <li className='nav'><Link to={`/${role}/home`}>My pets</Link></li>
                             <li className='nav'><Link to={`/${role}/history`}>History</Link></li>
-                            <li className='nav'><Link to={`/${role}/profile`}>Manage profile</Link></li>    
+                            <li className='nav'><Link to={`/${role}/profile`}>Manage profile</Link></li>
                             <Link className="colored-button" to="/logout" >Log Out</Link>
                         </>
                     )}
-                    {location.pathname === '/admin/home' && (
+                    {pathname === '/admin/home' && (
                         <>
                             <li className='nav'><Link to={`/${role}/profile`}>Manage profile</Link></li>
                             <Link className="colored-button" to="/logout" >Log Out</Link>
                         </>
                     )}
-                    {location.pathname === '/user/pet/add' && (
+                    {pathname === '/user/pet/add' && (
                         <>
                             <li className='nav'><Link to="/user/home">Go back</Link></li>
                         </>
