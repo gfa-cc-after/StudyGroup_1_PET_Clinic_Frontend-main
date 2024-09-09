@@ -34,7 +34,7 @@ const LoginForm = () => {
         if (!err.response) {
           toast.error('There was a network error');
         } else {
-          toast.error('There was an error logging in...' + err.response.data?.error || "");
+          toast.error('There was an error logging in...' + err.response.data?.error || '');
         }
       })
   }

@@ -35,7 +35,7 @@ const RegistrationForm = () => {
             if (!err.response) {
                 toast.error('There was a network error');
             } else {
-                toast.error('There was an error while registering...'+ err.response.data);
+                toast.error('There was an error while registering...' + err.response.data?.error || '');
             }
           })
     }

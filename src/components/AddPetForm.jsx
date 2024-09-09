@@ -48,7 +48,7 @@ const AddPetForm = () => {
                 if (!err.response) {
                   toast.error('There was a network error');
                 } else {
-                  toast.error('There was an error adding a pet...'+ err.response.data);
+                  toast.error('There was an error adding a pet...' + err.response.data?.error || '');
                 }
               })
     }
