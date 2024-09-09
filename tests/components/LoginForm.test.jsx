@@ -87,7 +87,7 @@ describe('LoginForm', () => {
     });
 
     it('should handle login failures due to incorrect credentials', async () => {
-        const mockPost = vi.fn().mockRejectedValue({ response: { data: 'Bad credentials' } });
+        const mockPost = vi.fn().mockRejectedValue({ response: { data: {error: 'Invalid credentials'} } });
         axios.post = mockPost;
     
         const { getByLabelText, findAllByRole, getByText } = renderWithRouter(<LoginForm />)
@@ -102,7 +102,7 @@ describe('LoginForm', () => {
         fireEvent.click(loginButton);
     
         await waitFor(() => {
-            expect(getByText('There was an error logging in...Bad credentials')).toBeInTheDocument();
+            expect(getByText('There was an error logging in...Invalid credentials')).toBeInTheDocument();
         });
     });
 })
