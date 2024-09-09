@@ -5,7 +5,7 @@ import { useAuth } from '../hooks/store';
 
 const NavBar = () => {
 
-    const { user } = useAuth()
+    const { user, logout } = useAuth()
     const { role } = user;
     const { pathname } = useLocation();
 
@@ -34,13 +34,13 @@ const NavBar = () => {
                             <li className='nav'><Link to={`/${role}/home`}>My pets</Link></li>
                             <li className='nav'><Link to={`/${role}/history`}>History</Link></li>
                             <li className='nav'><Link to={`/${role}/profile`}>Manage profile</Link></li>
-                            <Link className="colored-button" to="/logout" >Log Out</Link>
+                            <Link className="colored-button" to="/" onClick={logout}>Log Out</Link>
                         </>
                     )}
                     {pathname === '/admin/home' && (
                         <>
                             <li className='nav'><Link to={`/${role}/profile`}>Manage profile</Link></li>
-                            <Link className="colored-button" to="/logout" >Log Out</Link>
+                            <Link className="colored-button" to="/" onClick={logout}>Log Out</Link>
                         </>
                     )}
                     {pathname === '/user/pet/add' && (
