@@ -554,12 +554,11 @@ section.services {
     margin-bottom: 1rem;
 }
 
-
 /* Form Labels */
 .addPetForm label {
     display: block;
     color: #EEEEEE;
-    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
     font-weight: bold;
 }
 
@@ -569,14 +568,15 @@ section.services {
 .addPetForm select,
 .addPetForm textarea {
     width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1.5rem;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
     border-radius: 5px;
     border: 1px solid #ccc;
-    font-size: 1rem;
+    box-sizing: border-box;
 }
 
 /* Form Textarea */
 .addPetForm textarea {
-    resize: vertical;
+    height: 100px;
 }
