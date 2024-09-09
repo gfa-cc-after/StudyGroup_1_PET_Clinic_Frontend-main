@@ -19,6 +19,6 @@ describe('useAuth hook test', () => {
 
         expect(renderedHook.result.current.token).not.toBe(null)
         expect(renderedHook.result.current.role).not.toBe(null)
-        expect(renderedHook.result.current.role).toBe('user')
+        expect(renderedHook.result.current.user.role).toBe('user')
     })
 })
