@@ -71,7 +71,9 @@ const LoginForm = () => {
           <button type="submit" className="formButton">Login</button>
         </form>
         </div>
-        <ToastContainer />
+        <ToastContainer 
+          autoClose={2500}
+        />
       </div>
       </>
   );

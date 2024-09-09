@@ -95,7 +95,9 @@ const AddPetForm = () => {
                         <button type="submit" className="formButton">Add</button>
                     </form>
                 </div>
-                <ToastContainer />
+                <ToastContainer 
+                    autoClose={2500}
+                />
             </div>
         </>
     );

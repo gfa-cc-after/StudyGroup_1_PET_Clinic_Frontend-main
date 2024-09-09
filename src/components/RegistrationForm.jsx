@@ -63,7 +63,9 @@ const RegistrationForm = () => {
                     <button type="submit" className="formButton">Register</button>
                 </form>
             </div>
-            <ToastContainer />
+            <ToastContainer 
+                autoClose={2500}
+            />
         </div>
     );
 
