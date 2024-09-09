@@ -1,7 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
-import { renderHook, waitFor } from '@testing-library/react';
+import { renderHook, waitFor, act } from '@testing-library/react';
 import { useAuth } from '../../src/hooks/store'
-import { act } from "react";
 
 describe('useAuth hook test', () => {
     it('should NOT update user and token when the token response is invalid or missing', async () => {

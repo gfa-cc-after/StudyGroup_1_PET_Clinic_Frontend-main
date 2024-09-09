@@ -1,8 +1,7 @@
 import AddPetForm from '../../src/components/AddPetForm'
 import { useAuth } from '../../src/hooks/store'
-import { render, fireEvent, waitFor, renderHook } from '@testing-library/react'
+import { render, fireEvent, waitFor, renderHook, act } from '@testing-library/react'
 import { it, expect, describe, vi } from 'vitest'
-import { act } from 'react';
 import axios from 'axios'
 import { BrowserRouter } from 'react-router-dom'
 
