@@ -1,5 +1,5 @@
 import '../styles/style.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/store'
@@ -15,26 +15,30 @@ const ProfilePage = () => {
 
     const [email, setEmail] = useState(originalEmail);
     const [displayName, setDisplayName] = useState(originalName);
-    const [password, setPassword] = useState(null);
     const [originalPassword, setOriginalPassword] = useState(null);
+    const [password, setPassword] = useState(null);
     const [doubleCheckPassword, setDoubleCheckPassword] = useState(null);
     const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
+    const [disabled, setDisabled] = useState(false)
 
-    // Function to validate passwords on form submission, not on change
+    useEffect(() => {
+        // Ensure passwords are validated before proceeding
+        validatePasswordsBeforeSubmit();
+
+        setDisabled(password && !isPasswordCorrect)
+    }, [password, isPasswordCorrect, doubleCheckPassword])
+    
+    // Function to validate passwords on form submission, not on change   
     const validatePasswordsBeforeSubmit = () => {
         if (password === doubleCheckPassword) {
             setIsPasswordCorrect(true);
         } else {
             setIsPasswordCorrect(false);
-            toast.error('Passwords do not match!');
         }
     };
 
     const handleProfileChange = (event) => {
         event.preventDefault();
-
-        // Ensure passwords are validated before proceeding
-        validatePasswordsBeforeSubmit();
 
         if (isPasswordCorrect) {
             axios.post(apiUrl, { displayName, email, password, originalPassword }, {
@@ -122,6 +126,7 @@ const ProfilePage = () => {
                 <button
                     type="submit"
                     className="changeButton"
+                    disabled={disabled}
                 >Change</button>
             </form>
             <ToastContainer />
