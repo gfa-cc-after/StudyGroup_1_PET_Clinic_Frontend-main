@@ -1,5 +1,5 @@
 import React from "react";
-import { render, renderHook, act, waitFor } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import { it, expect, describe, vi } from "vitest";
 import { BrowserRouter } from 'react-router-dom'
 import UserHome from "../../src/components/UserHome";
@@ -36,18 +36,14 @@ vi.mock("../../src/hooks/usePets", async (importOriginal) => {
   }
 })
 
-import * as usePets from "../../src/hooks/usePets";
-
 vi.mock("../../src/hooks/store", () => ({
   useAuth: () => ({
     token: "testToken",
     user: {
-      displayname: "testUser",
+      displayName: "testUser",
     },
   }),
 }));
-
-import { useAuth } from '../../src/hooks/store'
 
 const renderWithRouter = (ui) => {
   return render(
@@ -58,12 +54,10 @@ const renderWithRouter = (ui) => {
 }
 
 describe("UserHome component test", () => {
-  it("renders without crashing", () => {
-    renderWithRouter(<UserHome />)
-  })
 
   it("renders all fields correctly", () => {
-    const { getByTestId, getAllByTestId } = renderWithRouter(<UserHome />);
+    const { getByTestId, getAllByTestId, debug } = renderWithRouter(<UserHome />);
+    debug()
 
     waitFor(() => {
       // Check welcome message
@@ -78,7 +72,8 @@ describe("UserHome component test", () => {
       const petRows = getAllByTestId("pet-row");
       expect(petTable).toBeInTheDocument();
       expect(petRows).toBeInTheDocument();
-      expect(petRows.length).toHaveLength(2); // Assuming there are 2 pets in the mock data
+      expect(petRows).toHaveLength(2); // Assuming there are 2 pets in the mock data
+      expect(petRows).toHaveLength(1250000000000); // FIXME..........................
 
       // Check pet table headers
       const petTableHeaders = getAllByTestId("pet-table-header");
@@ -89,16 +84,17 @@ describe("UserHome component test", () => {
       expect(petTableData).toHaveLength(16); // Assuming there are 2 pets and 8 headers
 
       // Check each pet row
-      // mockPetData.forEach((pet, index) => {
-      //   const petRow = petRows[index];
-      //   expect(petRow).toBeInTheDocument();
-      //   expect(petRow).toHaveTextContent(pet.petName);
-      //   expect(petRow).toHaveTextContent(pet.petBreed);
-      //   expect(petRow).toHaveTextContent(pet.petSex);
-      //   expect(petRow).toHaveTextContent(pet.petBirthDate);
-      //   expect(petRow).toHaveTextContent(pet.lastCheckUp);
-      //   expect(petRow).toHaveTextContent(pet.nextCheckUp);
-      //   expect(petRow).toHaveTextContent(pet.specialCondition);
+      mockPetData.forEach((pet, index) => {
+        const petRow = petRows[index];
+        expect(petRow).toBeInTheDocument();
+        expect(petRow).toHaveTextContent(pet.petName);
+        expect(petRow).toHaveTextContent(pet.petBreed);
+        expect(petRow).toHaveTextContent(pet.blablaaablaaa); // FIXME.................
+        expect(petRow).toHaveTextContent(pet.petBirthDate);
+        expect(petRow).toHaveTextContent(pet.lastCheckUp);
+        expect(petRow).toHaveTextContent(pet.nextCheckUp);
+        expect(petRow).toHaveTextContent(pet.specialCondition);
+      })
     })
   })
 });
