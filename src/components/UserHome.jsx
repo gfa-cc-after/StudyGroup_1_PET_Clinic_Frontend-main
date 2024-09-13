@@ -6,14 +6,13 @@ import { useAuth } from '../hooks/store'
 const UserHome = () => {
     const { user } = useAuth()
     const { displayName } = user;
-    const pets = usePets();
+    const { pets } = usePets();
 
     return (
         <>
         <div className='prettybackground-box'>
             <div className='userhome-bg'></div>
             <div className='userhome'>
-                {/* <section className='welcome'><h1>Welcome <span>{displayName}</span>!</h1> */}
                 <section className='welcome'>
                     <h1 data-testid="welcomeId">Welcome <span>{displayName}</span>!</h1>
                     <h2>Nice to see you again!</h2>
