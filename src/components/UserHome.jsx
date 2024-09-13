@@ -6,7 +6,7 @@ import { useAuth } from '../hooks/store'
 const UserHome = () => {
     const { user } = useAuth()
     const { displayName } = user;
-    const pets = usePets();
+    const { pets } = usePets();
 
     return (
         <>
