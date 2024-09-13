@@ -50,7 +50,8 @@ const AddPetForm = () => {
                 } else {
                   toast.error('There was an error adding a pet...' + err.response.data?.error || '');
                 }
-              })
+            }
+        )
     }
 
     return (
