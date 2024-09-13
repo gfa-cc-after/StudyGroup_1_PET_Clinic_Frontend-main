@@ -15,7 +15,7 @@ const UserHome = () => {
             <div className='userhome'>
                 {/* <section className='welcome'><h1>Welcome <span>{displayName}</span>!</h1> */}
                 <section className='welcome'>
-                    <h1 data-testId="welcomeId">Welcome <span>{displayName}</span>!</h1>
+                    <h1 data-testid="welcomeId">Welcome <span>{displayName}</span>!</h1>
                     <h2>Nice to see you again!</h2>
                     <Link className="colored-button" to="/user/pet/add" >Add Pet</Link>
                 </section>
@@ -36,7 +36,7 @@ const UserHome = () => {
                         </thead>
                         <tbody>
                             {(pets.length > 0) && pets.map((pet, index) => (
-                                <tr key={index}>
+                                <tr key={index} data-testid="pet-row">
                                     <td>{index + 1}</td>
                                     <td>{pet.petName}</td>
                                     <td>{pet.petBreed}</td>
