@@ -77,15 +77,15 @@ describe("UserHome component test", () => {
       const petTable = getByTestId("pet-table");
       const petRows = getAllByTestId("pet-row");
       expect(petTable).toBeInTheDocument();
-      expect(petRows.length).toBe(2); // Assuming there are 2 pets in the mock data
+      expect(petRows.length).toHaveLength(2); // Assuming there are 2 pets in the mock data
 
       // Check pet table headers
       const petTableHeaders = getAllByTestId("pet-table-header");
-      expect(petTableHeaders.length).toBe(8); // Assuming there are 8 headers
+      expect(petTableHeaders).toHaveLength(8); // Assuming there are 8 headers
 
       // Check pet table data
       const petTableData = getAllByTestId("pet-table-data");
-      expect(petTableData.length).toBe(16); // Assuming there are 2 pets and 8 headers
+      expect(petTableData).toHaveLength(16); // Assuming there are 2 pets and 8 headers
     })
 
   })
