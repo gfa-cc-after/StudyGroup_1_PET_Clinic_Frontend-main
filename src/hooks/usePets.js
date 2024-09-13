@@ -25,9 +25,9 @@ const usePets = () => {
         getPets()
             .then(response => setPets(response.data.pets))
             .catch(error => console.error('Error fetching data:', error));
-    }, [0]);
+    }, []);
     
-    return (pets);
+    return { pets, setPets };
 }
 
 export default usePets;
