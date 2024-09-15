@@ -12,8 +12,8 @@ const NavBar = () => {
     return (
         <header className="navbar">
             <div id="logo-section">
-                <Link id="logo-link" to={role?`/${role}/home`:'/'}><img id="logo-img" src={logo} alt="logo" /></Link>
-                <Link id="logo-link" to={role?`/${role}/home`:'/'}><h1>Pet Clinic Alliance</h1></Link>
+                <Link id="logo-link" to={role ? `/${role}/home` : '/'}><img id="logo-img" src={logo} alt="logo" /></Link>
+                <Link id="logo-link" to={role ? `/${role}/home` : '/'}><h1>Pet Clinic Alliance</h1></Link>
             </div>
             <nav>
                 <ul className='nav'>
@@ -29,24 +29,26 @@ const NavBar = () => {
                             <li className='nav'><Link to="/">Go back</Link></li>
                         </>
                     )}
-                    {pathname === '/user/home' && (
-                        <>
-                            <li className='nav'><Link to={`/${role}/home`}>My pets</Link></li>
-                            <li className='nav'><Link to={`/${role}/history`}>History</Link></li>
-                            <li className='nav'><Link to={"/profile"}>Manage profile</Link></li>
-                            <Link className="colored-button" to="/" onClick={logout}>Log Out</Link>
-                        </>
-                    )}
                     {location.pathname === '/profile' && (
                         <>
                             <li className='nav'><Link to={`/${role}/home`}>Back to Home</Link></li>
                             <Link className="colored-button" to="/" onClick={logout}>Log Out</Link>
                         </>
                     )}
-                    {pathname.search('$/admin/[]+') && (
+                    {pathname.match(/^\/user/) && (
+                        <>
+                            <li className='nav'><Link to={`/user/messages`}>Inbox</Link></li>
+                            <li className='nav'><Link to={`/user/home`}>My pets</Link></li>
+                            <li className='nav'><Link to={`/user/history`}>History</Link></li>
+                            <li className='nav'><Link to={"/profile"}>Manage profile</Link></li>
+                            <Link className="colored-button" to="/" onClick={logout}>Log Out</Link>
+                        </>
+                    )}
+                    {pathname.match(/^\/admin/) && (
                         <>
                             <li className='nav'><Link to={`/admin/messages`}>Inbox</Link></li>
                             <li className='nav'><Link to={`/profile`}>Manage profile</Link></li>
+                            <Link className="transparent-button" to="/user/home">To User Home</Link>
                             <Link className="colored-button" to="/" onClick={logout}>Log Out</Link>
                         </>
                     )}
