@@ -12,7 +12,7 @@ const Messages = () => {
         <div className='prettybackground-box'>
             <div className='userhome-bg'></div>
             <div className='userhome'>
-                    <Link className="colored-button" disabled="true" to="" >New message</Link>
+                <Link className="colored-button" disabled={true} to="" >New message</Link>
                 <h3 className="home-h3">Inbox</h3>
                 <form className='userhome-content'>
                     <table className="home-table" data-testid="pet-table">
