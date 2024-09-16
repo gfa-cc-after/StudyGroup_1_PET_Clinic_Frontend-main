@@ -16,7 +16,7 @@ const UserHome = () => {
                 <section className='welcome'>
                     <h1 data-testid="welcomeId">Welcome <span>{displayName}</span>!</h1>
                     <h2>Nice to see you again!</h2>
-                    <Link className="colored-button" to="/user/pet/add" >Add Pet</Link>
+                    <Link className="colored-button" to="/user/pet" >Add Pet</Link>
                 </section>
                 <h3 className="home-h3">Your beloved pets</h3>
                 <section className='userhome-content'>
