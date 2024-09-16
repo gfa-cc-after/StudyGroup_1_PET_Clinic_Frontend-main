@@ -35,31 +35,13 @@ const addPet = async (token, pet) => {
 }
 
 const getClinics = async (token) => {
-  const clinics = [
-    {
-      id: 1,
-      name: 'Clinic 1',
-      address: 'Address 1',
-      phone: '1234567890',
-      email: 'email@example.com'
-    },
-    {
-      id: 2,
-      name: 'Clinic 2',
-      address: 'Address 2',
-      phone: '9876543210',
-      email: 'email2@example.com'
-    }
-  ];
 
-  return clinics;
-  // TODO: Uncomment this when the backend endpoint is implemented
-  // return await axiosInstane.get('/api/v1/admin/clinics', {
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     Authorization: `Bearer ${token}`
-  //   }
-  // });
+  return await axiosInstane.get('/api/v1/admin/clinics', {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    }
+  });
 }
 
 export { login, getPets, register, addPet, getClinics };

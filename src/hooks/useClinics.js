@@ -7,14 +7,19 @@ const useClinics = () => {
     const { token } = useAuth();
     const [clinics, setClinics] = useState([]);
 
+    console.log('before useEffect: ' + clinics);
+
     useEffect(() => {
+    
         getClinics(token)
-            .then(data => setClinics(data))
+            .then(response => setClinics(response.data.clinics))
             .catch(error => console.error('Error fetching data:', error));
 
-    }, [token]);
 
-    return { clinics };
+    }, []);
+    console.log('after useEffect: ' + clinics);
+
+    return { clinics, setClinics };
 }
 
 export { useClinics };
