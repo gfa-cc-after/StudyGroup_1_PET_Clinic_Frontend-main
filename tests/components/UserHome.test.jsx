@@ -3,6 +3,7 @@ import { render, waitFor } from "@testing-library/react";
 import { it, expect, describe, vi } from "vitest";
 import { BrowserRouter } from 'react-router-dom'
 import UserHome from "../../src/components/UserHome";
+import axios from 'axios';
 
 const mockPetData = [
   {
@@ -31,7 +32,7 @@ vi.mock("../../src/hooks/usePets", async (importOriginal) => {
   return {
     ...actual,
     usePets: () => ({
-      pets: [...mockPetData]
+      pets: mockPetData
     })
   }
 })
@@ -53,35 +54,30 @@ const renderWithRouter = (ui) => {
   )
 }
 
+vi.mock('axios')
+
 describe("UserHome component test", () => {
 
-  it("renders all fields correctly", () => {
-    const { getByTestId, getAllByTestId, debug } = renderWithRouter(<UserHome />);
-    debug()
+  it("renders all fields correctly", async() => {
+    vi.spyOn(axios, 'get').mockResolvedValue({ data: { pets: mockPetData }});
 
-    waitFor(() => {
+    const { getByTestId, getAllByTestId } = renderWithRouter(<UserHome />);
+    
+    await waitFor(() => {
       // Check welcome message
       const welcomeElement = getByTestId("welcomeId");
       expect(welcomeElement).toBeInTheDocument();
       expect(welcomeElement).toHaveTextContent("Welcome testUser!");
 
-      expect(result.current.pets).toEqual(mockPetData);
-
       // Check pet table
       const petTable = getByTestId("pet-table");
       const petRows = getAllByTestId("pet-row");
       expect(petTable).toBeInTheDocument();
-      expect(petRows).toBeInTheDocument();
       expect(petRows).toHaveLength(2); // Assuming there are 2 pets in the mock data
-      expect(petRows).toHaveLength(1250000000000); // FIXME..........................
 
       // Check pet table headers
       const petTableHeaders = getAllByTestId("pet-table-header");
-      expect(petTableHeaders).toHaveLength(8); // Assuming there are 8 headers
-
-      // Check pet table data
-      const petTableData = getAllByTestId("pet-table-data");
-      expect(petTableData).toHaveLength(16); // Assuming there are 2 pets and 8 headers
+      expect(petTableHeaders).toHaveLength(1); // Assuming there are 1 row
 
       // Check each pet row
       mockPetData.forEach((pet, index) => {
@@ -89,7 +85,6 @@ describe("UserHome component test", () => {
         expect(petRow).toBeInTheDocument();
         expect(petRow).toHaveTextContent(pet.petName);
         expect(petRow).toHaveTextContent(pet.petBreed);
-        expect(petRow).toHaveTextContent(pet.blablaaablaaa); // FIXME.................
         expect(petRow).toHaveTextContent(pet.petBirthDate);
         expect(petRow).toHaveTextContent(pet.lastCheckUp);
         expect(petRow).toHaveTextContent(pet.nextCheckUp);

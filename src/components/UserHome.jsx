@@ -21,7 +21,7 @@ const UserHome = () => {
                 <h3 className="home-h3">Your beloved pets</h3>
                 <section className='userhome-content'>
                     <table className="home-table" data-testid="pet-table">
-                        <thead>
+                        <thead data-testid="pet-table-header">
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
