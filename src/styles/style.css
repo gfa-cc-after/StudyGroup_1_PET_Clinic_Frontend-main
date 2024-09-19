@@ -239,7 +239,6 @@ section.hero p {
 .registrationForm,
 .loginForm {
     position: absolute;
-    border: 2px solid red;
     border-top-left-radius: 80px 80px;
     border-bottom-right-radius: 80px 80px;
     text-align: center;
