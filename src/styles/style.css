@@ -51,6 +51,7 @@ body{
     height: 100vh;
     background-image: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(238, 238, 238, 1) 41%, rgba(238, 238, 238, 0) 60%, rgba(238, 238, 238, 0) 100%),
         url('../assets/petclinic-hero.jpg');
+    animation: fadeOut 1.5s forwards;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -71,6 +72,8 @@ body{
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
+        background-position: left -0.6vw top -5.7vw;
+        animation: fadeOut 3s forwards;
     }
 }
 
@@ -246,7 +249,7 @@ section.hero p {
     height:22em;
     width:20em;
     left: 50%;
-    transform: translate(-40%); /* Adjusted to better fit the div's dimensions */
+    transform: translate(-40%);
     margin-top: 5vw;
     display: flex;
     flex-direction: column;
