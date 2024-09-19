@@ -10,10 +10,10 @@ body{
 }
 
 .prettybackground-box{
+    position: relative;
     background-color: #EEEEEE;
     font-family: 'IBM Plex Sans', sans-serif;
     display: flex;
-    position: relative;
     width: 100%;
     height: 89.4vh;
     overflow: hidden;
@@ -40,14 +40,20 @@ body{
     background-size: cover;
 }
 
+
 .form-bg {
-    position: absolute;
+
+    background-color: #EEEEEE;
+    font-family: 'IBM Plex Sans', sans-serif;
+    margin: 0;
+    padding: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-image: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(238, 238, 238, 1) 41%, rgba(238, 238, 238, 0) 60%, rgba(238, 238, 238, 0) 100%),
-    url('../assets/petclinic-hero.jpg');
-    background-position: left -0.6vw top -5.7vw;
-    animation: fadeOut 1.5s forwards;
+        url('../assets/petclinic-hero.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 @keyframes fadeOut {
@@ -65,8 +71,6 @@ body{
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
-        background-position: left -0.6vw top -5.7vw;
-        animation: fadeOut 3s forwards;
     }
 }
 
@@ -234,14 +238,16 @@ section.hero p {
 /*Page specific: registration, login*/
 .registrationForm,
 .loginForm {
+    position: absolute;
+    border: 2px solid red;
     border-top-left-radius: 80px 80px;
     border-bottom-right-radius: 80px 80px;
     text-align: center;
     background-color: #282c34;
     height:22em;
     width:20em;
-    margin-left: auto;
-    margin-right: auto;
+    left: 50%;
+    transform: translate(-40%); /* Adjusted to better fit the div's dimensions */
     margin-top: 5vw;
     display: flex;
     flex-direction: column;
