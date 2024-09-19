@@ -43,7 +43,7 @@ const ProfilePage = () => {
         event.preventDefault();
 
         if (isPasswordCorrect) {
-            axios.post(apiUrl, { displayName, email, password, originalPassword }, {
+            axios.patch(apiUrl, { displayName, email, password, originalPassword }, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
@@ -80,9 +80,9 @@ const ProfilePage = () => {
                             type="email"
                             id="email"
                             name="email"
-                            value={email}
+                            // value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            required
+                            // required
                         />
                     </div>
                     <div>
@@ -93,9 +93,9 @@ const ProfilePage = () => {
                                 type="text"
                                 id="displayName"
                                 name="displayName"
-                                value={displayName}
+                                // value={displayName}
                                 onChange={(e) => setDisplayName(e.target.value)}
-                                required
+                                // required
                             />
                         </div>
                     </div>
