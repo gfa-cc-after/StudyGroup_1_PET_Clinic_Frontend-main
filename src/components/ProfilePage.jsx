@@ -125,7 +125,7 @@ const ProfilePage = () => {
                 />
                 <button
                     type="submit"
-                    className="changeButton"
+                    className="colored-button"
                     disabled={disabled}
                 >Change</button>
             </form>

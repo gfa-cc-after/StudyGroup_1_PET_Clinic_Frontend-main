@@ -1,13 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700');
-
+:root {
+    --primary-color: #EEEEEE;
+    --text-color: #272727;
+    --secondary-color: #1D5276;
+    --accent-color-1: #188265;
+    --accent-color-1-alt: #4da189;
+    --accent-color-2: #CE2D4F;
+}
 body {
     font-family: 'IBM Plex Sans', sans-serif;
     margin: 0;
     padding: 0;
 }
 
-.prettybackground-box {
-    background-color: #EEEEEE;
+.prettybackground-box{
+    background-color: var(--primary-color);
     font-family: 'IBM Plex Sans', sans-serif;
     display: flex;
     position: relative;
@@ -22,7 +29,7 @@ body {
 }
 
 .prettybackground-box-add-pet {
-    background-color: #EEEEEE;
+    background-color: var(--primary-color);
     display: flex;
     justify-content: center;
     /* Center horizontally */
@@ -82,7 +89,7 @@ body {
 }
 
 .landingbody {
-    background-color: #EEEEEE;
+    background-color: var(--primary-color);
     font-family: 'IBM Plex Sans', sans-serif;
     margin: 0;
     padding: 0;
@@ -107,8 +114,8 @@ body {
 /*Header strip and navigation bar*/
 
 header {
-    background-color: #003363d7;
-    color: #EEEEEE;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
     display: flex;
     min-height: fit-content;
     min-height: -moz-fit-content;
@@ -143,13 +150,13 @@ li.nav {
 }
 
 li.nav a {
-    color: #EEEEEE;
+    color: var(--primary-color);
     text-decoration: none;
     font-size: 16px;
 }
 
 li.nav a:hover {
-    color: #ce2d4f;
+    color: var(--accent-color-2);
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
 }
@@ -193,7 +200,7 @@ section.hero {
 }
 
 section.hero h2 {
-    color: #272727;
+    color: var(--text-color);
     font-family: 'Bebas Neue', cursive;
     white-space: nowrap;
     font-size: 5rem;
@@ -201,7 +208,7 @@ section.hero h2 {
 }
 
 section.hero h3 {
-    color: #272727;
+    color: var(--text-color);
     font-family: 'Bebas Neue', cursive;
     font-size: 2rem;
     margin: 0;
@@ -210,7 +217,7 @@ section.hero h3 {
 }
 
 section.hero p {
-    color: #272727;
+    color: var(--text-color);
     width: 35vw;
     font-size: 1rem;
     margin: 0;
@@ -271,8 +278,8 @@ section.hero p {
     }
 }
 
-/*page specific: userHome*/
-.userhome {
+/*page specific: userHome, adminHome*/
+.userhome, .adminhome {
     background-color: #fdfdfda8;
     position: relative;
     height: fit-content;
@@ -289,7 +296,7 @@ section.hero p {
 
 section.welcome {
     display: block;
-    color: #272727;
+    color: var(--text-color);
     margin-bottom: 1vw;
 }
 
@@ -311,7 +318,7 @@ section.welcome h2 {
 }
 
 h3.home-h3 {
-    color: #272727;
+    color: var(--text-color);
     font-family: 'Bebas Neue', cursive;
     font-size: 2rem;
     margin: 0;
@@ -356,7 +363,7 @@ section.userhome-content {
 /*universal buttons */
 /* REVIEW NOTE - doubled formButton style???*/
 .formButton {
-    background-color: #188265;
+    background-color: var(--accent-color-1);
     color: white;
     padding: 1em 1em;
     margin: 2vw 0;
@@ -372,7 +379,7 @@ section.userhome-content {
 }
 
 .formButton {
-    background-color: #188265;
+    background-color: var(--accent-color-1);
     color: white;
     padding: 1em 1.5em;
     border: none;
@@ -394,7 +401,7 @@ button a {
 }
 
 .colored-button a:visited {
-    color: #EEEEEE;
+    color: var(--primary-color);
 }
 
 .transparent-button a:visited {
@@ -402,7 +409,7 @@ button a {
 }
 
 .colored-button {
-    background-color: #188265;
+    background-color: var(--accent-color-1);
     color: #EEEEEE;
     border: none;
     padding: 10px 10px;
@@ -419,10 +426,14 @@ button a {
 }
 
 .colored-button:hover {
-    background-color: #ce2d4f;
+    background-color: var(--accent-color-2);
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     box-shadow: -5px -6px 10px -5px rgba(39, 39, 39, 0.70);
+}
+
+.colored-button:disabled {
+    background-color: grey;
 }
 
 .transparent-button {
@@ -611,12 +622,39 @@ section.services {
 .changeButton {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--accent-color-1);
+    color: var(--primary-color);
     border: none;
     cursor: pointer;
 }
 
-.changeButton:disabled {
-    background-color: grey;
+/* ADMIN PAGES */
+#admin-home {
+    display: flex;
 }
+#admin-sidebar {
+    flex: 1, 0, 0;
+    background-color: var(--primary-color);
+    padding: 20px;
+    text-align: left;
+}
+
+#admin-sidebar li {
+    list-style-type:none;
+    text-decoration: none;
+    padding: 2em 0 2em 0;
+}
+
+#admin-container {
+    flex: 9;
+}
+.adminhome-bg {
+    position: absolute;
+    top:0px;
+    background-image: url('../assets/adminbg.jpg');
+    width:100%;
+    height: 200%;
+    
+    opacity: 0.6;
+}
+
