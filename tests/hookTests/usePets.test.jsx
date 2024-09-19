@@ -38,7 +38,7 @@ describe('usePets hook test', () => {
 
         // Assert that the pets state has been set correctly
         await waitFor(() => {
-            expect(result.current).toEqual(mockPets);
+            expect(result.current.pets).toEqual(mockPets);
             expect(axiosMock).toBeCalledTimes(1);
         });
     })

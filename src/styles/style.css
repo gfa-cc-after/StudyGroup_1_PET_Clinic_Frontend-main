@@ -1,15 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700');
 
-/*Body and background divs*/
-
-body{
+body {
     font-family: 'IBM Plex Sans', sans-serif;
     margin: 0;
     padding: 0;
-
 }
 
-.prettybackground-box{
+.prettybackground-box {
     background-color: #EEEEEE;
     font-family: 'IBM Plex Sans', sans-serif;
     display: flex;
@@ -27,14 +24,18 @@ body{
 .prettybackground-box-add-pet {
     background-color: #EEEEEE;
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
     position: relative;
     width: 100%;
-    height: 100vh; /* Full viewport height */
+    /* height: 100vh; */
+    /* Full viewport height */
     overflow: hidden;
     margin: 0;
     padding: 0;
+    padding-top: 4rem;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -45,7 +46,7 @@ body{
     width: 100%;
     height: 100%;
     background-image: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(238, 238, 238, 1) 41%, rgba(238, 238, 238, 0) 60%, rgba(238, 238, 238, 0) 100%),
-    url('../assets/petclinic-hero.jpg');
+        url('../assets/petclinic-hero.jpg');
     background-position: left -0.6vw top -5.7vw;
     animation: fadeOut 1.5s forwards;
 }
@@ -54,6 +55,7 @@ body{
     from {
         opacity: 1;
     }
+
     to {
         opacity: 0.3;
     }
@@ -71,15 +73,15 @@ body{
 }
 
 .userhome-bg {
-    position: absolute;;
+    position: absolute;
+    ;
     width: 100%;
     height: 100%;
     background-image: url('../assets/userbg.jpg');
     opacity: 0.2;
 }
 
-.landingbody
-{
+.landingbody {
     background-color: #EEEEEE;
     font-family: 'IBM Plex Sans', sans-serif;
     margin: 0;
@@ -160,10 +162,15 @@ li.nav a:hover {
     min-height: 3rem;
 }
 
-#logo-link, #logo-img {
+#logo-link,
+#logo-img {
     height: 100%;
 }
-#logo-link:link, #logo-link:visited, #logo-img:active, #logo-img:hover {
+
+#logo-link:link,
+#logo-link:visited,
+#logo-img:active,
+#logo-img:hover {
     display: flex;
     align-items: center;
     height: 100%;
@@ -213,6 +220,7 @@ section.hero p {
     section p {
         min-width: 70vw;
     }
+
     .form-bg {
         background-image: url('../assets/petclinic-hero-small.jpg');
         background-size: cover;
@@ -238,8 +246,8 @@ section.hero p {
     border-bottom-right-radius: 80px 80px;
     text-align: center;
     background-color: #282c34;
-    height:22em;
-    width:20em;
+    height: 22em;
+    width: 20em;
     margin-left: auto;
     margin-right: auto;
     margin-top: 5vw;
@@ -251,7 +259,8 @@ section.hero p {
     color: white;
     box-shadow: 7px 10px 10px -5px rgba(39, 39, 39, 0.68);
     opacity: 0.2;
-    animation: fadeIn 1s forwards; /* Fade in animation */
+    animation: fadeIn 1s forwards;
+    /* Fade in animation */
 
 }
 
@@ -266,8 +275,8 @@ section.hero p {
 .userhome {
     background-color: #fdfdfda8;
     position: relative;
-    height:fit-content;
-    width:80%;
+    height: fit-content;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 3vw;
@@ -278,17 +287,17 @@ section.hero p {
     border-bottom-right-radius: 80px 80px;
 }
 
-section.welcome{
+section.welcome {
     display: block;
     color: #272727;
     margin-bottom: 1vw;
-
 }
 
 section .colored-button {
     float: right;
-    margin-top:-1.5rem;
+    margin-top: -1.5rem;
 }
+
 section.welcome h1 {
     font-family: 'Bebas Neue', cursive;
     font-size: 4rem;
@@ -301,7 +310,7 @@ section.welcome h2 {
     margin-top: -0.5rem;
 }
 
-h3.home-h3{
+h3.home-h3 {
     color: #272727;
     font-family: 'Bebas Neue', cursive;
     font-size: 2rem;
@@ -310,7 +319,7 @@ h3.home-h3{
     margin: auto;
 }
 
-section.userhome-content{
+section.userhome-content {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -328,11 +337,13 @@ section.userhome-content{
     border-radius: 5px;
     box-shadow: 5px 6px 10px -5px rgba(39, 39, 39, 0.68);
 }
+
 .home-table td {
     padding: 0.5rem;
     border: 1px solid #1D5276;
     text-align: center;
 }
+
 .home-table th {
     padding: 0.5rem;
     border: 1px solid #1D5276;
@@ -343,6 +354,7 @@ section.userhome-content{
 
 
 /*universal buttons */
+/* REVIEW NOTE - doubled formButton style???*/
 .formButton {
     background-color: #188265;
     color: white;
@@ -529,13 +541,17 @@ section.services {
 /* Add Pet Form Container */
 .addPetForm {
     z-index: 10;
-    border-radius: 20px; /* Smoother edges */
+    border-radius: 20px;
+    /* Smoother edges */
     text-align: left;
-    background-color: rgba(40, 44, 52, 0.8); /* Slightly transparent background */
+    background-color: rgba(40, 44, 52, 0.8);
+    /* Slightly transparent background */
     padding: 2em;
     box-shadow: 7px 10px 10px -5px rgba(39, 39, 39, 0.68);
-    width: 100%; /* Let the form take the full width */
-    max-width: 400px; /* But limit its maximum width */
+    width: 100%;
+    /* Let the form take the full width */
+    max-width: 400px;
+    /* But limit its maximum width */
 }
 
 .addPetForm h1 {
@@ -544,12 +560,11 @@ section.services {
     margin-bottom: 1rem;
 }
 
-
 /* Form Labels */
 .addPetForm label {
     display: block;
     color: #EEEEEE;
-    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
     font-weight: bold;
 }
 
@@ -559,29 +574,31 @@ section.services {
 .addPetForm select,
 .addPetForm textarea {
     width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1.5rem;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
     border-radius: 5px;
     border: 1px solid #ccc;
-    font-size: 1rem;
+    box-sizing: border-box;
 }
 
 /* Form Textarea */
 .addPetForm textarea {
-    resize: vertical;
+    height: 100px;
 }
 
+/* Profile Page */
 .form-pb {
     position: absolute;
     width: 100%;
     height: 130%;
     background-image: url('../assets/userbg.jpg');
-  }
-  
-  .profilePage {
+}
+
+.profilePage {
     position: sticky;
     background-color: #dddddd;
-    width:70%;
+    width: 70%;
     margin: 0 auto;
     font-size: calc(10px + 2vmin);
     color: rgb(0, 0, 0);
@@ -591,7 +608,6 @@ section.services {
     text-align: center;
 }
 
-
 .changeButton {
     margin-top: 20px;
     padding: 10px 20px;
@@ -599,4 +615,8 @@ section.services {
     color: white;
     border: none;
     cursor: pointer;
+}
+
+.changeButton:disabled {
+    background-color: grey;
 }

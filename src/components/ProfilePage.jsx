@@ -1,42 +1,44 @@
 import '../styles/style.css';
-import { jwtDecode } from "jwt-decode";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../hooks/store'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const ProfilePage = () => {
-    const token = localStorage.getItem('token');
+    const { token, user, logout } = useAuth()
+    const { displayName:originalName, email:originalEmail } = user;
     const navigate = useNavigate();
-    const decodedToken = jwtDecode(token);
-    const originalName = decodedToken.displayName;
-    const originalEmail = decodedToken.email;
 
     const apiUrl = `${import.meta.env.VITE_API_BACKEND_URL}/api/v1/user/profile`;
 
     const [email, setEmail] = useState(originalEmail);
     const [displayName, setDisplayName] = useState(originalName);
-    const [password, setPassword] = useState(null);
     const [originalPassword, setOriginalPassword] = useState(null);
+    const [password, setPassword] = useState(null);
     const [doubleCheckPassword, setDoubleCheckPassword] = useState(null);
     const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
+    const [disabled, setDisabled] = useState(false)
 
-    // Function to validate passwords on form submission, not on change
+    useEffect(() => {
+        // Ensure passwords are validated before proceeding
+        validatePasswordsBeforeSubmit();
+
+        setDisabled(password && !isPasswordCorrect)
+    }, [password, isPasswordCorrect, doubleCheckPassword])
+    
+    // Function to validate passwords on form submission, not on change   
     const validatePasswordsBeforeSubmit = () => {
         if (password === doubleCheckPassword) {
             setIsPasswordCorrect(true);
         } else {
             setIsPasswordCorrect(false);
-            toast.error('Passwords do not match!');
         }
     };
 
     const handleProfileChange = (event) => {
         event.preventDefault();
-
-        // Ensure passwords are validated before proceeding
-        validatePasswordsBeforeSubmit();
 
         if (isPasswordCorrect) {
             axios.post(apiUrl, { displayName, email, password, originalPassword }, {
@@ -47,13 +49,15 @@ const ProfilePage = () => {
             })
             .then((response) => {
                 toast.success('Change was successful. Please login after!');
+                logout();
                 setTimeout(() => navigate('/login'), 3000);
             })
             .catch((err) => {
                 if (!err.response) {
                     toast.error('There was a network error.');
                 } else {
-                    toast.error('Error changing your profile: ' + (err.response.data.message || err.response.data));
+                    // toast.error('Error changing your profile: ' + (err.response.data.message || err.response.data));
+                    toast.error('Error changing your profile: ' + err.response.data?.error || '');
                 }
             });
         }
@@ -122,9 +126,8 @@ const ProfilePage = () => {
                 <button
                     type="submit"
                     className="changeButton"
-                >
-                    Change
-                </button>
+                    disabled={disabled}
+                >Change</button>
             </form>
             <ToastContainer />
         </div>

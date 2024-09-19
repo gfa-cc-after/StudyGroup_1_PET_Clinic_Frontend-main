@@ -1,30 +1,27 @@
 import '../styles/style.css'
 import { Link } from 'react-router-dom'
-import { jwtDecode } from 'jwt-decode'
 import usePets from '../hooks/usePets'
-
+import { useAuth } from '../hooks/store'
 
 const UserHome = () => {
-
-    const token = localStorage.getItem('token')
-    const decodedToken = jwtDecode(token)
-    const name = decodedToken.displayName
-    //const role = decodedToken.role
-
-    const pets = usePets();
-    console.log(pets);
+    const { user } = useAuth()
+    const { displayName } = user;
+    const { pets } = usePets();
 
     return (
+        <>
         <div className='prettybackground-box'>
             <div className='userhome-bg'></div>
             <div className='userhome'>
-                <section className='welcome'><h1 data-testid="welcomeId">Welcome <span>{name}</span>!</h1>
+                <section className='welcome'>
+                    <h1 data-testid="welcomeId">Welcome <span>{displayName}</span>!</h1>
                     <h2>Nice to see you again!</h2>
-                    <Link className="colored-button" to="/user/pet/add" >Add Pet</Link>	</section>
+                    <Link className="colored-button" to="/user/pet" >Add Pet</Link>
+                </section>
                 <h3 className="home-h3">Your beloved pets</h3>
                 <section className='userhome-content'>
                     <table className="home-table" data-testid="pet-table">
-                        <thead>
+                        <thead data-testid="pet-table-header">
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
@@ -38,7 +35,7 @@ const UserHome = () => {
                         </thead>
                         <tbody>
                             {(pets.length > 0) && pets.map((pet, index) => (
-                                <tr key={index}>
+                                <tr key={index} data-testid="pet-row">
                                     <td>{index + 1}</td>
                                     <td>{pet.petName}</td>
                                     <td>{pet.petBreed}</td>
@@ -54,6 +51,8 @@ const UserHome = () => {
                 </section>
             </div>
         </div>
+        </>
     )
 }
-export default UserHome
+
+export default UserHome;
