@@ -1,0 +1,39 @@
+.delete-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #c0392b;
+}
+
+.delete-button:active {
+    background-color: #a93226;
+}
+
+.delete-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.4);
+}
+
+.confirmation-dialog {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+}
+
+.confirmation-dialog p {
+    margin-bottom: 10px;
+}
+
+.confirmation-dialog button {
+    margin-right: 10px;
+    padding: 5px 10px;
+}
