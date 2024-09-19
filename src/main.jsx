@@ -25,7 +25,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route exact path="/login" element={<LoginForm />} />
         <Route exact path="/user/home" element={<UserHome />} />
         <Route exact path='/user/messages' element={<Messages />}></Route>
-        <Route exact path="/user/pet/add" element={<AddPetForm />} />
+        <Route exact path="/user/pet" element={<AddPetForm />} />
         <Route path="/admin/*" element={<AdminRoot />}>
           <Route path='messages' element={<Messages />}></Route>
           <Route path='home' element={<ClinicManagement />}></Route>
