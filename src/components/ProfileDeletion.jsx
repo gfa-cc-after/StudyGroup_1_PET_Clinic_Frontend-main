@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 function ProfileDeletion() {
     const [showConfirmation, setShowConfirmation] = useState(false);
     const confirmationRef = useRef(null); // Reference to the confirmation message
-    const { token, user, logout } = useAuth()
+    const { token, user , logout } = useAuth()
     const navigate = useNavigate()
     
     const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/api/v1/user/" + user.id;
@@ -26,11 +26,10 @@ function ProfileDeletion() {
             navigate('/');
         })
         .catch((err) => {
-            console.error(err);
             if (!err.response) {
                 toast.error('There was a network error.');
             } else {
-                toast.error('Error deleting your profile: ' + (err.response.data.message || err.response.data));
+                toast.error('Error deleting your profile: ' + err.response.data?.error || '');
             }
         });
     };
