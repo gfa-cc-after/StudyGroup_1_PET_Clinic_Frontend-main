@@ -42,7 +42,7 @@ const AddPetForm = () => {
             })
             .then(() => {
                 toast.success('Pet added successfully ');
-                setTimeout(() => navigate(`/user/home`), 3000);
+                setTimeout(() => navigate(`/user/home`), 1500);
             })
             .catch ((err) =>{
                 if (!err.response) {
@@ -97,7 +97,7 @@ const AddPetForm = () => {
                     </form>
                 </div>
                 <ToastContainer 
-                    autoClose={2500}
+                    autoClose={1000}
                 />
             </div>
         </>

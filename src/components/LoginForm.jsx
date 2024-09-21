@@ -28,7 +28,7 @@ const LoginForm = () => {
           } else {
             navigate('/user/home');
           }
-        }, 3000); // Delay navigation for 3 second
+        }, 1500); // Delay navigation for 3 second
       })
       .catch((err) => {
         if (!err.response) {
@@ -72,7 +72,7 @@ const LoginForm = () => {
         </form>
         </div>
         <ToastContainer 
-          autoClose={2500}
+          autoClose={1000}
         />
       </div>
       </>
