@@ -12,8 +12,9 @@ import ListItemText from '@mui/material/ListItemText';
 import MailIcon from '@mui/icons-material/Mail';
 import Toolbar from '@mui/material/Toolbar';
 import { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import { NavBar } from '../NavBar';
+import { useAuth } from '../../hooks/store';
 
 const drawerWidth = 240;
 
@@ -22,6 +23,9 @@ const ResponsiveDrawer = (props, children) => {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
     const [toggleButton, setToggleButton] = useState(document.getElementById('open-drawer-button'));
+
+    const { user } = useAuth()
+    const { displayName } = user;
 
     const handleDrawerClose = () => {
         setIsClosing(true);
@@ -40,32 +44,37 @@ const ResponsiveDrawer = (props, children) => {
 
     const drawer = (
         <div>
-            <Toolbar />
+            <div className="nametag">
+                <h3>You are logged in as:</h3>
+                <em>{displayName}</em>
+            </div>
             <Divider />
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
+                    <ListItem disablePadding>
                         <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
+                            <NavLink to='/admin/clinics'>Manage Clinics</NavLink>
                         </ListItemButton>
                     </ListItem>
-                ))}
-            </List>
-            <Divider />
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
+                    <ListItem disablePadding>
                         <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
+                            <NavLink to='/admin/users'>Manage Users</NavLink>
                         </ListItemButton>
                     </ListItem>
-                ))}
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <NavLink to='/admin/pets'>Manage Pets</NavLink>
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <NavLink to='/admin/stats'>Statistics</NavLink>
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <NavLink to='/admin/support'>Development support</NavLink>
+                        </ListItemButton>
+                    </ListItem>
             </List>
         </div>
     );
