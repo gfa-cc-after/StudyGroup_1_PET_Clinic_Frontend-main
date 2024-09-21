@@ -1,10 +1,11 @@
 import '../styles/style.css';
+import '../styles/profileDeletion.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/store'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+import ProfileDeletion from './ProfileDeletion';
 
 const ProfilePage = () => {
     const { token, user, logout } = useAuth()
@@ -15,9 +16,9 @@ const ProfilePage = () => {
 
     const [email, setEmail] = useState(originalEmail);
     const [displayName, setDisplayName] = useState(originalName);
-    const [originalPassword, setOriginalPassword] = useState(null);
-    const [password, setPassword] = useState(null);
-    const [doubleCheckPassword, setDoubleCheckPassword] = useState(null);
+    const [originalPassword, setOriginalPassword] = useState(undefined);
+    const [password, setPassword] = useState(undefined);
+    const [doubleCheckPassword, setDoubleCheckPassword] = useState(undefined);
     const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
     const [disabled, setDisabled] = useState(false)
 
@@ -25,7 +26,7 @@ const ProfilePage = () => {
         // Ensure passwords are validated before proceeding
         validatePasswordsBeforeSubmit();
 
-        setDisabled(password && !isPasswordCorrect)
+        setDisabled((doubleCheckPassword || password) && !isPasswordCorrect)
     }, [password, isPasswordCorrect, doubleCheckPassword])
     
     // Function to validate passwords on form submission, not on change   
@@ -41,7 +42,7 @@ const ProfilePage = () => {
         event.preventDefault();
 
         if (isPasswordCorrect) {
-            axios.post(apiUrl, { displayName, email, password, originalPassword }, {
+            axios.patch(apiUrl, { displayName, email, password, originalPassword }, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
@@ -50,13 +51,12 @@ const ProfilePage = () => {
             .then((response) => {
                 toast.success('Change was successful. Please login after!');
                 logout();
-                setTimeout(() => navigate('/login'), 3000);
+                navigate('/login');
             })
             .catch((err) => {
                 if (!err.response) {
                     toast.error('There was a network error.');
                 } else {
-                    // toast.error('Error changing your profile: ' + (err.response.data.message || err.response.data));
                     toast.error('Error changing your profile: ' + err.response.data?.error || '');
                 }
             });
@@ -107,7 +107,7 @@ const ProfilePage = () => {
                     onChange={(e) => setOriginalPassword(e.target.value)}
                     required
                 />
-                <label htmlFor="password">New Password:</label>
+                <label htmlFor="newPassword">New Password:</label>
                 <input
                     type="password"
                     id="newPassword"
@@ -129,7 +129,7 @@ const ProfilePage = () => {
                     disabled={disabled}
                 >Change</button>
             </form>
-            <ToastContainer />
+            <ProfileDeletion />
         </div>
         </>
     );

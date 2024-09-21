@@ -12,6 +12,8 @@ import DecideNavBar from './components/DecideNavBar'
 import ProfilePage from './components/ProfilePage'
 import AddPetForm from './components/AddPetForm'
 import { Messages } from './components/Messages'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -37,6 +39,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </Route>
         <Route exact path="/profile" element={<ProfilePage />} />
       </Routes>
+      <ToastContainer
+        autoClose={1000}
+      />
     </Router>
   </React.StrictMode>
 )
