@@ -11,13 +11,15 @@ const AdminRoot = () => {
             id='admin-home'
             className='prettybackground-box'
         >
-            <ResponsiveDrawer width={ drawerWidth } />
+            <ResponsiveDrawer width={drawerWidth} />
             <Box
                 component="main"
-                id='admin-content'
+                id='admin-main'
                 sx={{ width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
-                <Outlet />
+                    <div className='admin-content'>
+                        <Outlet />
+                    </div>
             </Box>
         </Box>
     )

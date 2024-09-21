@@ -1,5 +1,4 @@
 import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -86,6 +85,7 @@ const ResponsiveDrawer = (props, width) => {
                 component="nav"
                 sx={{ width: drawerWidth, flexShrink: { sm: 0 } }}
                 aria-label="sidebar"
+                id='admin-sidebar'
             >
                 {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
                 <Drawer
