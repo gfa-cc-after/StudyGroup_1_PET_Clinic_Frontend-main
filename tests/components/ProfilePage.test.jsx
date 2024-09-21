@@ -1,7 +1,7 @@
 import React from 'react'
 import ProfilePage from '../../src/components/ProfilePage'
 import { useAuth } from '../../src/hooks/store'
-import { render, fireEvent, waitFor, renderHook, act } from '@testing-library/react'
+import { render, fireEvent, renderHook, act } from '@testing-library/react'
 import { it, expect, describe, vi } from 'vitest'
 import axios from 'axios'
 import { BrowserRouter } from 'react-router-dom'
@@ -20,7 +20,7 @@ describe('ProfilePage', () => {
     it('should render the form', async () => {
         const { getByLabelText, findAllByRole, getByRole } = renderWithRouter(<ProfilePage />)
 
-        const heading = getByRole('heading', {level: 1, name: 'Profile'})
+        const heading = getByRole('heading', {level: 1, name: 'Profile Settings'})
         expect(heading).toBeInTheDocument()
 
         const emailInput = getByLabelText('Change Email:')
@@ -96,7 +96,7 @@ describe('ProfilePage', () => {
             },
             { headers: { 
               "Content-Type": "application/json",
-              "Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9VU0VSIiwic3ViIjoidGVzdEBleGFtcGxlLmNvbSIsImlhdCI6MTcyMjkwMDcyOCwiZXhwIjoxNzIyOTAyNTI4fQ.9Fzi6MCTRjyIZ2dSRDVYCWxNZtQbF87THAWJFQ5AT8o"
+              "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9VU0VSIiwic3ViIjoidGVzdEBleGFtcGxlLmNvbSIsImlhdCI6MTcyMjkwMDcyOCwiZXhwIjoxNzIyOTAyNTI4fQ.9Fzi6MCTRjyIZ2dSRDVYCWxNZtQbF87THAWJFQ5AT8o"
              } }
         )
     })
