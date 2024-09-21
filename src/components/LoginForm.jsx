@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import '../styles/style.css'
 import { useNavigate } from 'react-router-dom'
@@ -12,7 +12,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const { role, setUser } = useAuth();
+  const { user, setUser } = useAuth();
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -21,14 +21,6 @@ const LoginForm = () => {
       .then((response) => {
         setUser(response.data.token)
         toast.success('Login successful ');
-
-        setTimeout(() => {
-          if (role === 'admin') {
-            navigate('/admin/home');
-          } else {
-            navigate('/user/home');
-          }
-        }, 3000); // Delay navigation for 3 second
       })
       .catch((err) => {
         if (!err.response) {
@@ -39,43 +31,53 @@ const LoginForm = () => {
       })
   }
 
+  useEffect(() => {
+    if (user) {
+      if (user.role === 'admin') {
+        navigate('/admin/home');
+      } else {
+        navigate('/user/home');
+      }
+      setTimeout(() => {
+      }, 1500); // Delay navigation for 3 second
+    }
+  }, [user, navigate]);
+
   return (
-    <>
-    <div className='prettybackground-box'>
-      <div className='form-bg'></div>
-      <div className="loginForm">
-        <h1>Login</h1>
-        <form onSubmit={handleLogin}>
-          <div>
-            <label htmlFor='email'>Email:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor='password'>Password:</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit" className="formButton">Login</button>
-        </form>
+      <div className='prettybackground-box'>
+        <div className='form-bg'></div>
+        <div className="loginForm">
+          <h1>Login</h1>
+          <form onSubmit={handleLogin}>
+            <div>
+              <label htmlFor='email'>Email:</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='password'>Password:</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit" className="formButton">Login</button>
+          </form>
         </div>
         <ToastContainer 
-          autoClose={2500}
+          autoClose={1000}
         />
       </div>
-      </>
   );
 };
 
