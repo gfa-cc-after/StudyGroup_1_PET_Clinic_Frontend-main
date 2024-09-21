@@ -24,12 +24,10 @@ const ProfilePage = () => {
     const [disabled, setDisabled] = useState(false)
 
     useEffect(() => {
-        // handlePasswordFieldChange();
-
         // Ensure passwords are validated before proceeding
         validatePasswordsBeforeSubmit();
 
-        setDisabled(password && !isPasswordCorrect)
+        setDisabled((doubleCheckPassword || password) && !isPasswordCorrect)
     }, [password, isPasswordCorrect, doubleCheckPassword])
     
     // Function to validate passwords on form submission, not on change   
@@ -117,7 +115,6 @@ const ProfilePage = () => {
                     name="newPassword"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    // required={isPasswordFieldRequired}
                 />
                 <label htmlFor="confirmPassword">New Password Again:</label>
                 <input
