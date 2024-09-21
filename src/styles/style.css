@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700');
+
 :root {
     --primary-color: #EEEEEE;
     --text-color: #272727;
@@ -7,13 +8,14 @@
     --accent-color-1-alt: #4da189;
     --accent-color-2: #CE2D4F;
 }
+
 body {
     font-family: 'IBM Plex Sans', sans-serif;
     margin: 0;
     padding: 0;
 }
 
-.prettybackground-box{
+.prettybackground-box {
     background-color: var(--primary-color);
     font-family: 'IBM Plex Sans', sans-serif;
     display: flex;
@@ -29,7 +31,7 @@ body {
 }
 
 .prettybackground-box-add-pet {
-    background-color: var(--primary-color);
+    /* background-color: var(--primary-color); */
     display: flex;
     justify-content: center;
     /* Center horizontally */
@@ -287,7 +289,8 @@ section.hero p {
 }
 
 /*page specific: userHome, adminHome*/
-.userhome, .adminhome {
+.userhome,
+.admin-content {
     background-color: #fdfdfda8;
     position: relative;
     height: fit-content;
@@ -611,7 +614,9 @@ section.services {
     position: absolute;
     width: 100%;
     height: 130%;
-    background-image: url('../assets/userbg.jpg');
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+        url('../assets/userbg.jpg');
 }
 
 .profilePage {
@@ -658,13 +663,11 @@ section.services {
 #admin-content {
     flex-grow: 1;
 }
-.adminhome-bg {
-    position: absolute;
-    top:0px;
-    background-image: url('../assets/adminbg.jpg');
-    width:100%;
-    height: 200%;
-    
-    opacity: 0.6;
-}
 
+#admin-main {
+    top: 0px;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+        url('../assets/adminbg.jpg');
+        background-size: cover;
+}
