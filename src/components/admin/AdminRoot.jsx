@@ -1,6 +1,7 @@
 import '../../styles/style.css'
 import { useAuth } from '../../hooks/store'
 import { ResponsiveDrawer } from './ResponsiveDrawer';
+import { Outlet } from 'react-router-dom';
 
 const AdminRoot = () => {
     const { user } = useAuth()
@@ -24,7 +25,9 @@ const AdminRoot = () => {
         //             <li><NavLink to='/admin/support'>Development support</NavLink></li>
         //         </ul>
         //     </div>
-            <ResponsiveDrawer />
+            <ResponsiveDrawer>
+                <Outlet />
+            </ResponsiveDrawer>
     )
 }
 export { AdminRoot };

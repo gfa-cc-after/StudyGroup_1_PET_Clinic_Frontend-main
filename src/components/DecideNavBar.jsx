@@ -3,11 +3,11 @@ import { useLocation } from 'react-router-dom'
 
 function DecideNavBar({children}) { //children taken from main routing
 
-    const location = useLocation()      // get the current location
+    const { pathname } = useLocation();      // get the current location
     const [showNavbar, setShowNavbar] = useState(false) // set the navbar to false by default
 
     useEffect(() => {   
-        if (location.pathname === '/') {        // if the location is the landing page, hide the navbar
+        if (pathname === '/') {        // if the location is the landing page, hide the navbar
             setShowNavbar(false)
         }
         else {

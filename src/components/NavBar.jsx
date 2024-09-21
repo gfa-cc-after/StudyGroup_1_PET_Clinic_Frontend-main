@@ -2,6 +2,8 @@ import '../styles/style.css'
 import logo from '../assets/pet-logo.png';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../hooks/store';
+import { IconButton } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const NavBar = () => {
 
@@ -11,6 +13,17 @@ const NavBar = () => {
 
     return (
         <header className="navbar">
+            {pathname.match(/^\/admin/) && (
+                <IconButton
+                    color="inherit"
+                    aria-label="open-drawer"
+                    id='open-drawer-button'
+                    edge="start"
+                    sx={{ mr: 2, display: { sm: 'none' } }}
+                >
+                    <MenuIcon />
+                </IconButton>
+            )}
             <div id="logo-section">
                 <Link id="logo-link" to={role ? `/${role}/home` : '/'}><img id="logo-img" src={logo} alt="logo" /></Link>
                 <Link id="logo-link" to={role ? `/${role}/home` : '/'}><h1>Pet Clinic Alliance</h1></Link>
@@ -63,4 +76,4 @@ const NavBar = () => {
     )
 }
 
-export default NavBar;
+export { NavBar };
