@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import '../styles/style.css'
 import { useNavigate } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import { useAuth } from '../hooks/store';
 
 const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/api/v1/auth/login";
@@ -32,52 +31,47 @@ const LoginForm = () => {
   }
 
   useEffect(() => {
-    if (user) {
+    if (user?.role) {
       if (user.role === 'admin') {
         navigate('/admin/home');
       } else {
         navigate('/user/home');
       }
-      setTimeout(() => {
-      }, 1500); // Delay navigation for 3 second
     }
   }, [user, navigate]);
 
   return (
-      <div className='prettybackground-box'>
-        <div className='form-bg'></div>
-        <div className="loginForm">
-          <h1>Login</h1>
-          <form onSubmit={handleLogin}>
-            <div>
-              <label htmlFor='email'>Email:</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor='password'>Password:</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <button type="submit" className="formButton">Login</button>
-          </form>
-        </div>
-        <ToastContainer 
-          autoClose={1000}
-        />
+    <div className='prettybackground-box'>
+      <div className='form-bg'></div>
+      <div className="loginForm">
+        <h1>Login</h1>
+        <form onSubmit={handleLogin}>
+          <div>
+            <label htmlFor='email'>Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor='password'>Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit" className="formButton">Login</button>
+        </form>
       </div>
+    </div>
   );
 };
 
