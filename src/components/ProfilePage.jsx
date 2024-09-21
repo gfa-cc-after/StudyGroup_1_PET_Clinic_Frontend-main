@@ -108,7 +108,7 @@ const ProfilePage = () => {
                     onChange={(e) => setOriginalPassword(e.target.value)}
                     required
                 />
-                <label htmlFor="password">New Password:</label>
+                <label htmlFor="newPassword">New Password:</label>
                 <input
                     type="password"
                     id="newPassword"
