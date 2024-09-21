@@ -13,7 +13,7 @@ function DecideNavBar({children}) { //children taken from main routing
         else {
             setShowNavbar(true)
         }
-    }, [location])
+    }, [pathname])
 
     return (            // return the children with or without navbar component
         <>
