@@ -1,10 +1,13 @@
 import '../../styles/style.css'
 import { Link } from 'react-router-dom'
 import { useClinics } from "../../hooks/useClinics";
+import { IconButton } from '@mui/material';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
 
 const ClinicManagement = () => {
     const { clinics } = useClinics();
-    
+
     return (
         <div className='prettybackground-box'>
             <div className='userhome-bg'></div>
@@ -20,8 +23,8 @@ const ClinicManagement = () => {
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Address</th>
-                                <th>Phone</th>
-                                <th>Email</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,8 +33,14 @@ const ClinicManagement = () => {
                                     <td>{index + 1}</td>
                                     <td>{clinic.name}</td>
                                     <td>{clinic.address}</td>
-                                    <td>{clinic.phone}</td>
-                                    <td>{clinic.email}</td>
+                                    <td><IconButton aria-label="update-clinic" href='/admin/clinic/update'>
+                                            <EditNoteOutlinedIcon />
+                                        </IconButton></td>
+                                    <td>
+                                        <IconButton aria-label="delete-clinic" href='/admin/clinic/delete'>
+                                            <DeleteOutlinedIcon />
+                                        </IconButton>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
