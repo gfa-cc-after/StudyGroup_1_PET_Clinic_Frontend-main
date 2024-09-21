@@ -124,11 +124,19 @@ header {
     flex-wrap: wrap;
 }
 
-nav {
+header nav {
     display: flex;
+    justify-content: space-around;
     height: 2.5vw;
     min-height: 3rem;
     margin-right: 1.5vh;
+}
+
+header #open-drawer-button {
+    margin-left: 1vw;
+    gap: 1vw;
+    font-size: 3vw;
+    cursor: pointer;
 }
 
 ul.nav {
@@ -162,7 +170,7 @@ li.nav a:hover {
 }
 
 #logo-section {
-    margin: 1.5vh;
+    margin: 1.5vh 0;
     display: flex;
     align-items: center;
     height: 4.2vw;
@@ -632,7 +640,9 @@ section.services {
 #admin-home {
     display: flex;
 }
-#admin-sidebar {
+
+#admin-sidebar, .MuiDrawer-paper{
+    position: inherit !important; /* to override default behaviour */
     flex: 1, 0, 0;
     background-color: var(--primary-color);
     padding: 20px;
@@ -645,8 +655,8 @@ section.services {
     padding: 2em 0 2em 0;
 }
 
-#admin-container {
-    flex: 9;
+#admin-content {
+    flex-grow: 1;
 }
 .adminhome-bg {
     position: absolute;

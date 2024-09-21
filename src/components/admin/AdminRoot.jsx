@@ -7,7 +7,6 @@ const AdminRoot = () => {
     const drawerWidth = 240;
 
     return (
-        // <div id='admin-home' className='prettybackground-box'>
         <Box
             id='admin-home'
             className='prettybackground-box'
@@ -16,7 +15,7 @@ const AdminRoot = () => {
             <Box
                 component="main"
                 id='admin-content'
-                sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+                sx={{ width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Outlet />
             </Box>
