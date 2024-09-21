@@ -52,13 +52,12 @@ describe('ProfilePage', () => {
     })
 
     it('should send post request to backend on change click with the proper data', async () => {
-      const mockPost = vi.fn().mockResolvedValue({
+      const mockPatch = vi.fn().mockResolvedValue({
         data: {
-          "token": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9VU0VSIiwic3ViIjoidGVzdEBleGFtcGxlLmNvbSIsImlhdCI6MTcyMjkwMDcyOCwiZXhwIjoxNzIyOTAyNTI4fQ.9Fzi6MCTRjyIZ2dSRDVYCWxNZtQbF87THAWJFQ5AT8o",
-          "role": "USER"
+         message:'Change was successful. Please login after!'
         }
       })
-      axios.post = mockPost
+      axios.patch = mockPatch
      
     // Mock implementation of useAuth hook
     const renderedHook = renderHook(() => useAuth())
@@ -86,7 +85,7 @@ describe('ProfilePage', () => {
 
         fireEvent.click(changeButton);
 
-        expect(mockPost).toHaveBeenCalledWith(
+        expect(mockPatch).toHaveBeenCalledWith(
             expect.stringContaining('/profile'),
             {
                 "email": "test@example.com",
