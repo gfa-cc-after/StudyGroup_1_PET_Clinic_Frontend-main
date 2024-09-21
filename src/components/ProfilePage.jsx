@@ -24,6 +24,8 @@ const ProfilePage = () => {
     const [disabled, setDisabled] = useState(false)
 
     useEffect(() => {
+        // handlePasswordFieldChange();
+
         // Ensure passwords are validated before proceeding
         validatePasswordsBeforeSubmit();
 
@@ -80,9 +82,9 @@ const ProfilePage = () => {
                             type="email"
                             id="email"
                             name="email"
-                            // value={email}
+                            value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            // required
+                            required
                         />
                     </div>
                     <div>
@@ -93,9 +95,9 @@ const ProfilePage = () => {
                                 type="text"
                                 id="displayName"
                                 name="displayName"
-                                // value={displayName}
+                                value={displayName}
                                 onChange={(e) => setDisplayName(e.target.value)}
-                                // required
+                                required
                             />
                         </div>
                     </div>
@@ -115,6 +117,7 @@ const ProfilePage = () => {
                     name="newPassword"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    // required={isPasswordFieldRequired}
                 />
                 <label htmlFor="confirmPassword">New Password Again:</label>
                 <input
