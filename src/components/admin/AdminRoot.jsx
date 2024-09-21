@@ -14,7 +14,7 @@ const AdminRoot = () => {
             <ResponsiveDrawer width={drawerWidth} />
             <Box
                 component="main"
-                id='admin-main'
+                id='admin-content-container'
                 sx={{ width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                     <div className='admin-content'>

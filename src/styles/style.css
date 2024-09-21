@@ -7,6 +7,7 @@
     --accent-color-1: #188265;
     --accent-color-1-alt: #4da189;
     --accent-color-2: #CE2D4F;
+    font-size: 1vw;
 }
 
 body {
@@ -305,7 +306,8 @@ section.hero p {
     border-bottom-right-radius: 80px 80px;
 }
 
-section.welcome {
+section.welcome, 
+section.page-title {
     display: block;
     color: var(--text-color);
     margin-bottom: 1vw;
@@ -316,7 +318,8 @@ section .colored-button {
     margin-top: -1.5rem;
 }
 
-section.welcome h1 {
+section.welcome h1,
+section.page-title h1 {
     font-family: 'Bebas Neue', cursive;
     font-size: 4rem;
     margin: 0;
@@ -337,7 +340,8 @@ h3.home-h3 {
     margin: auto;
 }
 
-section.userhome-content {
+section.userhome-content,
+section.adminhome-content {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -644,28 +648,82 @@ section.services {
 /* ADMIN PAGES */
 #admin-home {
     display: flex;
+    flex: 3 0 0
 }
 
-#admin-sidebar, .MuiDrawer-paper{
-    position: inherit !important; /* to override default behaviour */
-    flex: 1, 0, 0;
-    background-color: var(--primary-color);
-    padding: 20px;
+/* sidebar outer tag */
+.admin-sidebar-permanent {
+    margin: 0;
+    width: 20%;
+    max-width: 350px;
+}
+
+.MuiDrawer-paper {
+    position: inherit !important;
+    background-color: rgb(213, 237, 248) !important;
+    border-right: none !important;
+    /* to override default behaviour */
+    flex: 1 1 0;
     text-align: left;
+    font-size: 1rem !important;
 }
 
-#admin-sidebar li {
-    list-style-type:none;
+.MuiDrawer-paper h3 {
+    margin: 0 0 1em !important;
+    font-size: 1em;
+    color: white;
+}
+
+.nametag {
+    background-color: #a1d3f4;
+    border-radius: 0 0 18px;
+    font-size: 0.8em;
+    padding: 1em 1em 0
+}
+
+.nametag em {
+    display: block;
+    padding: 0.4em 1.6em 1em;
+    font-style: normal;
+    font-size: 1.2em;
+    font-weight: 800;
+    color: var(--secondary-color)
+}
+.MuiList-root {
+    margin: 2em 0 0 !important;
+}
+
+/* individual buttons */
+.MuiButtonBase-root {
+    border: none;
+    color: var(--primary-text-color);
+    font-size: 0.6em;
+    font-weight: 500;
+    padding: 0.6em 2.6em !important;
+}
+
+.MuiButtonBase-root:active {
+    color: var(--primary-color);
+    background-color: var(--secondary-color) !important;
+    font-size: 1em;
+    font-weight: 500;
+    padding: 0.6em 2.6em !important;
+}
+
+#admin-sidebar li a:any-link, 
+#admin-sidebar li a:-webkit-any-link,
+.MuiDrawer-paper li a:any-link,
+.MuiDrawer-paper li a:-webkit-any-link {
+    color: var(--primary-text-color) !important;
+    list-style-type: none;
     text-decoration: none;
-    padding: 2em 0 2em 0;
+    padding: 1em 0 1em 0;
+    font-size: 1.4em;
+    font-weight: 600;
 }
 
-#admin-content {
-    flex-grow: 1;
-}
-
-#admin-main {
-    top: 0px;
+/* envelope for admin content, basically background */
+#admin-content-container {
     background-image:
         linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
         url('../assets/adminbg.jpg');

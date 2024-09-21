@@ -10,12 +10,12 @@ const ClinicManagement = () => {
 
     return (
         <>
-            <section className='welcome'>
-                <h1 data-testid="welcomeId">Clinics in the Alliance</h1>
-                <Link className="colored-button" to="/user/pet/add" >Registrate New Clinic</Link>
+            <section className='page-title'>
+                <h1 data-testid="tableTitle">Clinics in the Alliance</h1>
+                <Link className="colored-button" to="/admin/clinic/add" >Registrate New Clinic</Link>
             </section>
-            <section className='userhome-content'>
-                <table className="home-table" data-testid="pet-table">
+            <section className='adminhome-content'>
+                <table className="home-table" data-testid="clinic-table">
                     <thead>
                         <tr>
                             <th>#</th>

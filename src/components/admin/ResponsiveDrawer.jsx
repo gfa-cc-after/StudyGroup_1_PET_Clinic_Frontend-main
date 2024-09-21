@@ -1,5 +1,3 @@
-import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -39,7 +37,6 @@ const ResponsiveDrawer = (props, width) => {
                 <h3>You are logged in as:</h3>
                 <em>{displayName}</em>
             </div>
-            <Divider />
             <List>
                 <ListItem disablePadding>
                     <ListItemButton>
@@ -81,40 +78,40 @@ const ResponsiveDrawer = (props, width) => {
     }, [document.getElementById('open-drawer-button')]);
 
     return (
-            <Box
+        <>
+            {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+            <Drawer
                 component="nav"
-                sx={{ width: drawerWidth, flexShrink: { sm: 0 } }}
+                className='admin-sidebar-temp'
                 aria-label="sidebar"
-                id='admin-sidebar'
+                variant="temporary"
+                open={mobileOpen}
+                onTransitionEnd={handleDrawerTransitionEnd}
+                onClose={handleDrawerClose}
+                ModalProps={{
+                    keepMounted: true, // Better open performance on mobile.
+                }}
+                sx={{
+                    display: { xs: 'block', sm: 'none' },
+                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                }}
             >
-                {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-                <Drawer
-                    container={container}
-                    variant="temporary"
-                    open={mobileOpen}
-                    onTransitionEnd={handleDrawerTransitionEnd}
-                    onClose={handleDrawerClose}
-                    ModalProps={{
-                        keepMounted: true, // Better open performance on mobile.
-                    }}
-                    sx={{
-                        display: { xs: 'block', sm: 'none' },
-                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-                    }}
-                >
-                    {drawer}
-                </Drawer>
-                <Drawer
-                    variant="permanent"
-                    sx={{
-                        display: { xs: 'none', sm: 'block' },
-                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-                    }}
-                    open
-                >
-                    {drawer}
-                </Drawer>
-            </Box>
+                {drawer}
+            </Drawer>
+            <Drawer
+                component="nav"
+                aria-label="sidebar"
+                className='admin-sidebar-permanent'
+                variant="permanent"
+                sx={{
+                    display: { xs: 'none', sm: 'block' },
+                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                }}
+                open
+            >
+                {drawer}
+            </Drawer>
+        </>
     );
 }
 
