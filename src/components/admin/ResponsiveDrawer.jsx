@@ -1,15 +1,15 @@
 import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
 import { useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useAuth } from '../../hooks/store';
+import { Divider } from '@mui/material';
 
-const ResponsiveDrawer = (props, width) => {
+const ResponsiveDrawer = (props) => {
     const { window } = props;
-    const drawerWidth = width;
+    const drawerWidth = props.width;
     const { pathname } = useLocation();
+
+    const { headerLinks, sidebarLinks } = props.links;
 
     const [mobileOpen, setMobileOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
@@ -39,33 +39,8 @@ const ResponsiveDrawer = (props, width) => {
                 <h3>You are logged in as:</h3>
                 <em>{displayName}</em>
             </div>
-            <List>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <NavLink to='/admin/clinics'>Manage Clinics</NavLink>
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <NavLink to='/admin/users'>Manage Users</NavLink>
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <NavLink to='/admin/pets'>Manage Pets</NavLink>
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <NavLink to='/admin/stats'>Statistics</NavLink>
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <NavLink to='/admin/support'>Development support</NavLink>
-                    </ListItemButton>
-                </ListItem>
-            </List>
+
+            {pathname.match(/^\/admin/) && (sidebarLinks)}
         </>
     );
 
@@ -81,6 +56,7 @@ const ResponsiveDrawer = (props, width) => {
 
     return (
         <>
+            {/* TEMPORARY SIDEBAR - only when the screen is small */}
             <Drawer
                 component="nav"
                 className='sidebar-temp'
@@ -98,7 +74,11 @@ const ResponsiveDrawer = (props, width) => {
                 }}
             >
                 {drawer}
+                <Divider />
+                {headerLinks}
             </Drawer>
+
+            {/* PERMANENT ADMIN SIDEBAR - only when the path starts with /admin and the screen is big enough */}
             {pathname.match(/^\/admin/) && (<Drawer
                 component="nav"
                 aria-label="sidebar"
