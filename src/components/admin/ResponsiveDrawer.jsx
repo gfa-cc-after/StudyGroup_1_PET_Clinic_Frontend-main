@@ -3,12 +3,14 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useAuth } from '../../hooks/store';
 
 const ResponsiveDrawer = (props, width) => {
     const { window } = props;
     const drawerWidth = width;
+    const { pathname } = useLocation();
+
     const [mobileOpen, setMobileOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
     const [toggleButton, setToggleButton] = useState(document.getElementById('open-drawer-button'));
@@ -79,10 +81,9 @@ const ResponsiveDrawer = (props, width) => {
 
     return (
         <>
-            {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
             <Drawer
                 component="nav"
-                className='admin-sidebar-temp'
+                className='sidebar-temp'
                 aria-label="sidebar"
                 variant="temporary"
                 open={mobileOpen}
@@ -98,7 +99,7 @@ const ResponsiveDrawer = (props, width) => {
             >
                 {drawer}
             </Drawer>
-            <Drawer
+            {pathname.match(/^\/admin/) && (<Drawer
                 component="nav"
                 aria-label="sidebar"
                 className='admin-sidebar-permanent'
@@ -110,7 +111,7 @@ const ResponsiveDrawer = (props, width) => {
                 open
             >
                 {drawer}
-            </Drawer>
+            </Drawer>)}
         </>
     );
 }

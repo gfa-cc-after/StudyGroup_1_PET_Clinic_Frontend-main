@@ -7,7 +7,6 @@
     --accent-color-1: #188265;
     --accent-color-1-alt: #4da189;
     --accent-color-2: #CE2D4F;
-    font-size: 1vw;
 }
 
 body {
@@ -16,16 +15,178 @@ body {
     padding: 0;
 }
 
+#root {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/*Header strip and navigation bar*/
+
+header.navbar {
+    flex: 1 0 100%;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    display: flex;
+    min-height: fit-content;
+    min-height: -moz-fit-content;
+    max-height: 100px;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-around;
+    height: 2.5vw;
+    min-height: 3rem;
+    margin-right: 1.5vh;
+}
+
+.navbar #open-drawer-button {
+    margin-left: 1vw;
+    gap: 1vw;
+    font-size: 3vw;
+    cursor: pointer;
+    /* display: none; */
+}
+
+ul.nav {
+    text-wrap: none;
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-right: 1.5vw;
+    overflow: hidden;
+}
+
+li.nav {
+    margin-top: 5px;
+    list-style-type: none;
+    float: left;
+    padding: 10px;
+    white-space: nowrap;
+}
+
+li.nav a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 16px;
+}
+
+li.nav a:hover {
+    color: var(--accent-color-2);
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+#logo-section {
+    margin: 1.5vh 0;
+    display: flex;
+    align-items: center;
+    height: 4.2vw;
+    min-height: 3rem;
+}
+
+#logo-link,
+#logo-img {
+    height: 100%;
+}
+
+#logo-link:link,
+#logo-link:visited,
+#logo-img:active,
+#logo-img:hover {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+/* Admin page specific sidebar */
+/* sidebar outer tag */
+.admin-sidebar-permanent {
+    flex: 1 0 20%;
+    margin: 0;
+}
+
+.MuiDrawer-paper {
+    position: inherit !important;
+    background-color: rgb(213, 237, 248) !important;
+    border-right: none !important;
+    /* to override default behaviour */
+    flex: 1 1 0;
+    text-align: left;
+    font-size: 1rem !important;
+}
+
+.MuiDrawer-paper h3 {
+    margin: 0 0 1em !important;
+    font-size: 1em;
+    color: white;
+}
+
+.nametag {
+    background-color: #a1d3f4;
+    border-radius: 0 0 18px;
+    font-size: 0.8em;
+    padding: 1em 1em 0
+}
+
+.nametag em {
+    display: block;
+    padding: 0.4em 1.6em 1em;
+    font-style: normal;
+    font-size: 1.2em;
+    font-weight: 800;
+    color: var(--secondary-color)
+}
+
+.MuiList-root {
+    margin: 2em 0 0 !important;
+}
+
+/* individual buttons */
+.MuiButtonBase-root {
+    border: none;
+    color: var(--primary-text-color);
+    font-size: 0.6em;
+    font-weight: 500;
+    padding: 0.6em 2.6em !important;
+}
+
+.MuiButtonBase-root:active {
+    color: var(--primary-color);
+    background-color: var(--secondary-color) !important;
+    font-size: 1em;
+    font-weight: 500;
+    padding: 0.6em 2.6em !important;
+}
+
+#admin-sidebar li a:any-link,
+#admin-sidebar li a:-webkit-any-link,
+.MuiDrawer-paper li a:any-link,
+.MuiDrawer-paper li a:-webkit-any-link {
+    color: var(--primary-text-color) !important;
+    list-style-type: none;
+    text-decoration: none;
+    padding: 1em 0 1em 0;
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+/* content container */
 .prettybackground-box {
+    margin: 0;
+    padding: 0;
     background-color: var(--primary-color);
     font-family: 'IBM Plex Sans', sans-serif;
     display: flex;
-    position: relative;
     width: 100%;
     height: 89.4vh;
     overflow: hidden;
-    margin: 0;
-    padding: 0;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -114,87 +275,6 @@ body {
     }
 }
 
-/*Header strip and navigation bar*/
-
-header {
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
-    display: flex;
-    min-height: fit-content;
-    min-height: -moz-fit-content;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-header nav {
-    display: flex;
-    justify-content: space-around;
-    height: 2.5vw;
-    min-height: 3rem;
-    margin-right: 1.5vh;
-}
-
-header #open-drawer-button {
-    margin-left: 1vw;
-    gap: 1vw;
-    font-size: 3vw;
-    cursor: pointer;
-}
-
-ul.nav {
-    text-wrap: none;
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    padding-right: 1.5vw;
-    overflow: hidden;
-}
-
-li.nav {
-    margin-top: 5px;
-    list-style-type: none;
-    float: left;
-    padding: 10px;
-    white-space: nowrap;
-}
-
-li.nav a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-size: 16px;
-}
-
-li.nav a:hover {
-    color: var(--accent-color-2);
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
-}
-
-#logo-section {
-    margin: 1.5vh 0;
-    display: flex;
-    align-items: center;
-    height: 4.2vw;
-    min-height: 3rem;
-}
-
-#logo-link,
-#logo-img {
-    height: 100%;
-}
-
-#logo-link:link,
-#logo-link:visited,
-#logo-img:active,
-#logo-img:hover {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    color: white !important;
-    text-decoration: none !important;
-}
 
 /*LandingPage specific*/
 header h1 {
@@ -306,7 +386,7 @@ section.hero p {
     border-bottom-right-radius: 80px 80px;
 }
 
-section.welcome, 
+section.welcome,
 section.page-title {
     display: block;
     color: var(--text-color);
@@ -647,85 +727,9 @@ section.services {
 
 /* ADMIN PAGES */
 #admin-home {
-    display: flex;
-    flex: 3 0 0
-}
-
-/* sidebar outer tag */
-.admin-sidebar-permanent {
-    margin: 0;
-    width: 20%;
-    max-width: 350px;
-}
-
-.MuiDrawer-paper {
-    position: inherit !important;
-    background-color: rgb(213, 237, 248) !important;
-    border-right: none !important;
-    /* to override default behaviour */
-    flex: 1 1 0;
-    text-align: left;
-    font-size: 1rem !important;
-}
-
-.MuiDrawer-paper h3 {
-    margin: 0 0 1em !important;
-    font-size: 1em;
-    color: white;
-}
-
-.nametag {
-    background-color: #a1d3f4;
-    border-radius: 0 0 18px;
-    font-size: 0.8em;
-    padding: 1em 1em 0
-}
-
-.nametag em {
-    display: block;
-    padding: 0.4em 1.6em 1em;
-    font-style: normal;
-    font-size: 1.2em;
-    font-weight: 800;
-    color: var(--secondary-color)
-}
-.MuiList-root {
-    margin: 2em 0 0 !important;
-}
-
-/* individual buttons */
-.MuiButtonBase-root {
-    border: none;
-    color: var(--primary-text-color);
-    font-size: 0.6em;
-    font-weight: 500;
-    padding: 0.6em 2.6em !important;
-}
-
-.MuiButtonBase-root:active {
-    color: var(--primary-color);
-    background-color: var(--secondary-color) !important;
-    font-size: 1em;
-    font-weight: 500;
-    padding: 0.6em 2.6em !important;
-}
-
-#admin-sidebar li a:any-link, 
-#admin-sidebar li a:-webkit-any-link,
-.MuiDrawer-paper li a:any-link,
-.MuiDrawer-paper li a:-webkit-any-link {
-    color: var(--primary-text-color) !important;
-    list-style-type: none;
-    text-decoration: none;
-    padding: 1em 0 1em 0;
-    font-size: 1.4em;
-    font-weight: 600;
-}
-
-/* envelope for admin content, basically background */
-#admin-content-container {
+    flex: 1 0 50%;
     background-image:
         linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
         url('../assets/adminbg.jpg');
-        background-size: cover;
+    background-size: cover;
 }
