@@ -66,7 +66,7 @@ const ProfilePage = () => {
     };
 
     return (
-        <>
+        <div className='prettybackground-box'>
             <div className='form-pb'></div>
             <div className="profilePage">
                 <section className="welcome">
@@ -133,7 +133,7 @@ const ProfilePage = () => {
                 </form>
                 <ProfileDeletion />
             </div>
-        </>
+        </div>
     );
 };
 
