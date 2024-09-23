@@ -154,7 +154,6 @@ const NavBar = () => {
                     aria-label="open-drawer"
                     id='open-drawer-button'
                     edge="start"
-                    sx={{ display: { sm: 'none' } }}
                 >
                     <MenuIcon />
                 </IconButton>

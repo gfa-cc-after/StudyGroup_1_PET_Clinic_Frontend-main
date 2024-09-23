@@ -29,8 +29,8 @@ header.navbar {
     display: flex;
     min-height: fit-content;
     min-height: -moz-fit-content;
-    max-height: 100px;
     justify-content: space-between;
+    padding: 0 15px;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -38,17 +38,13 @@ header.navbar {
 header nav {
     display: flex;
     justify-content: space-around;
-    height: 2.5vw;
+    height: fit-content;
     min-height: 3rem;
     margin-right: 1.5vh;
 }
 
 .navbar #open-drawer-button {
-    margin-left: 1vw;
-    gap: 1vw;
-    font-size: 3vw;
-    cursor: pointer;
-    /* display: none; */
+    display: none;
 }
 
 ul.nav {
@@ -85,7 +81,7 @@ li.nav a:hover {
     margin: 1.5vh 0;
     display: flex;
     align-items: center;
-    height: 4.2vw;
+    height: 2em;
     min-height: 3rem;
 }
 
@@ -105,7 +101,80 @@ li.nav a:hover {
     text-decoration: none !important;
 }
 
-/* Admin page specific sidebar */
+/* header strip on middle-small screens */
+@media screen and (max-width: 800px) {
+    header.navbar {
+        justify-content: space-around;
+        flex-wrap: nowrap;
+        padding: 0 2vw;
+    }
+
+    .navbar #open-drawer-button {
+        margin: 0 15px;
+        padding: 0 !important;
+        height: 50%;
+        cursor: pointer;
+        display: inherit;
+    }
+
+    #logo-section {
+        flex: 1 1 auto;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        text-align: center;
+    }
+
+    #logo-img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .navbar h1 {
+        padding: 0;
+        font-size: 1.5rem;
+        justify-self: right;
+    }
+
+    .nav {
+        display: none;
+        padding: 5px;
+    }
+
+    .navbar .transparent-button,
+    .navbar .colored-button {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .navbar {
+        font-size: 6vw;
+        height: 20vw;
+    }
+
+    .navbar #open-drawer-button {
+        margin: 0 4vw;
+        height: 50%;
+        cursor: pointer;
+        display: inherit;
+    }
+
+    #logo-section {
+        margin:0;
+    }
+    
+    #logo-img {
+        display: none;
+    }
+
+    .navbar h1 {
+        font-size: 7vw;
+    }
+}
+
+
+/* Sidebar */
 /* sidebar outer tag */
 .admin-sidebar-permanent {
     flex: 1 0 20%;
@@ -116,6 +185,7 @@ li.nav a:hover {
     position: inherit !important;
     background-color: rgb(213, 237, 248) !important;
     border-right: none !important;
+    box-sizing: border-box;
     /* to override default behaviour */
     flex: 1 1 0;
     text-align: left;
@@ -176,6 +246,8 @@ li.nav a:hover {
     font-size: 1.4em;
     font-weight: 600;
 }
+
+
 
 /* content container */
 .prettybackground-box {
