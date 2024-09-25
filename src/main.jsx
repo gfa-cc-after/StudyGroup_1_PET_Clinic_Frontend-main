@@ -10,6 +10,7 @@ import NavBar from './components/NavBar'
 import DecideNavBar from './components/DecideNavBar'
 import ProfilePage from './components/ProfilePage'
 import AddPetForm from './components/AddPetForm'
+import PetEditPage from './components/PetEditPage'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -23,6 +24,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route exact path="/login" element={<LoginForm />} />
         <Route exact path="/user/home" element={<UserHome />} />
         <Route exact path="/user/pet" element={<AddPetForm />} />
+        <Route exact path="/user/pet/edit" element={<PetEditPage />} />
         <Route exact path="/admin/home" element={<AdminHome />} />
         <Route exact path="/profile" element={ <ProfilePage />} />
       </Routes>
