@@ -2,12 +2,11 @@ import Drawer from '@mui/material/Drawer';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAuth } from '../../hooks/store';
-import { Divider, IconButton } from '@mui/material';
+import { IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
 const ResponsiveDrawer = (props) => {
     const { window } = props;
-    const drawerWidth = props.width;
     const { pathname } = useLocation();
 
     const { headerLinks, sidebarLinks } = props.links;
@@ -36,12 +35,17 @@ const ResponsiveDrawer = (props) => {
 
     const drawer = (
         <>
-            <div className="nametag">
+            {displayName? 
+            (<div className="nametag">
                 <h3>You are logged in as:</h3>
                 <em>{displayName}</em>
-            </div>
+            </div>)
+            :(<div className="nametag">
+                <h3 style={{color: 'red'}}>You are not logged in</h3>
+            </div>)}
 
             {pathname.match(/^\/admin/) && (sidebarLinks)}
+            {mobileOpen && (headerLinks)}
         </>
     );
 
@@ -79,8 +83,6 @@ const ResponsiveDrawer = (props) => {
                     <MenuIcon />
                 </IconButton>
                 {drawer}
-                <Divider />
-                {headerLinks}
             </Drawer>
 
             {/* PERMANENT ADMIN SIDEBAR - only when the path starts with /admin and the screen is big enough

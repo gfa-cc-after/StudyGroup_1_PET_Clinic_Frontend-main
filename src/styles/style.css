@@ -102,7 +102,7 @@ li.nav a:hover {
 }
 
 /* header strip on middle-small screens */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1048px) {
     header.navbar {
         justify-content: space-around;
         flex-wrap: nowrap;
@@ -135,7 +135,7 @@ li.nav a:hover {
         justify-self: right;
     }
 
-    .nav {
+    .navbar .nav {
         display: none;
         padding: 5px;
     }
@@ -183,6 +183,7 @@ li.nav a:hover {
 
 .MuiDrawer-paper {
     position: inherit !important;
+    flex-direction: column;
     background-color: rgb(213, 237, 248) !important;
     border-right: none !important;
     box-sizing: border-box;
@@ -216,6 +217,8 @@ li.nav a:hover {
 
 .MuiList-root {
     margin: 2em 0 0 !important;
+    display: flex;
+    flex-direction: column;
 }
 
 /* individual buttons */

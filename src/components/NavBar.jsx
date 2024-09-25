@@ -97,7 +97,7 @@ const NavBar = () => {
                         headerLinks: (
                             <>
                                 <List className='nav'>
-                                    <ListItem disablePadding className='nav'><Link to={`/${role}/home`}>Back to Home</Link></ListItem>
+                                    <ListItem className='nav'><Link to={`/${role}/home`}>Back to Home</Link></ListItem>
                                     <ListItem className='nav'><Link to={`/user/messages`}>Inbox</Link></ListItem>
                                     <ListItem className='nav'><Link to={`/user/home`}>My pets</Link></ListItem>
                                     <ListItem className='nav'><Link to={`/user/history`}>History</Link></ListItem>
