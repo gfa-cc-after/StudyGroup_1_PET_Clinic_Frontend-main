@@ -11,7 +11,8 @@ const AdminRoot = () => {
             className='prettybackground-box'
         >
                 <div className='admin-content'>
-                    <Outlet />
+                    <h1>ADMIN HOMEPAGE</h1>
+                    {/* <Outlet /> */}
                 </div>
             </Box>
     )

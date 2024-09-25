@@ -2,7 +2,8 @@ import Drawer from '@mui/material/Drawer';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAuth } from '../../hooks/store';
-import { Divider } from '@mui/material';
+import { Divider, IconButton } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const ResponsiveDrawer = (props) => {
     const { window } = props;
@@ -68,17 +69,21 @@ const ResponsiveDrawer = (props) => {
                 ModalProps={{
                     keepMounted: true, // Better open performance on mobile.
                 }}
-                sx={{
-                    display: { xs: 'block', sm: 'none' },
-                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-                }}
             >
+                <IconButton
+                    color="inherit"
+                    aria-label="open-drawer"
+                    edge="start"
+                    onClick={handleDrawerToggle}
+                >
+                    <MenuIcon />
+                </IconButton>
                 {drawer}
                 <Divider />
                 {headerLinks}
             </Drawer>
 
-            {/* PERMANENT ADMIN SIDEBAR - only when the path starts with /admin and the screen is big enough */}
+            {/* PERMANENT ADMIN SIDEBAR - only when the path starts with /admin and the screen is big enough
             {pathname.match(/^\/admin/) && (<Drawer
                 component="nav"
                 aria-label="sidebar"
@@ -87,7 +92,7 @@ const ResponsiveDrawer = (props) => {
                 open
             >
                 {drawer}
-            </Drawer>)}
+            </Drawer>)} */}
         </>
     );
 }
