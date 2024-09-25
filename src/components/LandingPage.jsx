@@ -14,7 +14,7 @@ function LandingPage() {
                     <li className='nav'><Link to="/about">About Us</Link></li>
                     <li className='nav'><Link to="/contact">Contact</Link></li>
                     <Link className="transparent-button" to="/login" >Log In</Link>
-                    <Link className="colored-button" to="/register" >Sign Up</Link>	
+                    <Link className="colored-button" to="/register" >Sign Up</Link>
                 </nav>
             </header>
             <section className="hero">
@@ -26,7 +26,8 @@ function LandingPage() {
                 <div className="service-container" id="owner">
                     <h4>For Pet Owners</h4>
                     <p>Follow your pet's medical history.</p>
-                    <p>Find the best professionals in one place.</p></div>
+                    <p>Find the best professionals in one place.</p>
+                </div>
                 <div className="service-container" id="exotic">
                     <h4>For Exotic Animals</h4>
                     <p>Specialists in exotic pets.</p>
@@ -38,7 +39,12 @@ function LandingPage() {
                 </div>
                 <div className="service-container" id="vet"><h4>For Veterinarians</h4>
                     <p>Easy cooperation with other clinics.</p>
-                    <p>Maintainable, modern patient database.</p></div>
+                    <p>Maintainable, modern patient database.</p>
+                </div>
+                <div className="buttons-for-small-devices service-container">
+                    <Link className="transparent-button" to="/login" >Log In</Link>
+                    <Link className="colored-button" to="/register" >Sign Up</Link>
+                </div>
             </section>
         </div>
     )

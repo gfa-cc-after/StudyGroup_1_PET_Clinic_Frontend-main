@@ -161,9 +161,9 @@ li.nav a:hover {
     }
 
     #logo-section {
-        margin:0;
+        margin: 0;
     }
-    
+
     #logo-img {
         display: none;
     }
@@ -386,7 +386,97 @@ section.hero p {
     margin: 0;
 }
 
-@media only screen and (max-width: 780px) {
+/*services boxes*/
+section.services {
+    width: 80%;
+    margin: auto;
+    margin-top: 7vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.service-container {
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    width: 20rem;
+    height: 10rem;
+    border: #1D5276 2px solid;
+    border-radius: 15px;
+    box-shadow: 5px 6px 10px -5px rgba(39, 39, 39, 0.68);
+}
+
+.service-container#vet {
+    background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238, 238, 238, 0.8099614845938375) 42%, rgba(238, 238, 238, 0.15730042016806722) 76%, rgba(238, 238, 238, 0) 100%),
+        url('../assets/vet.jpg');
+    background-size: cover;
+    text-align: end;
+    align-items: flex-end;
+    color: #272727;
+}
+
+.service-container h4 {
+    color: #188265;
+    text-shadow: 1px 1px #dddddd;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.service-container p {
+    margin: 0px;
+    width: 80%;
+}
+
+.service-container#owner {
+    background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238, 238, 238, 0.8099614845938375) 20%, rgba(238, 238, 238, 0.15730042016806722) 76%, rgba(238, 238, 238, 0) 100%),
+        url('../assets/owner.png');
+    background-size: cover;
+    color: #272727;
+}
+
+.service-container#exotic {
+    background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238, 238, 238, 0.8099614845938375) 20%, rgba(238, 238, 238, 0.15730042016806722) 76%, rgba(238, 238, 238, 0) 100%),
+        url('../assets/exotic.jpg');
+    background-size: cover;
+    color: #272727;
+}
+
+.service-container#wannabeowner {
+    background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238, 238, 238, 0.8099614845938375) 20%, rgba(238, 238, 238, 0.15730042016806722) 76%, rgba(238, 238, 238, 0) 100%),
+        url('../assets/Puppy-Kitten.png');
+    background-size: cover;
+    color: #272727;
+}
+
+.service-container.buttons-for-small-devices {
+    display: none;
+}
+
+@media only screen and (max-width: 800px) {
+
+    .service-container.buttons-for-small-devices {
+        margin-bottom: 1em;
+        padding: 0;
+        height: 7rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        border: none;
+        box-shadow: none;
+    }
+
+    .buttons-for-small-devices a {
+        box-sizing: border-box;
+        width: 80%;
+        flex: 0 0 auto;
+    }
+
     section p {
         min-width: 70vw;
     }
@@ -648,72 +738,6 @@ input[type=email] {
 
 span {
     color: #188265;
-}
-
-/*services boxes*/
-section.services {
-    width: 80%;
-    margin: auto;
-    margin-top: 7vw;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.service-container {
-    display: flex;
-    padding: 1rem;
-    flex-direction: column;
-    width: 20rem;
-    height: 10rem;
-    border: #1D5276 2px solid;
-    border-radius: 15px;
-    box-shadow: 5px 6px 10px -5px rgba(39, 39, 39, 0.68);
-    margin-bottom: 1rem;
-}
-
-.service-container#vet {
-    background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238, 238, 238, 0.8099614845938375) 42%, rgba(238, 238, 238, 0.15730042016806722) 76%, rgba(238, 238, 238, 0) 100%),
-        url('../assets/vet.jpg');
-    background-size: cover;
-    text-align: end;
-    align-items: flex-end;
-    color: #272727;
-}
-
-.service-container h4 {
-    color: #188265;
-    text-shadow: 1px 1px #dddddd;
-    font-size: 1.3rem;
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
-}
-
-.service-container p {
-    margin: 0px;
-    width: 80%;
-}
-
-.service-container#owner {
-    background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238, 238, 238, 0.8099614845938375) 20%, rgba(238, 238, 238, 0.15730042016806722) 76%, rgba(238, 238, 238, 0) 100%),
-        url('../assets/owner.png');
-    background-size: cover;
-    color: #272727;
-}
-
-.service-container#exotic {
-    background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238, 238, 238, 0.8099614845938375) 20%, rgba(238, 238, 238, 0.15730042016806722) 76%, rgba(238, 238, 238, 0) 100%),
-        url('../assets/exotic.jpg');
-    background-size: cover;
-    color: #272727;
-}
-
-.service-container#wannabeowner {
-    background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238, 238, 238, 0.8099614845938375) 20%, rgba(238, 238, 238, 0.15730042016806722) 76%, rgba(238, 238, 238, 0) 100%),
-        url('../assets/Puppy-Kitten.png');
-    background-size: cover;
-    color: #272727;
 }
 
 /* Add Pet Form Container */

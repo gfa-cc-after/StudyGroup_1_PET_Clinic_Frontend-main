@@ -15,7 +15,7 @@ const NavBar = () => {
 
     const [links, setLinks] = useState({
         headerLinks: (
-            <List>
+            <List className='nav'>
                 <ListItem disablePadding className='nav'><NavLink to="/help">Get help</NavLink></ListItem>
                 <ListItem disablePadding className='nav'><NavLink to="/">Go back</NavLink></ListItem>
             </List>
@@ -57,7 +57,7 @@ const NavBar = () => {
                 setLinks({
                     ...links,
                     headerLinks: (
-                        <List>
+                        <List className='nav'>
                             <ListItem disablePadding className='nav'><NavLink to="/help">Get help</NavLink></ListItem>
                             <ListItem disablePadding className='nav'><NavLink to="/">Go back</NavLink></ListItem>
                         </List>
@@ -68,7 +68,7 @@ const NavBar = () => {
                 setLinks({
                     ...links,
                     headerLinks: (
-                        <List>
+                        <List className='nav'>
                             <ListItem disablePadding className='nav'><NavLink to="/help">Get help</NavLink></ListItem>
                             <ListItem disablePadding className='nav'><NavLink to="/">Go back</NavLink></ListItem>
                         </List>
@@ -80,7 +80,7 @@ const NavBar = () => {
                     ...links,
                     headerLinks: (
                         <>
-                            <List>
+                            <List className='nav'>
                                 <ListItem disablePadding className='nav'><Link to={`/${role}/home`}>Back to Home</Link></ListItem>
                             </List>
                             <Divider />
@@ -91,56 +91,59 @@ const NavBar = () => {
             }
             default: () => {
             }
-            if (pathname.match(/^\/user/)) {
-                setLinks({
-                    ...links,
-                    headerLinks: (
-                        <>
-                            <List>
-                                <ListItem disablePadding className='nav'><Link to={`/${role}/home`}>Back to Home</Link></ListItem>
-                                <ListItem className='nav'><Link to={`/user/messages`}>Inbox</Link></ListItem>
-                                <ListItem className='nav'><Link to={`/user/home`}>My pets</Link></ListItem>
-                                <ListItem className='nav'><Link to={`/user/history`}>History</Link></ListItem>
-                                <ListItem className='nav'><Link to={"/profile"}>Manage profile</Link></ListItem>
-                            </List>
-                            <Divider />
-                            <Link className="colored-button" to="/" onClick={logout}>Log Out</Link>
-                        </>
-                    )
-                });
-            } else if (pathname.match(/^\/admin/)) {
-                setLinks({
-                    ...links,
-                    headerLinks: (
-                        <>
-                            <li className='nav'><Link to={`/admin/messages`}>Inbox</Link></li>
-                            <li className='nav'><Link to={`/profile`}>Manage profile</Link></li>
-                            <Link className="transparent-button" to="/user/home">To User Home</Link>
-                            <Link className="colored-button" to="/" onClick={logout}>Log Out</Link>
-                        </>
-                    )
-                });
-            };
+                if (pathname.match(/^\/user/)) {
+                    setLinks({
+                        ...links,
+                        headerLinks: (
+                            <>
+                                <List className='nav'>
+                                    <ListItem disablePadding className='nav'><Link to={`/${role}/home`}>Back to Home</Link></ListItem>
+                                    <ListItem className='nav'><Link to={`/user/messages`}>Inbox</Link></ListItem>
+                                    <ListItem className='nav'><Link to={`/user/home`}>My pets</Link></ListItem>
+                                    <ListItem className='nav'><Link to={`/user/history`}>History</Link></ListItem>
+                                    <ListItem className='nav'><Link to={"/profile"}>Manage profile</Link></ListItem>
+                                </List>
+                                <Divider />
+                                <Link className="colored-button" to="/" onClick={logout}>Log Out</Link>
+                            </>
+                        )
+                    });
+                } else if (pathname.match(/^\/admin/)) {
+                    setLinks({
+                        ...links,
+                        headerLinks: (
+                            <>
+                                <List className='nav'>
+                                    <li className='nav'><Link to={`/admin/messages`}>Inbox</Link></li>
+                                    <li className='nav'><Link to={`/profile`}>Manage profile</Link></li>
+                                </List>
+                                <Divider />
+                                <Link className="transparent-button" to="/user/home">To User Home</Link>
+                                <Link className="colored-button" to="/" onClick={logout}>Log Out</Link>
+                            </>
+                        )
+                    });
+                };
 
-            if (pathname === 'user/pet') {
-                setLinks({
-                    ...links,
-                    headerLinks: (
-                        <>
-                            <List>
-                                <ListItem disablePadding className='nav'><Link to={`/${role}/home`}>Back to Home</Link></ListItem>
-                                <ListItem className='nav'><Link to={`/user/messages`}>Inbox</Link></ListItem>
-                                <ListItem className='nav'><Link to={`/user/home`}>My pets</Link></ListItem>
-                                <ListItem className='nav'><Link to={`/user/history`}>History</Link></ListItem>
-                                <ListItem className='nav'><Link to={"/profile"}>Manage profile</Link></ListItem>
-                                <ListItem className='nav'><Link to={`/user/home`}>Go back</Link></ListItem>
-                            </List>
-                            <Divider />
-                            <Link className="colored-button" to="/" onClick={logout}>Log Out</Link>
-                        </>
-                    )
-                });
-            }
+                if (pathname === 'user/pet') {
+                    setLinks({
+                        ...links,
+                        headerLinks: (
+                            <>
+                                <List className='nav'>
+                                    <ListItem disablePadding className='nav'><Link to={`/${role}/home`}>Back to Home</Link></ListItem>
+                                    <ListItem className='nav'><Link to={`/user/messages`}>Inbox</Link></ListItem>
+                                    <ListItem className='nav'><Link to={`/user/home`}>My pets</Link></ListItem>
+                                    <ListItem className='nav'><Link to={`/user/history`}>History</Link></ListItem>
+                                    <ListItem className='nav'><Link to={"/profile"}>Manage profile</Link></ListItem>
+                                    <ListItem className='nav'><Link to={`/user/home`}>Go back</Link></ListItem>
+                                </List>
+                                <Divider />
+                                <Link className="colored-button" to="/" onClick={logout}>Log Out</Link>
+                            </>
+                        )
+                    });
+                }
         }
     }, [pathname]);
 
