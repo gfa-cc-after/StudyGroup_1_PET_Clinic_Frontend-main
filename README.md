@@ -53,3 +53,4 @@ To get started with the React Vite app, follow these steps:
 ### Instructions for installing toastify (needs to be installed when running frontend locally):
 
         npm install react-toastify
+        npm install @mui/material @emotion/react @emotion/styled
