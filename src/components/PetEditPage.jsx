@@ -109,7 +109,7 @@ const PetEditPage = () => {
                             <option value="">Select Pet</option>
                             {pets.map((pet, index) => (
                                 <option key={index} value={index}>
-                                    {pet.petName}
+                                    {index + 1}: {pet.petName} {/* Display the index and pet name */}
                                 </option>
                             ))}
                         </select>
