@@ -1,28 +1,262 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700');
 
+:root {
+    --primary-color: #EEEEEE;
+    --text-color: #272727;
+    --secondary-color: #1D5276;
+    --accent-color-1: #188265;
+    --accent-color-1-alt: #4da189;
+    --accent-color-2: #CE2D4F;
+}
+
 body {
     font-family: 'IBM Plex Sans', sans-serif;
     margin: 0;
     padding: 0;
 }
 
+#root {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/*Header strip and navigation bar*/
+
+header.navbar {
+    flex: 1 0 100%;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    display: flex;
+    min-height: fit-content;
+    min-height: -moz-fit-content;
+    justify-content: space-between;
+    padding: 0 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-around;
+    height: fit-content;
+    min-height: 3rem;
+    margin-right: 1.5vh;
+}
+
+.navbar #open-drawer-button {
+    display: none;
+}
+
+ul.nav {
+    text-wrap: none;
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-right: 1.5vw;
+    overflow: hidden;
+}
+
+li.nav {
+    margin-top: 5px;
+    list-style-type: none;
+    float: left;
+    padding: 10px;
+    white-space: nowrap;
+}
+
+li.nav a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 16px;
+}
+
+li.nav a:hover {
+    color: var(--accent-color-2);
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+#logo-section {
+    margin: 1.5vh 0;
+    display: flex;
+    align-items: center;
+    height: 2em;
+    min-height: 3rem;
+}
+
+#logo-link,
+#logo-img {
+    height: 100%;
+}
+
+#logo-link:link,
+#logo-link:visited,
+#logo-img:active,
+#logo-img:hover {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+/* header strip on middle-small screens */
+@media screen and (max-width: 1048px) {
+    header.navbar {
+        justify-content: space-around;
+        flex-wrap: nowrap;
+        padding: 0 2vw;
+    }
+
+    .navbar #open-drawer-button {
+        margin: 0 15px;
+        padding: 0 !important;
+        height: 50%;
+        cursor: pointer;
+        display: inherit;
+    }
+
+    #logo-section {
+        flex: 1 1 auto;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        text-align: center;
+    }
+
+    #logo-img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .navbar h1 {
+        padding: 0;
+        font-size: 1.5rem;
+        justify-self: right;
+    }
+
+    .navbar .nav {
+        display: none;
+        padding: 5px;
+    }
+
+    .navbar .transparent-button,
+    .navbar .colored-button {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .navbar {
+        font-size: 6vw;
+        height: 20vw;
+    }
+
+    .navbar #open-drawer-button {
+        margin: 0 4vw;
+        height: 50%;
+        cursor: pointer;
+        display: inherit;
+    }
+
+    #logo-section {
+        margin: 0;
+    }
+
+    #logo-img {
+        display: none;
+    }
+
+    .navbar h1 {
+        font-size: 7vw;
+    }
+}
+
+
+/* Sidebar */
+/* sidebar outer tag */
+.admin-sidebar-permanent {
+    flex: 1 0 20%;
+    margin: 0;
+}
+
+.MuiDrawer-paper {
+    /* it is a generated class, overriding it here*/
+    position: inherit !important;
+    flex-direction: column;
+    background-color: rgb(213, 237, 248) !important;
+    border-right: none !important;
+    box-sizing: border-box;
+    flex: 1 1 0;
+    text-align: left;
+    font-size: 1rem !important;
+}
+
+.MuiDrawer-paper h3 {
+    /* MuiDrawer-paper is a generated class, overriding it here*/
+    margin: 0 0 1em !important;
+    font-size: 1em;
+    color: white;
+}
+
+.nametag {
+    background-color: #a1d3f4;
+    border-radius: 0 0 18px;
+    font-size: 0.8em;
+    padding: 1em 1em 0
+}
+
+.nametag em {
+    display: block;
+    padding: 0.4em 1.6em 1em;
+    font-style: normal;
+    font-size: 1.2em;
+    font-weight: 800;
+    color: var(--secondary-color)
+}
+
+/* individual buttons */
+/* it is a generated class, overriding it here*/
+.MuiList-root {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+
+.MuiListItem-root {
+    margin: 0;
+    padding: 0;
+}
+
+.MuiPaper-root .MuiListItem-root a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+
+/* content container */
 .prettybackground-box {
-    background-color: #EEEEEE;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-color);
     font-family: 'IBM Plex Sans', sans-serif;
     display: flex;
-    position: relative;
     width: 100%;
     height: 89.4vh;
     overflow: hidden;
-    margin: 0;
-    padding: 0;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
 
 .prettybackground-box-add-pet {
-    background-color: #EEEEEE;
+    /* background-color: var(--primary-color); */
     display: flex;
     justify-content: center;
     /* Center horizontally */
@@ -82,7 +316,7 @@ body {
 }
 
 .landingbody {
-    background-color: #EEEEEE;
+    background-color: var(--primary-color);
     font-family: 'IBM Plex Sans', sans-serif;
     margin: 0;
     padding: 0;
@@ -104,79 +338,6 @@ body {
     }
 }
 
-/*Header strip and navigation bar*/
-
-header {
-    background-color: #003363d7;
-    color: #EEEEEE;
-    display: flex;
-    min-height: fit-content;
-    min-height: -moz-fit-content;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-nav {
-    display: flex;
-    height: 2.5vw;
-    min-height: 3rem;
-    margin-right: 1.5vh;
-}
-
-ul.nav {
-    text-wrap: none;
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    padding-right: 1.5vw;
-    overflow: hidden;
-}
-
-li.nav {
-    margin-top: 5px;
-    list-style-type: none;
-    float: left;
-    padding: 10px;
-    white-space: nowrap;
-}
-
-li.nav a {
-    color: #EEEEEE;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-li.nav a:hover {
-    color: #ce2d4f;
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
-}
-
-#logo-section {
-    margin: 1.5vh;
-    display: flex;
-    align-items: center;
-    height: 4.2vw;
-    min-height: 3rem;
-}
-
-#logo-link,
-#logo-img {
-    height: 100%;
-}
-
-#logo-link:link,
-#logo-link:visited,
-#logo-img:active,
-#logo-img:hover {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    color: white !important;
-    text-decoration: none !important;
-}
 
 /*LandingPage specific*/
 header h1 {
@@ -193,7 +354,7 @@ section.hero {
 }
 
 section.hero h2 {
-    color: #272727;
+    color: var(--text-color);
     font-family: 'Bebas Neue', cursive;
     white-space: nowrap;
     font-size: 5rem;
@@ -201,7 +362,7 @@ section.hero h2 {
 }
 
 section.hero h3 {
-    color: #272727;
+    color: var(--text-color);
     font-family: 'Bebas Neue', cursive;
     font-size: 2rem;
     margin: 0;
@@ -210,13 +371,103 @@ section.hero h3 {
 }
 
 section.hero p {
-    color: #272727;
+    color: var(--text-color);
     width: 35vw;
     font-size: 1rem;
     margin: 0;
 }
 
-@media only screen and (max-width: 780px) {
+/*services boxes*/
+section.services {
+    width: 80%;
+    margin: auto;
+    margin-top: 7vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.service-container {
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    width: 20rem;
+    height: 10rem;
+    border: #1D5276 2px solid;
+    border-radius: 15px;
+    box-shadow: 5px 6px 10px -5px rgba(39, 39, 39, 0.68);
+}
+
+.service-container#vet {
+    background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238, 238, 238, 0.8099614845938375) 42%, rgba(238, 238, 238, 0.15730042016806722) 76%, rgba(238, 238, 238, 0) 100%),
+        url('../assets/vet.jpg');
+    background-size: cover;
+    text-align: end;
+    align-items: flex-end;
+    color: #272727;
+}
+
+.service-container h4 {
+    color: #188265;
+    text-shadow: 1px 1px #dddddd;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.service-container p {
+    margin: 0px;
+    width: 80%;
+}
+
+.service-container#owner {
+    background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238, 238, 238, 0.8099614845938375) 20%, rgba(238, 238, 238, 0.15730042016806722) 76%, rgba(238, 238, 238, 0) 100%),
+        url('../assets/owner.png');
+    background-size: cover;
+    color: #272727;
+}
+
+.service-container#exotic {
+    background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238, 238, 238, 0.8099614845938375) 20%, rgba(238, 238, 238, 0.15730042016806722) 76%, rgba(238, 238, 238, 0) 100%),
+        url('../assets/exotic.jpg');
+    background-size: cover;
+    color: #272727;
+}
+
+.service-container#wannabeowner {
+    background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238, 238, 238, 0.8099614845938375) 20%, rgba(238, 238, 238, 0.15730042016806722) 76%, rgba(238, 238, 238, 0) 100%),
+        url('../assets/Puppy-Kitten.png');
+    background-size: cover;
+    color: #272727;
+}
+
+.service-container.buttons-for-small-devices {
+    display: none;
+}
+
+@media only screen and (max-width: 800px) {
+
+    .service-container.buttons-for-small-devices {
+        margin-bottom: 1em;
+        padding: 0;
+        height: 7rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        border: none;
+        box-shadow: none;
+    }
+
+    .buttons-for-small-devices a {
+        box-sizing: border-box;
+        width: 80%;
+        flex: 0 0 auto;
+    }
+
     section p {
         min-width: 70vw;
     }
@@ -271,8 +522,9 @@ section.hero p {
     }
 }
 
-/*page specific: userHome*/
-.userhome {
+/*page specific: userHome, adminHome*/
+.userhome,
+.admin-content {
     background-color: #fdfdfda8;
     position: relative;
     height: fit-content;
@@ -287,9 +539,10 @@ section.hero p {
     border-bottom-right-radius: 80px 80px;
 }
 
-section.welcome {
+section.welcome,
+section.page-title {
     display: block;
-    color: #272727;
+    color: var(--text-color);
     margin-bottom: 1vw;
 }
 
@@ -298,7 +551,8 @@ section .colored-button {
     margin-top: -1.5rem;
 }
 
-section.welcome h1 {
+section.welcome h1,
+section.page-title h1 {
     font-family: 'Bebas Neue', cursive;
     font-size: 4rem;
     margin: 0;
@@ -311,7 +565,7 @@ section.welcome h2 {
 }
 
 h3.home-h3 {
-    color: #272727;
+    color: var(--text-color);
     font-family: 'Bebas Neue', cursive;
     font-size: 2rem;
     margin: 0;
@@ -319,7 +573,8 @@ h3.home-h3 {
     margin: auto;
 }
 
-section.userhome-content {
+section.userhome-content,
+section.adminhome-content {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -356,7 +611,7 @@ section.userhome-content {
 /*universal buttons */
 /* REVIEW NOTE - doubled formButton style???*/
 .formButton {
-    background-color: #188265;
+    background-color: var(--accent-color-1);
     color: white;
     padding: 1em 1em;
     margin: 2vw 0;
@@ -372,7 +627,7 @@ section.userhome-content {
 }
 
 .formButton {
-    background-color: #188265;
+    background-color: var(--accent-color-1);
     color: white;
     padding: 1em 1.5em;
     border: none;
@@ -394,7 +649,7 @@ button a {
 }
 
 .colored-button a:visited {
-    color: #EEEEEE;
+    color: var(--primary-color);
 }
 
 .transparent-button a:visited {
@@ -402,7 +657,7 @@ button a {
 }
 
 .colored-button {
-    background-color: #188265;
+    background-color: var(--accent-color-1);
     color: #EEEEEE;
     border: none;
     padding: 10px 10px;
@@ -419,10 +674,14 @@ button a {
 }
 
 .colored-button:hover {
-    background-color: #ce2d4f;
+    background-color: var(--accent-color-2);
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     box-shadow: -5px -6px 10px -5px rgba(39, 39, 39, 0.70);
+}
+
+.colored-button:disabled {
+    background-color: grey;
 }
 
 .transparent-button {
@@ -470,72 +729,6 @@ input[type=email] {
 
 span {
     color: #188265;
-}
-
-/*services boxes*/
-section.services {
-    width: 80%;
-    margin: auto;
-    margin-top: 7vw;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.service-container {
-    display: flex;
-    padding: 1rem;
-    flex-direction: column;
-    width: 20rem;
-    height: 10rem;
-    border: #1D5276 2px solid;
-    border-radius: 15px;
-    box-shadow: 5px 6px 10px -5px rgba(39, 39, 39, 0.68);
-    margin-bottom: 1rem;
-}
-
-.service-container#vet {
-    background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238, 238, 238, 0.8099614845938375) 42%, rgba(238, 238, 238, 0.15730042016806722) 76%, rgba(238, 238, 238, 0) 100%),
-        url('../assets/vet.jpg');
-    background-size: cover;
-    text-align: end;
-    align-items: flex-end;
-    color: #272727;
-}
-
-.service-container h4 {
-    color: #188265;
-    text-shadow: 1px 1px #dddddd;
-    font-size: 1.3rem;
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
-}
-
-.service-container p {
-    margin: 0px;
-    width: 80%;
-}
-
-.service-container#owner {
-    background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238, 238, 238, 0.8099614845938375) 20%, rgba(238, 238, 238, 0.15730042016806722) 76%, rgba(238, 238, 238, 0) 100%),
-        url('../assets/owner.png');
-    background-size: cover;
-    color: #272727;
-}
-
-.service-container#exotic {
-    background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238, 238, 238, 0.8099614845938375) 20%, rgba(238, 238, 238, 0.15730042016806722) 76%, rgba(238, 238, 238, 0) 100%),
-        url('../assets/exotic.jpg');
-    background-size: cover;
-    color: #272727;
-}
-
-.service-container#wannabeowner {
-    background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.788) 0%, rgba(238, 238, 238, 0.8099614845938375) 20%, rgba(238, 238, 238, 0.15730042016806722) 76%, rgba(238, 238, 238, 0) 100%),
-        url('../assets/Puppy-Kitten.png');
-    background-size: cover;
-    color: #272727;
 }
 
 /* Add Pet Form Container */
@@ -592,7 +785,9 @@ section.services {
     position: absolute;
     width: 100%;
     height: 130%;
-    background-image: url('../assets/userbg.jpg');
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+        url('../assets/userbg.jpg');
 }
 
 .profilePage {
@@ -611,12 +806,17 @@ section.services {
 .changeButton {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--accent-color-1);
+    color: var(--primary-color);
     border: none;
     cursor: pointer;
 }
 
-.changeButton:disabled {
-    background-color: grey;
+/* ADMIN PAGES */
+#admin-home {
+    flex: 1 0 50%;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+        url('../assets/adminbg.jpg');
+    background-size: cover;
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from 'axios'
 import { useAuth } from "./store";
+import { getPets } from "../utils/httpClient";
 
 const usePets = () => {
     const dataUrl = import.meta.env.VITE_API_BACKEND_URL + "/api/v1/user/pets"
