@@ -16,36 +16,26 @@ const NavBar = () => {
     const [links, setLinks] = useState({
         headerLinks: (
             <List className='nav'>
-                <ListItem disablePadding className='nav'><NavLink to="/help">Get help</NavLink></ListItem>
-                <ListItem disablePadding className='nav'><NavLink to="/">Go back</NavLink></ListItem>
+                <ListItem disablePadding><NavLink to="/help">Get help</NavLink></ListItem>
+                <ListItem disablePadding><NavLink to="/">Go back</NavLink></ListItem>
             </List>
         ),
         sidebarLinks: (
-            <List>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <NavLink to='/admin/clinics'>Manage Clinics</NavLink>
-                    </ListItemButton>
+            <List className='nav'>
+                <ListItem>
+                    <NavLink to='/admin/clinics'>Manage Clinics</NavLink>
                 </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <NavLink to='/admin/users'>Manage Users</NavLink>
-                    </ListItemButton>
+                <ListItem>
+                    <NavLink to='/admin/users'>Manage Users</NavLink>
                 </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <NavLink to='/admin/pets'>Manage Pets</NavLink>
-                    </ListItemButton>
+                <ListItem>
+                    <NavLink to='/admin/pets'>Manage Pets</NavLink>
                 </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <NavLink to='/admin/stats'>Statistics</NavLink>
-                    </ListItemButton>
+                <ListItem>
+                    <NavLink to='/admin/stats'>Statistics</NavLink>
                 </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <NavLink to='/admin/support'>Development support</NavLink>
-                    </ListItemButton>
+                <ListItem>
+                    <NavLink to='/admin/support'>Development support</NavLink>
                 </ListItem>
             </List>
         )
@@ -58,8 +48,8 @@ const NavBar = () => {
                     ...links,
                     headerLinks: (
                         <List className='nav'>
-                            <ListItem disablePadding className='nav'><NavLink to="/help">Get help</NavLink></ListItem>
-                            <ListItem disablePadding className='nav'><NavLink to="/">Go back</NavLink></ListItem>
+                            <ListItem disablePadding><NavLink to="/help">Get help</NavLink></ListItem>
+                            <ListItem disablePadding><NavLink to="/">Go back</NavLink></ListItem>
                         </List>
                     )
                 });
@@ -69,8 +59,8 @@ const NavBar = () => {
                     ...links,
                     headerLinks: (
                         <List className='nav'>
-                            <ListItem disablePadding className='nav'><NavLink to="/help">Get help</NavLink></ListItem>
-                            <ListItem disablePadding className='nav'><NavLink to="/">Go back</NavLink></ListItem>
+                            <ListItem disablePadding><NavLink to="/help">Get help</NavLink></ListItem>
+                            <ListItem disablePadding><NavLink to="/">Go back</NavLink></ListItem>
                         </List>
                     )
                 });
@@ -81,7 +71,7 @@ const NavBar = () => {
                     headerLinks: (
                         <>
                             <List className='nav'>
-                                <ListItem disablePadding className='nav'><Link to={`/${role}/home`}>Back to Home</Link></ListItem>
+                                <ListItem disablePadding><Link to={`/${role}/home`}>Back to Home</Link></ListItem>
                             </List>
                             <Divider />
                             <Link className="colored-button" to="/" onClick={logout}>Log Out</Link>
@@ -97,11 +87,11 @@ const NavBar = () => {
                         headerLinks: (
                             <>
                                 <List className='nav'>
-                                    <ListItem className='nav'><Link to={`/${role}/home`}>Back to Home</Link></ListItem>
-                                    <ListItem className='nav'><Link to={`/user/messages`}>Inbox</Link></ListItem>
-                                    <ListItem className='nav'><Link to={`/user/home`}>My pets</Link></ListItem>
-                                    <ListItem className='nav'><Link to={`/user/history`}>History</Link></ListItem>
-                                    <ListItem className='nav'><Link to={"/profile"}>Manage profile</Link></ListItem>
+                                    <ListItem><Link to={`/${role}/home`}>Back to Home</Link></ListItem>
+                                    <ListItem><Link to={`/user/messages`}>Inbox</Link></ListItem>
+                                    <ListItem><Link to={`/user/home`}>My pets</Link></ListItem>
+                                    <ListItem><Link to={`/user/history`}>History</Link></ListItem>
+                                    <ListItem><Link to={"/profile"}>Manage profile</Link></ListItem>
                                 </List>
                                 <Divider />
                                 <Link className="colored-button" to="/" onClick={logout}>Log Out</Link>
@@ -114,8 +104,8 @@ const NavBar = () => {
                         headerLinks: (
                             <>
                                 <List className='nav'>
-                                    <li className='nav'><Link to={`/admin/messages`}>Inbox</Link></li>
-                                    <li className='nav'><Link to={`/profile`}>Manage profile</Link></li>
+                                    <ListItem><Link to={`/admin/messages`}>Inbox</Link></ListItem>
+                                    <ListItem><Link to={`/profile`}>Manage profile</Link></ListItem>
                                 </List>
                                 <Divider />
                                 <Link className="transparent-button" to="/user/home">To User Home</Link>
@@ -132,11 +122,11 @@ const NavBar = () => {
                             <>
                                 <List className='nav'>
                                     <ListItem disablePadding className='nav'><Link to={`/${role}/home`}>Back to Home</Link></ListItem>
-                                    <ListItem className='nav'><Link to={`/user/messages`}>Inbox</Link></ListItem>
-                                    <ListItem className='nav'><Link to={`/user/home`}>My pets</Link></ListItem>
-                                    <ListItem className='nav'><Link to={`/user/history`}>History</Link></ListItem>
-                                    <ListItem className='nav'><Link to={"/profile"}>Manage profile</Link></ListItem>
-                                    <ListItem className='nav'><Link to={`/user/home`}>Go back</Link></ListItem>
+                                    <ListItem><Link to={`/user/messages`}>Inbox</Link></ListItem>
+                                    <ListItem><Link to={`/user/home`}>My pets</Link></ListItem>
+                                    <ListItem><Link to={`/user/history`}>History</Link></ListItem>
+                                    <ListItem><Link to={"/profile"}>Manage profile</Link></ListItem>
+                                    <ListItem><Link to={`/user/home`}>Go back</Link></ListItem>
                                 </List>
                                 <Divider />
                                 <Link className="colored-button" to="/" onClick={logout}>Log Out</Link>
