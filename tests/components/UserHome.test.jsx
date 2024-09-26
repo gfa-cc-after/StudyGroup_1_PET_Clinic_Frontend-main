@@ -2,7 +2,7 @@ import React from "react";
 import { render, waitFor } from "@testing-library/react";
 import { it, expect, describe, vi } from "vitest";
 import { BrowserRouter } from 'react-router-dom'
-import UserHome from "../../src/components/UserHome";
+import { UserHome } from "../../src/components/UserHome";
 import axios from 'axios';
 
 const mockPetData = [
