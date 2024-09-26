@@ -1,8 +1,8 @@
 import Drawer from '@mui/material/Drawer';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useAuth } from '../../hooks/store';
-import { IconButton } from '@mui/material';
+import { useAuth } from '../hooks/store';
+import { Divider, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
 const ResponsiveDrawer = (props) => {
@@ -35,22 +35,24 @@ const ResponsiveDrawer = (props) => {
 
     const drawer = (
         <>
-            {displayName? 
-            (<div className="nametag">
-                <h3>You are logged in as:</h3>
-                <em>{displayName}</em>
-            </div>)
-            :(<div className="nametag">
-                <h3 style={{color: 'red'}}>You are not logged in</h3>
-            </div>)}
+            {displayName ?
+                (<div className="nametag">
+                    <h3>You are logged in as:</h3>
+                    <em>{displayName}</em>
+                </div>)
+                : (<div className="nametag">
+                    <h3 style={{ color: 'red' }}>You are not logged in</h3>
+                </div>)}
 
-            {pathname.match(/^\/admin/) && (sidebarLinks)}
-            {mobileOpen && (headerLinks)}
+            {pathname.match(/^\/admin/) && sidebarLinks}
+            {mobileOpen &&
+                <>
+                    <Divider />
+                    {headerLinks}
+                </>
+            }
         </>
     );
-
-    // Remove this const when copying and pasting into your project.
-    const container = window !== undefined ? () => window().document.body : undefined;
 
     useEffect(() => {
         setToggleButton(document.getElementById('open-drawer-button'));
@@ -85,7 +87,7 @@ const ResponsiveDrawer = (props) => {
                 {drawer}
             </Drawer>
 
-            {/* PERMANENT ADMIN SIDEBAR - only when the path starts with /admin and the screen is big enough
+            {/* PERMANENT ADMIN SIDEBAR - only when the path starts with /admin and the screen is big enough */}
             {pathname.match(/^\/admin/) && (<Drawer
                 component="nav"
                 aria-label="sidebar"
@@ -94,7 +96,7 @@ const ResponsiveDrawer = (props) => {
                 open
             >
                 {drawer}
-            </Drawer>)} */}
+            </Drawer>)}
         </>
     );
 }

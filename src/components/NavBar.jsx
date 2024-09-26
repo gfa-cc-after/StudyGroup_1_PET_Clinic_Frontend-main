@@ -4,7 +4,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useAuth } from '../hooks/store';
 import { Divider, IconButton, List, ListItem, ListItemButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { ResponsiveDrawer } from './admin/ResponsiveDrawer';
+import { ResponsiveDrawer } from './ResponsiveDrawer';
 import { useEffect, useState } from 'react';
 
 const NavBar = () => {

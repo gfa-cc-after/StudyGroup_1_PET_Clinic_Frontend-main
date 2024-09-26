@@ -238,7 +238,11 @@ li.nav a:hover {
     font-weight: 600;
 }
 
-
+@media screen and (max-width:1048px) {
+   .admin-sidebar-permanent {
+    display: none;
+   }
+}
 
 /* content container */
 .prettybackground-box {
