@@ -381,7 +381,8 @@ section.hero p {
 section.services {
     width: 80%;
     margin: auto;
-    margin-top: 7vw;
+    margin-top: 7vh;
+    margin-bottom: 7vh;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
