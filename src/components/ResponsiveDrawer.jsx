@@ -6,7 +6,6 @@ import { Divider, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
 const ResponsiveDrawer = (props) => {
-    const { window } = props;
     const { pathname } = useLocation();
 
     const { headerLinks, sidebarLinks } = props.links;
@@ -42,9 +41,11 @@ const ResponsiveDrawer = (props) => {
                 </div>)
                 : (<div className="nametag">
                     <h3 style={{ color: 'red' }}>You are not logged in</h3>
-                </div>)}
+                </div>)
+            }
 
             {pathname.match(/^\/admin/) && sidebarLinks}
+
             {mobileOpen &&
                 <>
                     <Divider />
@@ -88,15 +89,17 @@ const ResponsiveDrawer = (props) => {
             </Drawer>
 
             {/* PERMANENT ADMIN SIDEBAR - only when the path starts with /admin and the screen is big enough */}
-            {pathname.match(/^\/admin/) && (<Drawer
-                component="nav"
-                aria-label="sidebar"
-                className='admin-sidebar-permanent'
-                variant="permanent"
-                open
-            >
-                {drawer}
-            </Drawer>)}
+            {pathname.match(/^\/admin/) &&
+                <Drawer
+                    component="nav"
+                    aria-label="sidebar"
+                    className='admin-sidebar-permanent'
+                    variant="permanent"
+                    open
+                >
+                    {drawer}
+                </Drawer>
+            }
         </>
     );
 }
