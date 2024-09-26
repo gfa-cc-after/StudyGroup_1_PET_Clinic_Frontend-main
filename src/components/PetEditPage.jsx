@@ -9,6 +9,8 @@ import { useAuth } from '../hooks/store'
 
 const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/api/v1/user/pet/edit";
 
+//TODO make "select pet" unsubmitable
+
 const PetEditPage = () => {
     const { pets } = usePets(); // Load pets from your custom hook
     const [selectedPetIndex, setSelectedPetIndex] = useState(null); // Index of the selected pet
