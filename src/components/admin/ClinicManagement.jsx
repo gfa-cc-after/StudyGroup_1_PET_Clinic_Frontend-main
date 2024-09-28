@@ -31,9 +31,10 @@ const ClinicManagement = () => {
                                 <td>{index + 1}</td>
                                 <td>{clinic.name}</td>
                                 <td>{clinic.address}</td>
-                                <td><IconButton aria-label="update-clinic" href='/admin/clinic/update'>
-                                    <EditNoteOutlinedIcon />
-                                </IconButton></td>
+                                <td>
+                                    <IconButton aria-label="update-clinic" href='/admin/clinic/update'>
+                                        <EditNoteOutlinedIcon />
+                                    </IconButton></td>
                                 <td>
                                     <IconButton aria-label="delete-clinic" href='/admin/clinic/delete'>
                                         <DeleteOutlinedIcon />
