@@ -3,6 +3,7 @@
     color: white;
     border: none;
     padding: 10px 20px;
+    margin-bottom: 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
@@ -23,8 +24,7 @@
 }
 
 .confirmation-dialog {
-    margin-top: 20px;
-    padding: 20px;
+    padding: 0px 20px 20px 20px;
     border: 1px solid #ccc;
     background-color: #f8f8f8;
 }
