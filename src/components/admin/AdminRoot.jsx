@@ -5,15 +5,19 @@ import { Box } from '@mui/material';
 const AdminRoot = () => {
 
     return (
-        <Box
+        <main
             component="main"
             id='admin-home'
             className='prettybackground-box'
+            data-testid='admin-home'
         >
-                <div className='admin-content'>
-                    <Outlet />
-                </div>
-            </Box>
+            <div
+                className='admin-content'
+                data-testid='admin-content'
+            >
+                <Outlet />
+            </div>
+        </main>
     )
 }
 export { AdminRoot };
