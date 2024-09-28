@@ -451,7 +451,7 @@ section.services {
     display: none;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1048px) {
 
     .service-container.buttons-for-small-devices {
         margin-bottom: 1em;
@@ -471,6 +471,9 @@ section.services {
         width: 80%;
         flex: 0 0 auto;
     }
+}
+
+@media only screen and (max-width: 800px) {
 
     section p {
         min-width: 70vw;
