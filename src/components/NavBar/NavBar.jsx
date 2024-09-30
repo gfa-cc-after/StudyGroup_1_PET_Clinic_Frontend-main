@@ -7,11 +7,72 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { ResponsiveDrawer } from '../ResponsiveDrawer';
 import { useEffect, useState } from 'react';
 
+
+const drawerWidth = 240;
+
+
+const pathsToLinksMap = {
+  "/login": [
+    { to: "/help", linkText: "Get help" },
+    { to: "/", linkText: "Go back" },
+  ],
+  "/register": [
+    { to: "/help", linkText: "Get help" },
+    { to: "/", linkText: "Go back" },
+  ],
+  "/": [
+    { to: "/register", linkText: "Register" },
+    { to: "/login", linkText: "Login" },
+  ],
+}
+
+/**
+ * 
+ * @param {String} pathName of the rurrent
+ * @param {String} role of the user
+ * @param {Function} logout to logut the current user
+ * @returns {Array.<{ to: String, linkText: String, onClick: Function | undefined}>} linkObjects
+ */
+const getNavbarElements = (pathName, role, logout) => {
+  if (pathsToLinksMap[pathName]) {
+    return pathsToLinksMap[pathName]
+  }
+  if (pathName === "/profile") {
+    return [
+      { to: `/${role}/home`, linkText: "Back to Home" },
+      { to: "/", linkText: "Log Out", onClick: logout }
+    ]
+  }
+  if (pathName.startsWith("/user/")) {
+    return [
+      { to: "/user/messages", linkText: "Inbox" },
+      { to: "/user/home", linkText: "My pets" },
+      { to: "/user/history", linkText: "History" },
+      { to: "/profile", linkText: "Manage profile" },
+      { to: "/logout", linkText: "Logout", onClick: logout },
+    ]
+  }
+  if (pathName.startsWith("/admin")) {
+    return [
+      { to: "/admin/messages", linkText: "Inbox" },
+      { to: "/user/home", linkText: "To User Home" },
+      { to: "/profile", linkText: "Manage profile" },
+      { to: "/logout", linkText: "Logout", onClick: logout },
+    ]
+  }
+}
+
 const NavBar = () => {
 
   const { user, logout } = useAuth()
   const { role } = user;
   const { pathname } = useLocation();
+
+  const [navbarElements, setNavbarElements] = useState([]);
+  useEffect(() => {
+    const elements = getNavbarElements(pathname, role);
+    setNavbarElements(elements);
+  }, [pathname, role]);
 
   const [links, setLinks] = useState({
     headerLinks: (
@@ -137,7 +198,6 @@ const NavBar = () => {
     }
   }, [pathname]);
 
-  const drawerWidth = 240;
 
   return (
     <>
@@ -146,74 +206,28 @@ const NavBar = () => {
           <IconButton
             color="inherit"
             aria-label="open-drawer"
-            id='open-drawer-button'
             edge="start"
           >
             <MenuIcon />
           </IconButton>
-          {/* <div id="logo-section"> */}
           <Link id="logo-link" to={role ? `/${role}/home` : '/'}><img id="logo-img" src={logo} alt="logo" /></Link>
           <Link id="logo-link" to={role ? `/${role}/home` : '/'}><h1>Pet Clinic Alliance</h1></Link>
-          {/* </div> */}
-
           <nav>
             <ul className='nav'>
-              {/* {pathname === "/" && (
-              <header className="navbar">
-                <div id="logo-section">
-                  <Link id="logo-link" to="/"><img id="logo-img" src={logo} alt="logo" /></Link>
-                  <h1>Pet Clinic Alliance</h1>
-                </div>
-                <nav>
-                  <li className='nav'><Link to="/about">About Us</Link></li>
-                  <li className='nav'><Link to="/contact">Contact</Link></li>
-                  <Link className="transparent-button" to="/login" >Log In</Link>
-                  <Link className="colored-button" to="/register" >Sign Up</Link>
-                </nav>
-              </header>
-            )} */}
-              {pathname === '/login' && (
-                <>
-                  <li className='nav'><Link to="/help">Get help</Link></li>
-                  <li className='nav'><Link to="/">Go back</Link></li>
-                </>
-              )}
-              {pathname === '/register' && (
-                <>
-                  <li className='nav'><Link to="/help">Get help</Link></li>
-                  <li className='nav'><Link to="/">Go back</Link></li>
-                </>
-              )}
-              {location.pathname === '/profile' && (
-                <>
-                  <li className='nav'><Link to={`/${role}/home`}>Back to Home</Link></li>
-                  <Link className="colored-button" to="/" onClick={logout}>Log Out</Link>
-                </>
-              )}
-              {pathname.match(/^\/user/) && (
-                <>
-                  <li className='nav'><Link to={"/user/messages"}>Inbox</Link></li>
-                  <li className='nav'><Link to={"/user/home"}>My pets</Link></li>
-                  <li className='nav'><Link to={"/user/history"}>History</Link></li>
-                  <li className='nav'><Link to={"/profile"}>Manage profile</Link></li>
-                  <Link className="colored-button" to="/" onClick={logout}>Log Out</Link>
-                </>
-              )}
-              {pathname.match(/^\/admin/) && (
-                <>
-                  <li className='nav'><Link to={"/admin/messages"}>Inbox</Link></li>
-                  <li className='nav'><Link to={"/profile"}>Manage profile</Link></li>
-                  <Link className="transparent-button" to="/user/home">To User Home</Link>
-                  <Link className="colored-button" to="/" onClick={logout}>Log Out</Link>
-                </>
-              )}
-              {pathname === '/user/pet' && (
-                <li className='nav'><Link to="/user/home">Go back</Link></li>
-              )}
+              {
+                navbarElements.map(navBarElement =>
+                  <Link
+                    key={navBarElement.to}
+                    to={navBarElement.to}
+                    onClick={navBarElement.onClick || undefined}
+                  >
+                    {navBarElement.linkText}
+                  </Link>)
+              }
             </ul>
           </nav>
         </header>
-      </Stack>
+      </Stack >
       <ResponsiveDrawer width={drawerWidth} links={links} />
     </>
   )
