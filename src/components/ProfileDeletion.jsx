@@ -74,4 +74,4 @@ function ProfileDeletion() {
   );
 }
 
-export default ProfileDeletion;
+export { ProfileDeletion };

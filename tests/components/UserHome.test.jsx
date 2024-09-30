@@ -1,9 +1,9 @@
-import React from "react";
 import { render, waitFor } from "@testing-library/react";
 import { it, expect, describe, vi } from "vitest";
 import { BrowserRouter } from 'react-router-dom'
-import { UserHome } from "../../src/components/UserHome";
 import axios from 'axios';
+
+import { UserHome } from "../../src/components/UserHome";
 
 const mockPetData = [
   {
@@ -58,11 +58,11 @@ vi.mock('axios')
 
 describe("UserHome component test", () => {
 
-  it("renders all fields correctly", async() => {
-    vi.spyOn(axios, 'get').mockResolvedValue({ data: { pets: mockPetData }});
+  it("renders all fields correctly", async () => {
+    vi.spyOn(axios, 'get').mockResolvedValue({ data: { pets: mockPetData } });
 
     const { getByTestId, getAllByTestId } = renderWithRouter(<UserHome />);
-    
+
     await waitFor(() => {
       // Check welcome message
       const welcomeElement = getByTestId("welcomeId");

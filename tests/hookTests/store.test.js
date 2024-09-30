@@ -1,5 +1,5 @@
-import { describe, expect, it, vi } from "vitest";
-import { renderHook, waitFor, act } from '@testing-library/react';
+import { describe, expect, it } from "vitest";
+import { renderHook, act } from '@testing-library/react';
 import { useAuth } from '../../src/hooks/store'
 
 describe('useAuth hook test', () => {

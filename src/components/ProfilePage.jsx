@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/store'
 import { toast } from 'react-toastify';
-import ProfileDeletion from './ProfileDeletion';
+import { ProfileDeletion } from './ProfileDeletion';
 
 const ProfilePage = () => {
   const { token, user, logout } = useAuth()
@@ -22,21 +22,22 @@ const ProfilePage = () => {
   const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
   const [disabled, setDisabled] = useState(false)
 
+
   useEffect(() => {
+    // Function to validate passwords on form submission, not on change   
+    const validatePasswordsBeforeSubmit = () => {
+      if (password === doubleCheckPassword) {
+        setIsPasswordCorrect(true);
+      } else {
+        setIsPasswordCorrect(false);
+      }
+    };
     // Ensure passwords are validated before proceeding
     validatePasswordsBeforeSubmit();
 
     setDisabled((doubleCheckPassword || password) && !isPasswordCorrect)
   }, [password, isPasswordCorrect, doubleCheckPassword])
 
-  // Function to validate passwords on form submission, not on change   
-  const validatePasswordsBeforeSubmit = () => {
-    if (password === doubleCheckPassword) {
-      setIsPasswordCorrect(true);
-    } else {
-      setIsPasswordCorrect(false);
-    }
-  };
 
   const handleProfileChange = (event) => {
     event.preventDefault();
@@ -50,7 +51,7 @@ const ProfilePage = () => {
             'Authorization': `Bearer ${token}`
           }
         })
-        .then((response) => {
+        .then(() => {
           toast.success('Change was successful. Please login after!');
           logout();
           navigate('/login');

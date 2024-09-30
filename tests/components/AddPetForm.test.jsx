@@ -1,6 +1,6 @@
-import AddPetForm from '../../src/components/AddPetForm'
+import { AddPetForm } from '../../src/components/AddPetForm'
 import { useAuth } from '../../src/hooks/store'
-import { render, fireEvent, waitFor, renderHook, act } from '@testing-library/react'
+import { render, fireEvent, renderHook, act } from '@testing-library/react'
 import { it, expect, describe, vi } from 'vitest'
 import axios from 'axios'
 import { BrowserRouter } from 'react-router-dom'
@@ -70,7 +70,7 @@ describe('AddPetForm', () => {
     const renderedHook = renderHook(() => useAuth())
 
     act(() => {
-        renderedHook.result.current.setUser('eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9VU0VSIiwic3ViIjoidGVzdEBleGFtcGxlLmNvbSIsImlhdCI6MTcyMjkwMDcyOCwiZXhwIjoxNzIyOTAyNTI4fQ.9Fzi6MCTRjyIZ2dSRDVYCWxNZtQbF87THAWJFQ5AT8o')
+      renderedHook.result.current.setUser('eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9VU0VSIiwic3ViIjoidGVzdEBleGFtcGxlLmNvbSIsImlhdCI6MTcyMjkwMDcyOCwiZXhwIjoxNzIyOTAyNTI4fQ.9Fzi6MCTRjyIZ2dSRDVYCWxNZtQbF87THAWJFQ5AT8o')
     })
 
     const { getByLabelText, findAllByRole } = renderWithRouter(<AddPetForm />)

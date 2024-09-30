@@ -26,10 +26,7 @@ describe('usePets hook test', () => {
             nextCheckUp: '2024.08.08',
             specialCondition: 'It is a cat, a very special one'
         }];
-        // Mock the response data
-        const mockGet = vi.fn().mockResolvedValue(
-            { data: { pets: mockPets } }
-        );
+
         const axiosMock = vi.spyOn(axios, 'get');
         axiosMock.mockResolvedValue({ data: { pets: mockPets } });
 

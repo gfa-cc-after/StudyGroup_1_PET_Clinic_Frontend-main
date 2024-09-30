@@ -1,7 +1,6 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { useClinics } from "../../src/hooks/useClinics";
-import axios from "axios";
 import * as httpClient from "../../src/utils/httpClient";
 
 vi.mock('axios');
