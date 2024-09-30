@@ -1,34 +1,19 @@
 import './LandingPage.css'
 import { Grid2, Stack } from '@mui/material'
-import logo from '../../assets/pet-logo.png'
-import { Link } from 'react-router-dom'
 import Card from '@mui/material/Card';
-
 
 function LandingPage() {
     return (
         <Stack direction="column">
-            {/* <header className="navbar">
-                <div id="logo-section">
-                    <Link id="logo-link" to="/"><img id="logo-img" src={logo} alt="logo" /></Link>
-                    <h1>Pet Clinic Alliance</h1>
-                </div>
-                <nav>
-                    <li className='nav'><Link to="/about">About Us</Link></li>
-                    <li className='nav'><Link to="/contact">Contact</Link></li>
-                    <Link className="transparent-button" to="/login" >Log In</Link>
-                    <Link className="colored-button" to="/register" >Sign Up</Link>
-                </nav>
-            </header> */}
             <section className="hero">
                 <h2>Your  <span>pet</span>,<wbr /> our <span>passion</span></h2>
                 <h3><span>Free</span> of charge / pain / drama. </h3>
-                <p>Today's veterinarians are the only doctors educated to protect the health of both animals and people. They work hard to address the health and welfare needs of every species of animal. Veterinarians also play critical roles in environmental protection, research, food safety, and public health.</p>
+                <p>Todays veterinarians are the only doctors educated to protect the health of both animals and people. They work hard to address the health and welfare needs of every species of animal. Veterinarians also play critical roles in environmental protection, research, food safety, and public health.</p>
             </section>
             <Grid2 className="card" container spacing={4} justifyContent="center">
                 <Card id="owner">
                     <h4>For Pet Owners</h4>
-                    <p>Follow your pet's medical history.</p>
+                    <p>Follow your pet&apos;s medical history.</p>
                     <p>Find the best professionals in one place.</p>
                 </Card>
                 <Card id="exotic">
@@ -47,10 +32,6 @@ function LandingPage() {
                     <p>Maintainable, modern patient database.</p>
                 </Card>
             </Grid2>
-            {/* <div className="buttons-for-small-devices service-container">
-                <Link className="transparent-button" to="/login" >Log In</Link>
-                <Link className="colored-button" to="/register" >Sign Up</Link>
-            </div> */}
         </Stack>
     )
 }
