@@ -203,6 +203,7 @@ const NavBar = () => {
       direction="row"
       alignItems="center"
       justifyContent="space-between"
+      className="navbar"
     >
       <Stack direction="row">
         <IconButton

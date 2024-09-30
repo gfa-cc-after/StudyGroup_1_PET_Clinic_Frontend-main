@@ -4,8 +4,16 @@
 }
 
 .navbar {
+    background-color: var(--secondary-color);
     width: 100vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color: var(--primary-color);
+    flex-wrap: wrap;
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
 }
