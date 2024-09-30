@@ -192,7 +192,7 @@ const NavBar = () => {
                                 <Link className="colored-button" to="/" onClick={logout}>Log Out</Link>
                             </>
                         )}
-                        {pathname === '/user/pet' && (
+                        {pathname === '/user/pet' || '/user/pet/update' && (
                             <>
                                 <li className='nav'><Link to="/user/home">Go back</Link></li>
                             </>
