@@ -1,7 +1,7 @@
 .MuiCard-root {
     width: 80vw;
-    height: 15vh;
-    padding: 2vw;
+    height: 30vh;
+    padding: 1vw;
 
     h4 {
         font-size: 2rem;
@@ -13,10 +13,10 @@
 @media only screen and (min-width: 768px) {
     .MuiCard-root {
         width: 40vw;
-        height: 30vh;
+        height: 25vh;
 
         h4 {
-            font-size: 3rem;
+            font-size: 2rem;
         }
     }
 }
