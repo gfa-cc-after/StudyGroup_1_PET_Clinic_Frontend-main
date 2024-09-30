@@ -173,7 +173,7 @@ const NavBar = () => {
               </>
             )
           });
-        };
+        }
 
         if (pathname === 'user/pet') {
           setLinks({
