@@ -4,6 +4,7 @@ import { render, fireEvent, waitFor } from '@testing-library/react'
 import { it, expect, describe, vi } from 'vitest'
 import axios from 'axios'
 import { BrowserRouter } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 
 vi.mock('axios')
 
@@ -11,6 +12,7 @@ const renderWithRouter = (ui) => {
     return render(
       <BrowserRouter>
         {ui}
+        <ToastContainer />
       </BrowserRouter>
     )
 }

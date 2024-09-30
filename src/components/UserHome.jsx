@@ -9,7 +9,6 @@ const UserHome = () => {
     const { pets } = usePets();
 
     return (
-        <>
         <div className='prettybackground-box'>
             <div className='userhome-bg'></div>
             <div className='userhome'>
@@ -52,8 +51,7 @@ const UserHome = () => {
                 </section>
             </div>
         </div>
-        </>
     )
 }
 
-export default UserHome;
+export { UserHome };

@@ -2,8 +2,7 @@ import '../styles/style.css'
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 const apiUrl = import.meta.env.VITE_API_BACKEND_URL + "/api/v1/auth/register"
 
@@ -29,7 +28,7 @@ const RegistrationForm = () => {
         axios.post(apiUrl, formData, { headers: { "Content-Type": "application/json" } })
         .then((response) => {
             toast.success('Registration successful...it\'s time to login :)');
-            setTimeout(() => navigate('/login'), 1500); // Delay navigation for 3 second
+            navigate('/login')
         })
         .catch((err) =>{
             if (!err.response) {
@@ -63,9 +62,6 @@ const RegistrationForm = () => {
                     <button type="submit" className="formButton">Register</button>
                 </form>
             </div>
-            <ToastContainer 
-                autoClose={1000}
-            />
         </div>
     );
 

@@ -4,13 +4,17 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import LandingPage from './components/LandingPage'
 import LoginForm from './components/LoginForm'
 import RegistrationForm from './components/RegistrationForm'
-import UserHome from './components/UserHome'
-import AdminHome from './components/AdminHome'
-import NavBar from './components/NavBar'
+import { UserHome } from './components/UserHome'
+import { AdminRoot } from './components/admin/AdminRoot'
+import { ClinicManagement } from './components/admin/ClinicManagement'
+import { NavBar } from './components/NavBar'
 import DecideNavBar from './components/DecideNavBar'
 import ProfilePage from './components/ProfilePage'
 import AddPetForm from './components/AddPetForm'
 import PetEditPage from './components/PetEditPage'
+import { Messages } from './components/Messages'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -23,11 +27,23 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route exact path="/register" element={<RegistrationForm />} />
         <Route exact path="/login" element={<LoginForm />} />
         <Route exact path="/user/home" element={<UserHome />} />
+        <Route exact path='/user/messages' element={<Messages />}></Route>
         <Route exact path="/user/pet" element={<AddPetForm />} />
         <Route exact path="/user/pet/update" element={<PetEditPage />} />
-        <Route exact path="/admin/home" element={<AdminHome />} />
-        <Route exact path="/profile" element={ <ProfilePage />} />
+        <Route path="/admin/*" element={<AdminRoot />}>
+          <Route path='messages' element={<Messages />}></Route>
+          <Route path='home' element={<ClinicManagement />}></Route>
+          <Route path='clinics' element={<ClinicManagement />}></Route>
+          <Route exact path='users' element={<h1>User Management</h1>}></Route>
+          <Route exact path='pets' element={<h1>Pet Management</h1>}></Route>
+          <Route exact path='stats' element={<h1>Statistics</h1>}></Route>
+          <Route exact path='support' element={<h1>Developments support</h1>}></Route>
+        </Route>
+        <Route exact path="/profile" element={<ProfilePage />} />
       </Routes>
+      <ToastContainer
+        autoClose={1000}
+      />
     </Router>
   </React.StrictMode>
 )
