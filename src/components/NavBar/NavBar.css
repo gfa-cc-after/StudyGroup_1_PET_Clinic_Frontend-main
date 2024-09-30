@@ -1,0 +1,11 @@
+#logo-img {
+    width: 60px;
+    aspect-ratio: 1;
+}
+
+.navbar {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

@@ -2,14 +2,13 @@ import './NavBar.css'
 import logo from '../../assets/pet-logo.png';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useAuth } from '../../hooks/store';
-import { Divider, IconButton, List, ListItem, ListItemButton, Stack } from '@mui/material';
+import { Container, Divider, IconButton, List, ListItem, Stack } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { ResponsiveDrawer } from '../ResponsiveDrawer';
 import { useEffect, useState } from 'react';
 
 
 const drawerWidth = 240;
-
 
 const pathsToLinksMap = {
   "/login": [
@@ -52,7 +51,7 @@ const getNavbarElements = (pathName, role, logout) => {
       { to: "/logout", linkText: "Logout", onClick: logout },
     ]
   }
-  if (pathName.startsWith("/admin")) {
+  if (pathName.startsWith("/admin/")) {
     return [
       { to: "/admin/messages", linkText: "Inbox" },
       { to: "/user/home", linkText: "To User Home" },
@@ -69,9 +68,9 @@ const NavBar = () => {
   const { pathname } = useLocation();
 
   const [navbarElements, setNavbarElements] = useState([]);
+
   useEffect(() => {
-    const elements = getNavbarElements(pathname, role);
-    setNavbarElements(elements);
+    setNavbarElements(getNavbarElements(pathname, role));
   }, [pathname, role]);
 
   const [links, setLinks] = useState({
@@ -200,36 +199,40 @@ const NavBar = () => {
 
 
   return (
-    <>
+    <Stack
+      direction="row"
+      alignItems="center"
+      justifyContent="space-between"
+    >
       <Stack direction="row">
-        <header className="navbar">
-          <IconButton
-            color="inherit"
-            aria-label="open-drawer"
-            edge="start"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Link id="logo-link" to={role ? `/${role}/home` : '/'}><img id="logo-img" src={logo} alt="logo" /></Link>
-          <Link id="logo-link" to={role ? `/${role}/home` : '/'}><h1>Pet Clinic Alliance</h1></Link>
-          <nav>
-            <ul className='nav'>
-              {
-                navbarElements.map(navBarElement =>
-                  <Link
-                    key={navBarElement.to}
-                    to={navBarElement.to}
-                    onClick={navBarElement.onClick || undefined}
-                  >
-                    {navBarElement.linkText}
-                  </Link>)
-              }
-            </ul>
-          </nav>
-        </header>
-      </Stack >
+        <IconButton
+          color="inherit"
+          aria-label="open-drawer"
+          edge="start"
+        >
+          <MenuIcon />
+        </IconButton>
+        <Link id="logo-link" to={role ? `/${role}/home` : '/'}><img id="logo-img" src={logo} alt="logo" /></Link>
+        <Link id="logo-link" to={role ? `/${role}/home` : '/'}><h1>Pet Clinic Alliance</h1></Link>
+      </Stack>
+      <Stack
+        direction="row"
+        width="30vw"
+        justifyContent="space-around"
+      >
+        {
+          navbarElements.map(navBarElement =>
+            <Link
+              key={`to-${navBarElement.to}`}
+              to={navBarElement.to}
+              onClick={navBarElement.onClick || undefined}
+            >
+              {navBarElement.linkText}
+            </Link>)
+        }
+      </Stack>
       <ResponsiveDrawer width={drawerWidth} links={links} />
-    </>
+    </Stack >
   )
 }
 
