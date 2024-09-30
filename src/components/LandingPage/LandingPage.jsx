@@ -54,4 +54,4 @@ function LandingPage() {
         </Stack>
     )
 }
-export default LandingPage
+export { LandingPage }

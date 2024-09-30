@@ -1,18 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import LandingPage from './components/LandingPage/LandingPage'
-import LoginForm from './components/LoginForm'
-import RegistrationForm from './components/RegistrationForm'
+import { ToastContainer } from 'react-toastify'
+
+import { LandingPage } from './components/LandingPage/LandingPage'
+import { LoginForm } from './components/LoginForm'
+import { RegistrationForm } from './components/RegistrationForm'
 import { UserHome } from './components/UserHome'
 import { AdminRoot } from './components/admin/AdminRoot'
 import { ClinicManagement } from './components/admin/ClinicManagement'
 import { NavBar } from './components/NavBar/NavBar'
-import ProfilePage from './components/ProfilePage'
-import AddPetForm from './components/AddPetForm'
+import { ProfilePage } from './components/ProfilePage'
+import { AddPetForm } from './components/AddPetForm'
 import { Messages } from './components/Messages'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

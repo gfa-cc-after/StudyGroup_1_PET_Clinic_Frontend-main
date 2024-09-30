@@ -24,21 +24,21 @@ const RegistrationForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+
         axios.post(apiUrl, formData, { headers: { "Content-Type": "application/json" } })
-        .then((response) => {
-            toast.success('Registration successful...it\'s time to login :)');
-            navigate('/login')
-        })
-        .catch((err) =>{
-            if (!err.response) {
-                toast.error('There was a network error');
-            } else {
-                toast.error('There was an error while registering...' + err.response.data?.error || '');
-            }
-          })
+            .then((response) => {
+                toast.success('Registration successful...it\'s time to login :)');
+                navigate('/login')
+            })
+            .catch((err) => {
+                if (!err.response) {
+                    toast.error('There was a network error');
+                } else {
+                    toast.error('There was an error while registering...' + err.response.data?.error || '');
+                }
+            })
     }
-    
+
     return (
         <div className='prettybackground-box'>
             <div className='form-bg'></div>
@@ -67,4 +67,4 @@ const RegistrationForm = () => {
 
 };
 
-export default RegistrationForm;
+export { RegistrationForm };

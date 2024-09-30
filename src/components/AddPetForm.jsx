@@ -100,4 +100,4 @@ const AddPetForm = () => {
     );
 };
 
-export default AddPetForm;
+export { AddPetForm };
