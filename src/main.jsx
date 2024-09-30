@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import LandingPage from './components/LandingPage'
+import LandingPage from './components/LandingPage/LandingPage'
 import LoginForm from './components/LoginForm'
 import RegistrationForm from './components/RegistrationForm'
 import { UserHome } from './components/UserHome'

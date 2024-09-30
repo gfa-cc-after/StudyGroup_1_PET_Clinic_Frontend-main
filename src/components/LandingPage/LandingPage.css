@@ -1,0 +1,11 @@
+.MuiCard-root {
+    width: 80vw;
+    height: 15vh;
+}
+
+@media only screen and (min-width: 768px) {
+    .MuiCard-root {
+        width: 40vw;
+        height: 30vh;
+    }
+}
