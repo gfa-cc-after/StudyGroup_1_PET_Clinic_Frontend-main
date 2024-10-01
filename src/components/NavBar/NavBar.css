@@ -1,18 +1,18 @@
 #logo-img {
-    width: 60px;
-    aspect-ratio: 1;
+  width: 60px;
+  aspect-ratio: 1;
 }
 
 .navbar {
-    background-color: var(--secondary-color);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: var(--primary-color);
-    flex-wrap: wrap;
+  background-color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--primary-color);
+  flex-wrap: wrap;
 
-    a {
-        color: white;
-        text-decoration: none;
-    }
+  a {
+    color: white;
+    text-decoration: none;
+  }
 }
