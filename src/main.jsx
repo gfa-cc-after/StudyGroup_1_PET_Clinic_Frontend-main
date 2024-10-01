@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 
 import { LandingPage } from './components/LandingPage/LandingPage'
-import { LoginForm } from './components/LoginForm'
+import { LoginForm } from './components/Login/LoginForm'
 import { RegistrationForm } from './components/RegistrationForm'
 import { UserHome } from './components/UserHome'
 import { AdminRoot } from './components/admin/AdminRoot'
