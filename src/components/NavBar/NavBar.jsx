@@ -26,10 +26,11 @@ const pathsToLinksMap = {
 }
 
 /**
+ * Creates the navigation elements dynamically based on the following parameters
  * 
- * @param {String} pathName of the rurrent
- * @param {String} role of the user
- * @param {Function} logout to logut the current user
+ * @param {String} pathName the rurrent path
+ * @param {String} role role of the user
+ * @param {Function} logout function to logut the current user
  * @returns {Array.<{ to: String, linkText: String, onClick: Function | undefined}>} linkObjects
  */
 const getNavbarElements = (pathName, role, logout) => {
@@ -70,8 +71,8 @@ const NavBar = () => {
   const [navbarElements, setNavbarElements] = useState([]);
 
   useEffect(() => {
-    setNavbarElements(getNavbarElements(pathname, role));
-  }, [pathname, role]);
+    setNavbarElements(getNavbarElements(pathname, role, logout));
+  }, [pathname, role, logout]);
 
   const [links, setLinks] = useState({
     headerLinks: (
