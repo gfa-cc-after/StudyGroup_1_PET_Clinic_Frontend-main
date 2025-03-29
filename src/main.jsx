@@ -11,6 +11,7 @@ import { NavBar } from './components/NavBar'
 import DecideNavBar from './components/DecideNavBar'
 import ProfilePage from './components/ProfilePage'
 import AddPetForm from './components/AddPetForm'
+import PetEditPage from './components/PetEditPage'
 import { Messages } from './components/Messages'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -28,6 +29,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route exact path="/user/home" element={<UserHome />} />
         <Route exact path='/user/messages' element={<Messages />}></Route>
         <Route exact path="/user/pet" element={<AddPetForm />} />
+        <Route exact path="/user/pet/update" element={<PetEditPage />} />
         <Route path="/admin/*" element={<AdminRoot />}>
           <Route path='messages' element={<Messages />}></Route>
           <Route path='home' element={<ClinicManagement />}></Route>
